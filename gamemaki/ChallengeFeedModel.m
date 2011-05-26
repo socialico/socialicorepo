@@ -103,6 +103,7 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json"
         challenge.challengeTitle = [entry objectForKey:@"title"];
         challenge.photoSmall = [entry objectForKey:@"photoSmall"];
         challenge.userName = [entry objectForKey:@"userName"];
+		challenge.categoryName = [entry objectForKey:@"categoryName"];
         
         
         [challengelist addObject:challenge];

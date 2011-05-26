@@ -58,10 +58,18 @@
                                       withString:@"&lt;"],
                                      [challenge.createdAt formatRelativeTime]]
                                                     lineBreaks:YES URLs:YES];
+		
+		
+		
         // If this asserts, it's likely that the tweet.text contains an HTML character that caused
         // the XML parser to fail.
         TTDASSERT(nil != styledText);
-        [items addObject:[TTTableStyledTextItem itemWithText:styledText]];
+        [items addObject:[TTTableMessageItem itemWithTitle:challenge.userName caption:challenge.categoryName 
+												text:challenge.challengeTitle 
+												timestamp:challenge.createdAt
+												imageURL:challenge.photoSmall
+												URL:@"http://gamemaki.com"]];
+		
     }
     
     if (!_searchFeedModel.finished) {

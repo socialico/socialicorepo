@@ -11,6 +11,7 @@
 #import "gamemakiAppDelegate.h"
 #import "TabBarController.h"
 #import "TabMenuController.h"
+#import "ChallengesController.h"
 
 @implementation gamemakiAppDelegate
 
@@ -28,6 +29,7 @@
     //Mapping tab bar
     [map from:@"tt://tabBar" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
+	[map from:@"tt://challengesList" toViewController:[ChallengesController class]];
     
     if (![navigator restoreViewControllers]) {
         //Launch tab bar on load

@@ -48,6 +48,11 @@
 		E4DC3520138E4A5B00E2F180 /* category_web_social.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC3514138E4A5B00E2F180 /* category_web_social.png */; };
 		E4DC3523138E4AAB00E2F180 /* hot.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC3521138E4AAB00E2F180 /* hot.png */; };
 		E4DC3524138E4AAB00E2F180 /* new.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC3522138E4AAB00E2F180 /* new.png */; };
+		E4ED2E03138E530200BD3BC2 /* libextThree20JSON+YAJL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4ED2E02138E530200BD3BC2 /* libextThree20JSON+YAJL.a */; };
+		E4ED2EC9138E547B00BD3BC2 /* Challenge.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED2EC8138E547B00BD3BC2 /* Challenge.m */; };
+		E4ED2ECC138E54A100BD3BC2 /* ChallengeFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED2ECB138E54A100BD3BC2 /* ChallengeFeedModel.m */; };
+		E4ED2ECF138E54C100BD3BC2 /* ChallengesController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED2ECE138E54C100BD3BC2 /* ChallengesController.m */; };
+		E4ED2ED2138E597000BD3BC2 /* ChallengesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = E4ED2ED1138E597000BD3BC2 /* ChallengesDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -191,12 +196,40 @@
 			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = Three20UINavigatorUnitTests;
 		};
+		E499F55A138E52B600C01E0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E499F54F138E52B600C01E0B /* extThree20JSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
+			remoteInfo = "extThree20JSON+SBJSON";
+		};
+		E499F55C138E52B600C01E0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E499F54F138E52B600C01E0B /* extThree20JSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6E645BD91187751200F08CB1;
+			remoteInfo = "extThree20JSON+YAJL";
+		};
+		E499F55E138E52B600C01E0B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E499F54F138E52B600C01E0B /* extThree20JSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
+			remoteInfo = "extThree20JSONUnitTests+SBJSON";
+		};
 		E4BD8A6C138E346800DDA310 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 320A5A189C235877202780D0 /* Three20Network.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = EB9E6C6210B6A8F800DE563C;
 			remoteInfo = Three20NetworkUnitTests;
+		};
+		E4ED2E00138E52F600BD3BC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E499F54F138E52B600C01E0B /* extThree20JSON.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E645BA31187751200F08CB1;
+			remoteInfo = "extThree20JSON+YAJL";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -221,6 +254,7 @@
 		E4936BAA138E2D72009F732A /* gamemakiAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gamemakiAppDelegate.h; sourceTree = "<group>"; };
 		E4936BAB138E2D72009F732A /* gamemakiAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gamemakiAppDelegate.m; sourceTree = "<group>"; };
 		E4936BAE138E2D72009F732A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		E499F54F138E52B600C01E0B /* extThree20JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20JSON.xcodeproj; path = ../three20/src/extThree20JSON/extThree20JSON.xcodeproj; sourceTree = "<group>"; };
 		E4DC34F1138E3BCF00E2F180 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E4DC34F2138E3BCF00E2F180 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E4DC34F5138E3C3000E2F180 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -248,6 +282,15 @@
 		E4DC3514138E4A5B00E2F180 /* category_web_social.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = category_web_social.png; sourceTree = "<group>"; };
 		E4DC3521138E4AAB00E2F180 /* hot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hot.png; sourceTree = "<group>"; };
 		E4DC3522138E4AAB00E2F180 /* new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new.png; sourceTree = "<group>"; };
+		E4ED2E02138E530200BD3BC2 /* libextThree20JSON+YAJL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libextThree20JSON+YAJL.a"; sourceTree = SOURCE_ROOT; };
+		E4ED2EC7138E547B00BD3BC2 /* Challenge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Challenge.h; sourceTree = "<group>"; };
+		E4ED2EC8138E547B00BD3BC2 /* Challenge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Challenge.m; sourceTree = "<group>"; };
+		E4ED2ECA138E54A100BD3BC2 /* ChallengeFeedModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeFeedModel.h; sourceTree = "<group>"; };
+		E4ED2ECB138E54A100BD3BC2 /* ChallengeFeedModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeFeedModel.m; sourceTree = "<group>"; };
+		E4ED2ECD138E54C100BD3BC2 /* ChallengesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengesController.h; sourceTree = "<group>"; };
+		E4ED2ECE138E54C100BD3BC2 /* ChallengesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengesController.m; sourceTree = "<group>"; };
+		E4ED2ED0138E597000BD3BC2 /* ChallengesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengesDataSource.h; sourceTree = "<group>"; };
+		E4ED2ED1138E597000BD3BC2 /* ChallengesDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengesDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +298,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4ED2E03138E530200BD3BC2 /* libextThree20JSON+YAJL.a in Frameworks */,
 				3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */,
 				320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */,
 				320A737074758E53BA54BE95 /* libThree20UINavigator.a in Frameworks */,
@@ -338,6 +382,7 @@
 		43444815138E3865007AE9F4 /* Three20 */ = {
 			isa = PBXGroup;
 			children = (
+				E499F54F138E52B600C01E0B /* extThree20JSON.xcodeproj */,
 				320A5A189C235877202780D0 /* Three20Network.xcodeproj */,
 				320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */,
 				320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */,
@@ -352,6 +397,7 @@
 		E4936B8C138E2D71009F732A = {
 			isa = PBXGroup;
 			children = (
+				E4ED2E02138E530200BD3BC2 /* libextThree20JSON+YAJL.a */,
 				E4DC34EF138E3B9000E2F180 /* resources */,
 				E4936BA1138E2D72009F732A /* gamemaki */,
 				E4936B9A138E2D72009F732A /* Frameworks */,
@@ -383,6 +429,13 @@
 			isa = PBXGroup;
 			children = (
 				E4936BA2138E2D72009F732A /* Supporting Files */,
+				E4ED2EC6138E546B00BD3BC2 /* Objects */,
+				E4ED2ECD138E54C100BD3BC2 /* ChallengesController.h */,
+				E4ED2ECE138E54C100BD3BC2 /* ChallengesController.m */,
+				E4ED2ECA138E54A100BD3BC2 /* ChallengeFeedModel.h */,
+				E4ED2ECB138E54A100BD3BC2 /* ChallengeFeedModel.m */,
+				E4ED2ED0138E597000BD3BC2 /* ChallengesDataSource.h */,
+				E4ED2ED1138E597000BD3BC2 /* ChallengesDataSource.m */,
 				E4936BAA138E2D72009F732A /* gamemakiAppDelegate.h */,
 				E4936BAB138E2D72009F732A /* gamemakiAppDelegate.m */,
 				E4DC34F7138E3E3F00E2F180 /* TabBarController.h */,
@@ -403,6 +456,16 @@
 				E4936BA8138E2D72009F732A /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E499F550138E52B600C01E0B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E499F55B138E52B600C01E0B /* libextThree20JSON+SBJSON.a */,
+				E499F55D138E52B600C01E0B /* libextThree20JSON+YAJL.a */,
+				E499F55F138E52B600C01E0B /* extJSONUnitTests+SBJSON.octest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		E4DC34EF138E3B9000E2F180 /* resources */ = {
@@ -444,6 +507,15 @@
 			name = images;
 			sourceTree = "<group>";
 		};
+		E4ED2EC6138E546B00BD3BC2 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				E4ED2EC7138E547B00BD3BC2 /* Challenge.h */,
+				E4ED2EC8138E547B00BD3BC2 /* Challenge.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -458,6 +530,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				E4ED2E01138E52F600BD3BC2 /* PBXTargetDependency */,
 				3201088596B4756681693701 /* PBXTargetDependency */,
 				320D7DCCE32703ACAB9A45E1 /* PBXTargetDependency */,
 				320A737074758E53BA54BE91 /* PBXTargetDependency */,
@@ -487,6 +560,10 @@
 			productRefGroup = E4936B98138E2D71009F732A /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = E499F550138E52B600C01E0B /* Products */;
+					ProjectRef = E499F54F138E52B600C01E0B /* extThree20JSON.xcodeproj */;
+				},
 				{
 					ProductGroup = 320D7DCCE32703ACAB9A45E3 /* Products */;
 					ProjectRef = 320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */;
@@ -615,6 +692,27 @@
 			remoteRef = E45D1ECC138E35470054E881 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		E499F55B138E52B600C01E0B /* libextThree20JSON+SBJSON.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libextThree20JSON+SBJSON.a";
+			remoteRef = E499F55A138E52B600C01E0B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E499F55D138E52B600C01E0B /* libextThree20JSON+YAJL.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libextThree20JSON+YAJL.a";
+			remoteRef = E499F55C138E52B600C01E0B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		E499F55F138E52B600C01E0B /* extJSONUnitTests+SBJSON.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "extJSONUnitTests+SBJSON.octest";
+			remoteRef = E499F55E138E52B600C01E0B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		E4BD8A6D138E346800DDA310 /* NetworkUnitTests.octest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
@@ -669,6 +767,10 @@
 				E4936BAC138E2D72009F732A /* gamemakiAppDelegate.m in Sources */,
 				E4DC34F9138E3E3F00E2F180 /* TabBarController.m in Sources */,
 				E4DC34FC138E42E100E2F180 /* TabMenuController.m in Sources */,
+				E4ED2EC9138E547B00BD3BC2 /* Challenge.m in Sources */,
+				E4ED2ECC138E54A100BD3BC2 /* ChallengeFeedModel.m in Sources */,
+				E4ED2ECF138E54C100BD3BC2 /* ChallengesController.m in Sources */,
+				E4ED2ED2138E597000BD3BC2 /* ChallengesDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,6 +811,11 @@
 			isa = PBXTargetDependency;
 			name = Three20UI;
 			targetProxy = 320F2C48872C2E2C4DF86202 /* PBXContainerItemProxy */;
+		};
+		E4ED2E01138E52F600BD3BC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "extThree20JSON+YAJL";
+			targetProxy = E4ED2E00138E52F600BD3BC2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -791,6 +898,16 @@
 					../three20/Build/Products/three20,
 				);
 				INFOPLIST_FILE = "gamemaki/gamemaki-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-force_load",
+					"../../three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libextThree20JSON+YAJL.a",
+				);
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -804,6 +921,15 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "gamemaki/gamemaki-Prefix.pch";
 				INFOPLIST_FILE = "gamemaki/gamemaki-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-force_load",
+					"../../three20/Build/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/libextThree20JSON+YAJL.a",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;

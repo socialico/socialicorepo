@@ -8,7 +8,6 @@
 
 #import "TabMenuController.h"
 
-
 @implementation TabMenuController
 @synthesize page = _page;
 
@@ -66,7 +65,7 @@
     if (_page == MenuChallenges) {
         self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 			@"",
-			[TTTableSubtitleItem itemWithText:@"Latest" subtitle:@"Today's hottest, freshest challenges" imageURL:nil defaultImage:TTIMAGE(@"bundle://hot.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Latest" subtitle:@"Today's hottest, freshest challenges" imageURL:nil defaultImage:TTIMAGE(@"bundle://hot.png") URL:@"tt://challengesList" accessoryURL:nil],
 			[TTTableSubtitleItem itemWithText:@"Top-rated" subtitle:@"Carefully choosed by your friends" imageURL:nil defaultImage:TTIMAGE(@"bundle://new.png") URL:@"tt://food/macncheese" accessoryURL:nil],
 			
 			@"Categories",

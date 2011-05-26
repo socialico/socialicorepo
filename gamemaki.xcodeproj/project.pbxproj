@@ -283,6 +283,20 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		43444815138E3865007AE9F4 /* Three20 */ = {
+			isa = PBXGroup;
+			children = (
+				320A5A189C235877202780D0 /* Three20Network.xcodeproj */,
+				320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */,
+				320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */,
+				320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */,
+				320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */,
+				320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */,
+				3201088596B4756681693700 /* Three20UICommon.xcodeproj */,
+			);
+			name = Three20;
+			sourceTree = "<group>";
+		};
 		E4936B8C138E2D71009F732A = {
 			isa = PBXGroup;
 			children = (
@@ -303,14 +317,8 @@
 		E4936B9A138E2D72009F732A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3201088596B4756681693700 /* Three20UICommon.xcodeproj */,
-				320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */,
-				320A737074758E53BA54BE90 /* Three20UINavigator.xcodeproj */,
-				320A2827FEC940B25BC42C60 /* Three20Core.xcodeproj */,
-				320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */,
+				43444815138E3865007AE9F4 /* Three20 */,
 				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
-				320A5A189C235877202780D0 /* Three20Network.xcodeproj */,
-				320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */,
 				E4936B9B138E2D72009F732A /* UIKit.framework */,
 				E4936B9D138E2D72009F732A /* Foundation.framework */,
 				E4936B9F138E2D72009F732A /* CoreGraphics.framework */,

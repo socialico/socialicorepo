@@ -62,6 +62,28 @@
 		UIImage* image = [UIImage imageNamed:@"me.png"];
 		self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:self.title image:image tag:2] autorelease];
     }
+    
+    if (_page == MenuChallenges) {
+        self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
+			@"",
+			[TTTableSubtitleItem itemWithText:@"Latest" subtitle:@"Today's hottest, freshest challenges" imageURL:nil defaultImage:TTIMAGE(@"bundle://hot.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Top-rated" subtitle:@"Carefully choosed by your friends" imageURL:nil defaultImage:TTIMAGE(@"bundle://new.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			
+			@"Categories",
+			[TTTableSubtitleItem itemWithText:@"Arts and Culture" subtitle:@"Soak up the arts scene around you" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_arts_culture.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Education" subtitle:@"Blast your brain" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_education.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Entertainment" subtitle:@"Music, concerts and more" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_entertainment.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Food and Beverage" subtitle:@"The rainbow of tastes and cuisines" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_food_beverage.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Just for Fun" subtitle:@"The beauty of randomness" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_just_for_fun.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Photography" subtitle:@"Capture the moment" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_photography.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Productivity" subtitle:@"Get movin' with those tasks" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_productivity.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Science and Technology" subtitle:@"Gadgets and all things geeky" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_science_tech.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Shopping" subtitle:@"It's time to spend, spend, spend" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_shopping.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Sports and Fitness" subtitle:@"Get fit today" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_sports_fitness.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Travel" subtitle:@"Explore the world around you" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_travel.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+			[TTTableSubtitleItem itemWithText:@"Web and Social" subtitle:@"Around the interwebs" imageURL:nil  defaultImage:TTIMAGE(@"bundle://category_web_social.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+		nil];
+    }
 }
 
 @end

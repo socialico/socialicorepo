@@ -6,6 +6,8 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+// By alex!!! 2
+
 #import "gamemakiAppDelegate.h"
 
 @implementation gamemakiAppDelegate

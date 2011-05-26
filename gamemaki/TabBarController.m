@@ -13,9 +13,9 @@
 
 - (void)viewDidLoad {
     [self setTabURLs:[NSArray arrayWithObjects:
-            @"tt://menu/1",
-            @"tt://menu/2",
-            @"tt://menu/3",
+        @"tt://menu/1",
+        @"tt://menu/2",
+        @"tt://menu/3",
     nil]];
 }
 

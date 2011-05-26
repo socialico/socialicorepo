@@ -19,7 +19,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
 	if (self == [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		self.title = @"Twitter feed";
+		self.title = @"Latest";
 		self.variableHeightRows = YES;
 	}
 	
@@ -30,7 +30,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
 	self.dataSource = [[[ChallengesDataSource alloc]
-	initWithSearchQuery:@""] autorelease];
+	initWithSearchQuery:@"latest"] autorelease];
 }
 
 

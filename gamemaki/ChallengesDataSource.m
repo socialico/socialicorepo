@@ -51,14 +51,12 @@
     for (Challenge* challenge in _searchFeedModel.challengelist) {
         //TTDPRINT(@"Response text: %@", response.text);
         TTStyledText* styledText = [TTStyledText textFromXHTML:
-                                    [NSString stringWithFormat:@"%@\n<b>%@</b>",
-                                     [[challenge.challengeTitle stringByReplacingOccurrencesOfString:@"&"
-																						  withString:@"&amp;"]
+									[NSString stringWithFormat:@"%@\n<b>%@</b>",
+									[[challenge.challengeTitle stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]
                                       stringByReplacingOccurrencesOfString:@"<"
                                       withString:@"&lt;"],
                                      [challenge.createdAt formatRelativeTime]]
                                                     lineBreaks:YES URLs:YES];
-		
 		
 		
         // If this asserts, it's likely that the tweet.text contains an HTML character that caused

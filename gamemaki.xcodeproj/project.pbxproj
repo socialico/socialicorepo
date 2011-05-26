@@ -21,11 +21,11 @@
 		E4936B9B138E2D72009F732A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4936B9D138E2D72009F732A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E4936B9F138E2D72009F732A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		E4936BA3138E2D72009F732A /* gamemaki-Info.plist */ = {isa = PBXFileReference; path = "gamemaki-Info.plist"; sourceTree = "<group>"; };
+		E4936BA3138E2D72009F732A /* gamemaki-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "gamemaki-Info.plist"; sourceTree = "<group>"; };
 		E4936BA5138E2D72009F732A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		E4936BA7138E2D72009F732A /* gamemaki-Prefix.pch */ = {isa = PBXFileReference; path = "gamemaki-Prefix.pch"; sourceTree = "<group>"; };
+		E4936BA7138E2D72009F732A /* gamemaki-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "gamemaki-Prefix.pch"; sourceTree = "<group>"; };
 		E4936BA8138E2D72009F732A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		E4936BAA138E2D72009F732A /* gamemakiAppDelegate.h */ = {isa = PBXFileReference; path = gamemakiAppDelegate.h; sourceTree = "<group>"; };
+		E4936BAA138E2D72009F732A /* gamemakiAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gamemakiAppDelegate.h; sourceTree = "<group>"; };
 		E4936BAB138E2D72009F732A /* gamemakiAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gamemakiAppDelegate.m; sourceTree = "<group>"; };
 		E4936BAE138E2D72009F732A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */

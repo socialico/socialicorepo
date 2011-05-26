@@ -26,6 +26,14 @@
 		E4DC34F3138E3BCF00E2F180 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34F1138E3BCF00E2F180 /* Default.png */; };
 		E4DC34F4138E3BCF00E2F180 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34F2138E3BCF00E2F180 /* Default@2x.png */; };
 		E4DC34F6138E3C3000E2F180 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34F5138E3C3000E2F180 /* Icon.png */; };
+		E4DC34F9138E3E3F00E2F180 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DC34F8138E3E3F00E2F180 /* TabBarController.m */; };
+		E4DC34FC138E42E100E2F180 /* TabMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DC34FB138E42E100E2F180 /* TabMenuController.m */; };
+		E4DC3503138E450200E2F180 /* challenges.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34FD138E450200E2F180 /* challenges.png */; };
+		E4DC3504138E450200E2F180 /* challenges@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34FE138E450200E2F180 /* challenges@2x.png */; };
+		E4DC3505138E450200E2F180 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34FF138E450200E2F180 /* home.png */; };
+		E4DC3506138E450200E2F180 /* home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC3500138E450200E2F180 /* home@2x.png */; };
+		E4DC3507138E450200E2F180 /* me.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC3501138E450200E2F180 /* me.png */; };
+		E4DC3508138E450200E2F180 /* me@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC3502138E450200E2F180 /* me@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -202,6 +210,16 @@
 		E4DC34F1138E3BCF00E2F180 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E4DC34F2138E3BCF00E2F180 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E4DC34F5138E3C3000E2F180 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		E4DC34F7138E3E3F00E2F180 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		E4DC34F8138E3E3F00E2F180 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
+		E4DC34FA138E42E100E2F180 /* TabMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabMenuController.h; sourceTree = "<group>"; };
+		E4DC34FB138E42E100E2F180 /* TabMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabMenuController.m; sourceTree = "<group>"; };
+		E4DC34FD138E450200E2F180 /* challenges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = challenges.png; sourceTree = "<group>"; };
+		E4DC34FE138E450200E2F180 /* challenges@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "challenges@2x.png"; sourceTree = "<group>"; };
+		E4DC34FF138E450200E2F180 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		E4DC3500138E450200E2F180 /* home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home@2x.png"; sourceTree = "<group>"; };
+		E4DC3501138E450200E2F180 /* me.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = me.png; sourceTree = "<group>"; };
+		E4DC3502138E450200E2F180 /* me@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -340,6 +358,10 @@
 				E4936BAB138E2D72009F732A /* gamemakiAppDelegate.m */,
 				E4936BAD138E2D72009F732A /* MainWindow.xib */,
 				E4936BA2138E2D72009F732A /* Supporting Files */,
+				E4DC34F7138E3E3F00E2F180 /* TabBarController.h */,
+				E4DC34F8138E3E3F00E2F180 /* TabBarController.m */,
+				E4DC34FA138E42E100E2F180 /* TabMenuController.h */,
+				E4DC34FB138E42E100E2F180 /* TabMenuController.m */,
 			);
 			path = gamemaki;
 			sourceTree = "<group>";
@@ -367,6 +389,12 @@
 		E4DC34F0138E3BA100E2F180 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4DC34FD138E450200E2F180 /* challenges.png */,
+				E4DC34FE138E450200E2F180 /* challenges@2x.png */,
+				E4DC34FF138E450200E2F180 /* home.png */,
+				E4DC3500138E450200E2F180 /* home@2x.png */,
+				E4DC3501138E450200E2F180 /* me.png */,
+				E4DC3502138E450200E2F180 /* me@2x.png */,
 				E4DC34F5138E3C3000E2F180 /* Icon.png */,
 				E4DC34F1138E3BCF00E2F180 /* Default.png */,
 				E4DC34F2138E3BCF00E2F180 /* Default@2x.png */,
@@ -565,6 +593,12 @@
 				E4DC34F3138E3BCF00E2F180 /* Default.png in Resources */,
 				E4DC34F4138E3BCF00E2F180 /* Default@2x.png in Resources */,
 				E4DC34F6138E3C3000E2F180 /* Icon.png in Resources */,
+				E4DC3503138E450200E2F180 /* challenges.png in Resources */,
+				E4DC3504138E450200E2F180 /* challenges@2x.png in Resources */,
+				E4DC3505138E450200E2F180 /* home.png in Resources */,
+				E4DC3506138E450200E2F180 /* home@2x.png in Resources */,
+				E4DC3507138E450200E2F180 /* me.png in Resources */,
+				E4DC3508138E450200E2F180 /* me@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +611,8 @@
 			files = (
 				E4936BA9138E2D72009F732A /* main.m in Sources */,
 				E4936BAC138E2D72009F732A /* gamemakiAppDelegate.m in Sources */,
+				E4DC34F9138E3E3F00E2F180 /* TabBarController.m in Sources */,
+				E4DC34FC138E42E100E2F180 /* TabMenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

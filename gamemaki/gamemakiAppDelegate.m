@@ -9,17 +9,35 @@
 // By alex!!! 2
 
 #import "gamemakiAppDelegate.h"
+#import "TabBarController.h"
+#import "TabMenuController.h"
 
 @implementation gamemakiAppDelegate
 
 
-@synthesize window=_window;
+//@synthesize window=_window;
 
 - (void)applicationDidFinishLaunching:(UIApplication*)application 
 {
     TTNavigator* navigator = [TTNavigator navigator];
     navigator.persistenceMode = TTNavigatorPersistenceModeAll;
     navigator.window = [[[UIWindow alloc] initWithFrame:TTScreenBounds()] autorelease];
+    
+    TTURLMap* map = navigator.URLMap;
+    
+    //Mapping tab bar
+    [map from:@"tt://tabBar" toSharedViewController:[TabBarController class]];
+    [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
+    
+    if (![navigator restoreViewControllers]) {
+        //Launch tab bar on load
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://tabBar"]];
+    }
+}
+
+- (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -63,7 +81,7 @@
 
 - (void)dealloc
 {
-    [_window release];
+    //[_window release];
     [super dealloc];
 }
 

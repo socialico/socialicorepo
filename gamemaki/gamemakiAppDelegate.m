@@ -15,11 +15,11 @@
 
 @synthesize window=_window;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+- (void)applicationDidFinishLaunching:(UIApplication*)application 
 {
-    // Override point for customization after application launch.
-    [self.window makeKeyAndVisible];
-    return YES;
+    TTNavigator* navigator = [TTNavigator navigator];
+    navigator.persistenceMode = TTNavigatorPersistenceModeAll;
+    navigator.window = [[[UIWindow alloc] initWithFrame:TTScreenBounds()] autorelease];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

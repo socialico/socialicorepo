@@ -23,6 +23,9 @@
 		E4936BA9138E2D72009F732A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4936BA8138E2D72009F732A /* main.m */; };
 		E4936BAC138E2D72009F732A /* gamemakiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4936BAB138E2D72009F732A /* gamemakiAppDelegate.m */; };
 		E4936BAF138E2D72009F732A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4936BAD138E2D72009F732A /* MainWindow.xib */; };
+		E4DC34F3138E3BCF00E2F180 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34F1138E3BCF00E2F180 /* Default.png */; };
+		E4DC34F4138E3BCF00E2F180 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34F2138E3BCF00E2F180 /* Default@2x.png */; };
+		E4DC34F6138E3C3000E2F180 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34F5138E3C3000E2F180 /* Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +199,9 @@
 		E4936BAA138E2D72009F732A /* gamemakiAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gamemakiAppDelegate.h; sourceTree = "<group>"; };
 		E4936BAB138E2D72009F732A /* gamemakiAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gamemakiAppDelegate.m; sourceTree = "<group>"; };
 		E4936BAE138E2D72009F732A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		E4DC34F1138E3BCF00E2F180 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		E4DC34F2138E3BCF00E2F180 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		E4DC34F5138E3C3000E2F180 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -300,6 +306,7 @@
 		E4936B8C138E2D71009F732A = {
 			isa = PBXGroup;
 			children = (
+				E4DC34EF138E3B9000E2F180 /* resources */,
 				E4936BA1138E2D72009F732A /* gamemaki */,
 				E4936B9A138E2D72009F732A /* Frameworks */,
 				E4936B98138E2D71009F732A /* Products */,
@@ -347,6 +354,24 @@
 				E4936BA8138E2D72009F732A /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E4DC34EF138E3B9000E2F180 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				E4DC34F0138E3BA100E2F180 /* images */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
+		E4DC34F0138E3BA100E2F180 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E4DC34F5138E3C3000E2F180 /* Icon.png */,
+				E4DC34F1138E3BCF00E2F180 /* Default.png */,
+				E4DC34F2138E3BCF00E2F180 /* Default@2x.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,6 +562,9 @@
 				320B6C86F11D9990244A9731 /* Three20.bundle in Resources */,
 				E4936BA6138E2D72009F732A /* InfoPlist.strings in Resources */,
 				E4936BAF138E2D72009F732A /* MainWindow.xib in Resources */,
+				E4DC34F3138E3BCF00E2F180 /* Default.png in Resources */,
+				E4DC34F4138E3BCF00E2F180 /* Default@2x.png in Resources */,
+				E4DC34F6138E3C3000E2F180 /* Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

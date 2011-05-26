@@ -354,10 +354,9 @@
 		E4936BA1138E2D72009F732A /* gamemaki */ = {
 			isa = PBXGroup;
 			children = (
+				E4936BA2138E2D72009F732A /* Supporting Files */,
 				E4936BAA138E2D72009F732A /* gamemakiAppDelegate.h */,
 				E4936BAB138E2D72009F732A /* gamemakiAppDelegate.m */,
-				E4936BAD138E2D72009F732A /* MainWindow.xib */,
-				E4936BA2138E2D72009F732A /* Supporting Files */,
 				E4DC34F7138E3E3F00E2F180 /* TabBarController.h */,
 				E4DC34F8138E3E3F00E2F180 /* TabBarController.m */,
 				E4DC34FA138E42E100E2F180 /* TabMenuController.h */,
@@ -382,6 +381,7 @@
 			isa = PBXGroup;
 			children = (
 				E4DC34F0138E3BA100E2F180 /* images */,
+				E4936BAD138E2D72009F732A /* MainWindow.xib */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -671,6 +671,7 @@
 				E4936BAE138E2D72009F732A /* en */,
 			);
 			name = MainWindow.xib;
+			path = gamemaki;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

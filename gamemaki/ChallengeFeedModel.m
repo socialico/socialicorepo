@@ -99,6 +99,12 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?
         
         challenge.challengeTitle = [entry objectForKey:@"title"];
         challenge.photoSmall = [entry objectForKey:@"photoSmall"];
+		
+		//TEMPORARY: replace relative path with absolute path
+		if([challenge.photoSmall isEqualToString:@"../../main/images/default_avatar.png"])
+			challenge.photoSmall = [challenge.photoSmall stringByReplacingOccurrencesOfString:@"../.." 
+														 withString:@"http://www.gamemaki.com"];
+			
         challenge.userName = [entry objectForKey:@"userName"];
 		challenge.categoryName = [entry objectForKey:@"categoryName"];
         

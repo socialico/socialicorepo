@@ -29,6 +29,7 @@
     
     //Mapping tab bar
     //[map from:@"tt://tabBar" toSharedViewController:[TabBarController class]];
+	[map from:@"*" toViewController:[TTWebController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
 	[map from:@"tt://challengesList/(initWithCategoryId:)" toViewController:[ChallengesController class]];
 	[map from:@"tt://challengeProfile/(initWithChallengeId:)" toViewController:[ChallengeProfileController class]];

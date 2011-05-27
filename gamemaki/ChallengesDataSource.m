@@ -52,7 +52,7 @@
         //TTDPRINT(@"Response text: %@", response.text);
 		
 		//Compose challenge profile URL
-		NSString* challengeUrl = [NSString stringWithFormat:@"tt://challengeProfile/%u", challenge.challengeId];
+		NSString* challengeUrl = [NSString stringWithFormat:@"tt://challengeProfile/%@", challenge.challengeId];
 		
         // If this asserts, it's likely that the tweet.text contains an HTML character that caused
         // the XML parser to fail.

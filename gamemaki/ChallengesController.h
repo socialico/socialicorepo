@@ -9,6 +9,9 @@
 #import <Three20/Three20.h>
 
 @interface ChallengesController : TTTableViewController {
+	NSString* _categoryId;
 }
+
+@property (nonatomic, copy)   NSString* categoryId;
 
 @end

@@ -50,28 +50,22 @@
     
     for (Challenge* challenge in _searchFeedModel.challengelist) {
         //TTDPRINT(@"Response text: %@", response.text);
-        TTStyledText* styledText = [TTStyledText textFromXHTML:
-									[NSString stringWithFormat:@"%@\n<b>%@</b>",
-									[[challenge.challengeTitle stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"]
-                                      stringByReplacingOccurrencesOfString:@"<"
-                                      withString:@"&lt;"],
-                                     [challenge.createdAt formatRelativeTime]]
-                                                    lineBreaks:YES URLs:YES];
 		
+		//Compose challenge profile URL
+		NSString* challengeUrl = [NSString stringWithFormat:@"http://www.gamemaki.com/main/challenge_m?id=%u", challenge.challengeId];
 		
         // If this asserts, it's likely that the tweet.text contains an HTML character that caused
         // the XML parser to fail.
-        TTDASSERT(nil != styledText);
         [items addObject:[TTTableMessageItem itemWithTitle:challenge.userName caption:challenge.categoryName 
 												text:challenge.challengeTitle 
 												timestamp:challenge.createdAt
 												imageURL:challenge.photoSmall
-												URL:@"http://gamemaki.com"]];
+												URL:challengeUrl]];
 		
     }
     
     if (!_searchFeedModel.finished) {
-        [items addObject:[TTTableMoreButton itemWithText:@"more…"]];
+        [items addObject:[TTTableMoreButton itemWithText:@"more challenges…"]];
     }
     
     self.items = items;
@@ -82,22 +76,22 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSString*)titleForLoading:(BOOL)reloading {
     if (reloading) {
-        return NSLocalizedString(@"Updating Twitter feed...", @"Twitter feed updating text");
+        return NSLocalizedString(@"Updating Challenges...", @"Challenges feed updating text");
     } else {
-        return NSLocalizedString(@"Loading Twitter feed...", @"Twitter feed loading text");
+        return NSLocalizedString(@"Loading Challenges...", @"Challenges feed loading text");
     }
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSString*)titleForEmpty {
-    return NSLocalizedString(@"No tweets found.", @"Twitter feed no results");
+    return NSLocalizedString(@"No Challenges found.", @"Challenges feed no results");
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSString*)subtitleForError:(NSError*)error {
-    return NSLocalizedString(@"Sorry, there was an error loading the Twitter stream.", @"");
+    return NSLocalizedString(@"Sorry, there was an error loading the Challenges.", @"");
 }
 
 

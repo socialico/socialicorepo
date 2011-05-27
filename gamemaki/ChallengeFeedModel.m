@@ -12,11 +12,8 @@
 
 #import <extThree20JSON/extThree20JSON.h>
 
-// Twitter search API documented here:
-// http://apiwiki.twitter.com/w/page/22554756/Twitter-Search-API-Method:-search
-static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json";
-//  @"http://192.168.2.108/~AlexTitle/challenges.json";
-
+//Gamemaki Challenges API documented here:
+static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?cat_id=%@&limit=%u&page=%u";
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -82,7 +79,7 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json"
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)requestDidFinishLoad:(TTURLRequest*)request {
     TTURLJSONResponse* response = request.response;
-    NSLog(@"Response ----- %@", response.rootObject);
+    //NSLog(@"Response ----- %@", response.rootObject);
         
     NSArray* feed = response.rootObject;
     

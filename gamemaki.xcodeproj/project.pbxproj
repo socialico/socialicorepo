@@ -23,6 +23,7 @@
 		E4936BA9138E2D72009F732A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E4936BA8138E2D72009F732A /* main.m */; };
 		E4936BAC138E2D72009F732A /* gamemakiAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E4936BAB138E2D72009F732A /* gamemakiAppDelegate.m */; };
 		E4936BAF138E2D72009F732A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4936BAD138E2D72009F732A /* MainWindow.xib */; };
+		E4C5AFCB138F93D300E6BD8B /* ChallengeProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AFCA138F93D300E6BD8B /* ChallengeProfileController.m */; };
 		E4DC34F3138E3BCF00E2F180 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34F1138E3BCF00E2F180 /* Default.png */; };
 		E4DC34F4138E3BCF00E2F180 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34F2138E3BCF00E2F180 /* Default@2x.png */; };
 		E4DC34F6138E3C3000E2F180 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34F5138E3C3000E2F180 /* Icon.png */; };
@@ -255,6 +256,8 @@
 		E4936BAB138E2D72009F732A /* gamemakiAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gamemakiAppDelegate.m; sourceTree = "<group>"; };
 		E4936BAE138E2D72009F732A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		E499F54F138E52B600C01E0B /* extThree20JSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = extThree20JSON.xcodeproj; path = ../three20/src/extThree20JSON/extThree20JSON.xcodeproj; sourceTree = "<group>"; };
+		E4C5AFC9138F93D300E6BD8B /* ChallengeProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChallengeProfileController.h; sourceTree = "<group>"; };
+		E4C5AFCA138F93D300E6BD8B /* ChallengeProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChallengeProfileController.m; sourceTree = "<group>"; };
 		E4DC34F1138E3BCF00E2F180 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		E4DC34F2138E3BCF00E2F180 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		E4DC34F5138E3C3000E2F180 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -442,6 +445,8 @@
 				E4DC34F8138E3E3F00E2F180 /* TabBarController.m */,
 				E4DC34FA138E42E100E2F180 /* TabMenuController.h */,
 				E4DC34FB138E42E100E2F180 /* TabMenuController.m */,
+				E4C5AFC9138F93D300E6BD8B /* ChallengeProfileController.h */,
+				E4C5AFCA138F93D300E6BD8B /* ChallengeProfileController.m */,
 			);
 			path = gamemaki;
 			sourceTree = "<group>";
@@ -771,6 +776,7 @@
 				E4ED2ECC138E54A100BD3BC2 /* ChallengeFeedModel.m in Sources */,
 				E4ED2ECF138E54C100BD3BC2 /* ChallengesController.m in Sources */,
 				E4ED2ED2138E597000BD3BC2 /* ChallengesDataSource.m in Sources */,
+				E4C5AFCB138F93D300E6BD8B /* ChallengeProfileController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

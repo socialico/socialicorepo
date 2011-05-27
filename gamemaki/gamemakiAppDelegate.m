@@ -12,6 +12,7 @@
 #import "TabBarController.h"
 #import "TabMenuController.h"
 #import "ChallengesController.h"
+#import "ChallengeProfileController.h"
 
 @implementation gamemakiAppDelegate
 
@@ -29,7 +30,8 @@
     //Mapping tab bar
     //[map from:@"tt://tabBar" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
-	[map from:@"tt://challengesList/(initWithCategory:)" toViewController:[ChallengesController class]];
+	[map from:@"tt://challengesList/(initWithCategoryId:)" toViewController:[ChallengesController class]];
+	[map from:@"tt://challengeProfile/(initWithChallengeId:)" toViewController:[ChallengeProfileController class]];
     
     if (![navigator restoreViewControllers]) {
         //Launch tab bar on load

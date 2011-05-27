@@ -18,16 +18,7 @@
 @synthesize categoryId = _categoryId;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-	if (self == [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		self.title = @"Latest";
-		self.variableHeightRows = YES;
-	}
-	
-	return self;
-}
-
-- (id)initWithCategory:(NSString*)category {
+- (id)initWithCategoryId:(NSString*)category {
 	if (self == [super init]) {
 		
 		//Assigning category ID

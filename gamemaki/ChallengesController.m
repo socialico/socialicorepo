@@ -42,19 +42,19 @@
 			self.title = @"Knowledge";
 		else if([category isEqualToString:@"3"])
 			self.title = @"Entertainment";
-		else if([category isEqualToString:@"4"])
-			self.title = @"Health Fitness";
 		else if([category isEqualToString:@"5"])
-			self.title = @"Photography";
+			self.title = @"Health & Fitness";
 		else if([category isEqualToString:@"6"])
-			self.title = @"Productivity";
+			self.title = @"Photography";
 		else if([category isEqualToString:@"7"])
+			self.title = @"Productivity";
+		else if([category isEqualToString:@"9"])
 			self.title = @"Shopping";
 		else if([category isEqualToString:@"8"])
 			self.title = @"Technology";
 		else if([category isEqualToString:@"9"])
 			self.title = @"Travel";
-		else if([category isEqualToString:@"10"])
+		else if([category isEqualToString:@"4"])
 			self.title = @"Wine & Dine";
 		else if([category isEqualToString:@"11"])
 			self.title = @"Others";

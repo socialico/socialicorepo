@@ -21,6 +21,10 @@
 - (id)initWithCategoryId:(NSString*)category {
 	if (self == [super init]) {
 		
+		//Styling Properties
+		self.navigationBarTintColor = RGBCOLOR(41,41,41);
+		self.statusBarStyle = UIStatusBarStyleBlackOpaque;
+		
 		//Assigning category ID
 		self.categoryId = category;
 		

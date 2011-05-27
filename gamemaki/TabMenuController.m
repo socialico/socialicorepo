@@ -47,6 +47,13 @@
 
 - (void)setPage:(MenuPage)page {
     _page = page;
+	
+	//Styling Properties
+	UIImage *barLogo = [UIImage imageNamed:@"nav_bar_logo"];
+	UIImageView *barLogoView = [[UIImageView alloc] initWithImage:barLogo];
+	self.navigationItem.titleView = barLogoView;
+	self.navigationBarTintColor = RGBCOLOR(41,41,41);
+	self.statusBarStyle = UIStatusBarStyleBlackOpaque;
     
     self.title = [self nameForMenuPage:page];
 	self.variableHeightRows = YES;
@@ -79,7 +86,7 @@
 			[TTTableSubtitleItem itemWithText:@"Others" subtitle:@"" imageURL:nil  defaultImage:TTIMAGE(@"bundle://cat_icon_others.png") URL:@"tt://challengesList/11" accessoryURL:nil],
 			[TTTableSubtitleItem itemWithText:@"Just for Fun" subtitle:@"" imageURL:nil  defaultImage:TTIMAGE(@"bundle://cat_icon_just_for_fun.png") URL:@"tt://challengesList/12" accessoryURL:nil],
 		nil];
-    }
+	} 
 }
 
 @end

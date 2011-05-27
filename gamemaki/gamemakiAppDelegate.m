@@ -6,7 +6,6 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-// By alex!!! 2
 
 #import "gamemakiAppDelegate.h"
 #import "TabBarController.h"
@@ -28,15 +27,15 @@
     TTURLMap* map = navigator.URLMap;
     
     //Mapping tab bar
-    //[map from:@"tt://tabBar" toSharedViewController:[TabBarController class]];
 	[map from:@"*" toViewController:[TTWebController class]];
+	[map from:@"tt://tabBar/" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
 	[map from:@"tt://challengesList/(initWithCategoryId:)" toViewController:[ChallengesController class]];
 	[map from:@"tt://challengeProfile/(initWithChallengeId:)" toViewController:[ChallengeProfileController class]];
     
     if (![navigator restoreViewControllers]) {
         //Launch tab bar on load
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://menu/2"]];
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://tabBar"]];
     }
 }
 

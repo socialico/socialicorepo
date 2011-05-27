@@ -15,6 +15,10 @@
 
 - (id)initWithChallengeId:(NSString*)challengeId {
 	
+	//Styling Properties
+	self.navigationBarTintColor = RGBCOLOR(41,41,41);
+	self.statusBarStyle = UIStatusBarStyleBlackOpaque;
+	
 	NSString* webchallengeUrl = [NSString stringWithFormat:@"http://m.gamemaki.com/main/challenge_m?id=%@", challengeId];
 	TTOpenURL(webchallengeUrl);
 

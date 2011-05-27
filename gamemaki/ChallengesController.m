@@ -52,7 +52,7 @@
 			self.title = @"Shopping";
 		else if([category isEqualToString:@"8"])
 			self.title = @"Technology";
-		else if([category isEqualToString:@"9"])
+		else if([category isEqualToString:@"10"])
 			self.title = @"Travel";
 		else if([category isEqualToString:@"4"])
 			self.title = @"Wine & Dine";

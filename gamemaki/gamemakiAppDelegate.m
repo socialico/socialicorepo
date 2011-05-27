@@ -27,13 +27,13 @@
     TTURLMap* map = navigator.URLMap;
     
     //Mapping tab bar
-    [map from:@"tt://tabBar" toSharedViewController:[TabBarController class]];
+    //[map from:@"tt://tabBar" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
 	[map from:@"tt://challengesList/(initWithCategory:)" toViewController:[ChallengesController class]];
     
     if (![navigator restoreViewControllers]) {
         //Launch tab bar on load
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://tabBar"]];
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://menu/2"]];
     }
 }
 

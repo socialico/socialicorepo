@@ -8,7 +8,8 @@
 
 #import "ChallengesController.h"
 #import "ChallengesDataSource.h"
-
+#import "Challenge.h"
+#import "ChallengeFeedModel.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -61,6 +62,21 @@
 	return self;
 }
 
+- (void) didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
+	//Retrieve challenge object
+	ChallengesDataSource* dataList = self.dataSource;
+	ChallengeFeedModel* dataModel = dataList.model;
+	NSArray* challengesList= dataModel.challengelist;
+	Challenge* challenge = [challengesList objectAtIndex:indexPath.row];
+	
+	NSLog(@"Name Source: %@", challenge.userName);
+	
+	TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"tt://challengeProfile"] 
+							applyQuery:[NSDictionary dictionaryWithObject:challenge forKey:@"challengeObject"]]
+							applyAnimated:YES];
+	
+	[[TTNavigator navigator] openURLAction:action];
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {

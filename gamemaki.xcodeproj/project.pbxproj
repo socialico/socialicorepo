@@ -31,6 +31,7 @@
 		4331C680138FB62100A64820 /* cat_icon_top_rated.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C672138FB62100A64820 /* cat_icon_top_rated.png */; };
 		4331C681138FB62100A64820 /* cat_icon_travel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C673138FB62100A64820 /* cat_icon_travel.png */; };
 		4331C682138FB62100A64820 /* cat_icon_wine_dine.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C674138FB62100A64820 /* cat_icon_wine_dine.png */; };
+		D527D67013948C82008B40F6 /* GlobalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D527D66F13948C81008B40F6 /* GlobalStore.m */; };
 		E4936B9C138E2D72009F732A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4936B9B138E2D72009F732A /* UIKit.framework */; };
 		E4936B9E138E2D72009F732A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4936B9D138E2D72009F732A /* Foundation.framework */; };
 		E4936BA0138E2D72009F732A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4936B9F138E2D72009F732A /* CoreGraphics.framework */; };
@@ -260,6 +261,8 @@
 		4331C672138FB62100A64820 /* cat_icon_top_rated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_icon_top_rated.png; sourceTree = "<group>"; };
 		4331C673138FB62100A64820 /* cat_icon_travel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_icon_travel.png; sourceTree = "<group>"; };
 		4331C674138FB62100A64820 /* cat_icon_wine_dine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_icon_wine_dine.png; sourceTree = "<group>"; };
+		D527D66E13948C81008B40F6 /* GlobalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalStore.h; sourceTree = "<group>"; };
+		D527D66F13948C81008B40F6 /* GlobalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalStore.m; sourceTree = "<group>"; };
 		E4936B97138E2D71009F732A /* gamemaki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamemaki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4936B9B138E2D72009F732A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4936B9D138E2D72009F732A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -449,6 +452,8 @@
 				E4DC34FB138E42E100E2F180 /* TabMenuController.m */,
 				E4C5AFC9138F93D300E6BD8B /* ChallengeProfileController.h */,
 				E4C5AFCA138F93D300E6BD8B /* ChallengeProfileController.m */,
+				D527D66E13948C81008B40F6 /* GlobalStore.h */,
+				D527D66F13948C81008B40F6 /* GlobalStore.m */,
 			);
 			path = gamemaki;
 			sourceTree = "<group>";
@@ -781,6 +786,7 @@
 				E4ED2ECF138E54C100BD3BC2 /* ChallengesController.m in Sources */,
 				E4ED2ED2138E597000BD3BC2 /* ChallengesDataSource.m in Sources */,
 				E4C5AFCB138F93D300E6BD8B /* ChallengeProfileController.m in Sources */,
+				D527D67013948C82008B40F6 /* GlobalStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

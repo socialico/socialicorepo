@@ -8,6 +8,8 @@
 
 #import "ChallengeProfileController.h"
 
+#import "GlobalStore.h"
+
 
 @implementation ChallengeProfileController
 
@@ -18,6 +20,13 @@
 	//Styling Properties
 	self.navigationBarTintColor = RGBCOLOR(41,41,41);
 	self.statusBarStyle = UIStatusBarStyleBlackOpaque;
+    
+    NSString* testMessage = [[GlobalStore sharedInstance] categoryId];
+    NSLog(@"Message - %@", testMessage);
+    NSLog(@"Message - %@", testMessage);
+    NSLog(@"Message - %@", testMessage);
+    NSLog(@"Message - %@", testMessage);
+    NSLog(@"Message - %@", testMessage);
 	
 	NSString* webchallengeUrl = [NSString stringWithFormat:@"http://m.gamemaki.com/main/challenge_m?id=%@", challengeId];
 	TTOpenURL(webchallengeUrl);

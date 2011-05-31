@@ -10,6 +10,8 @@
 
 #import "Challenge.h"
 
+#import "GlobalStore.h"
+
 #import <extThree20JSON/extThree20JSON.h>
 
 //Gamemaki Challenges API documented here:
@@ -108,12 +110,13 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?
         challenge.userName = [entry objectForKey:@"userName"];
 		challenge.categoryName = [entry objectForKey:@"categoryName"];
         
-        
         [challengelist addObject:challenge];
         TT_RELEASE_SAFELY(challenge);
     }
     _finished = challengelist.count < _resultsPerPage;
     [_challengelist addObjectsFromArray: challengelist];
+    
+    [[GlobalStore sharedInstance] setCategoryId:@"gamemaki huat ah"];
     
     TT_RELEASE_SAFELY(dateFormatter);
     

@@ -7,11 +7,12 @@
 //
 
 #import <Three20/Three20.h>
+#import "Challenge.h"
 
-@interface ChallengeProfileController : TTWebController {
-    NSString* _challengeId;
+@interface ChallengeProfileController : TTViewController {
+    Challenge* _challengeProfile;
 }
 
-@property (nonatomic, copy)   NSString* challengeId;
+@property (nonatomic, copy)   Challenge* challengeProfile;
 
 @end

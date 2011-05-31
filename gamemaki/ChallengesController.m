@@ -66,16 +66,24 @@
 	//Retrieve challenge object
 	ChallengesDataSource* dataList = self.dataSource;
 	ChallengeFeedModel* dataModel = dataList.model;
-	NSArray* challengesList= dataModel.challengelist;
-	Challenge* challenge = [challengesList objectAtIndex:indexPath.row];
+
+	NSLog(@"row- %u",indexPath.row);
+	NSLog(@"items- %u",[dataList.items count]);
+
+	//If not load more button
+	if(indexPath.row % 10 != 0) {
+		NSArray* challengesList= dataModel.challengelist;
+		Challenge* challenge = [challengesList objectAtIndex:indexPath.row];
 	
-	NSLog(@"Name Source: %@", challenge.userName);
+		NSLog(@"Name Source: %@", challenge.userName);
 	
-	TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"tt://challengeProfile"] 
+		//Open challenge profile view controller
+		TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"tt://challengeProfile"] 
 							applyQuery:[NSDictionary dictionaryWithObject:challenge forKey:@"challengeObject"]]
 							applyAnimated:YES];
 	
-	[[TTNavigator navigator] openURLAction:action];
+		[[TTNavigator navigator] openURLAction:action];
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////

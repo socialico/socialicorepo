@@ -50,17 +50,14 @@
     
     for (Challenge* challenge in _searchFeedModel.challengelist) {
         //TTDPRINT(@"Response text: %@", response.text);
-		
-		//Compose challenge profile URL
-		NSString* challengeUrl = [NSString stringWithFormat:@"tt://challengeProfile/%@", challenge.challengeId];
-		
+
         // If this asserts, it's likely that the tweet.text contains an HTML character that caused
         // the XML parser to fail.
         [items addObject:[TTTableMessageItem itemWithTitle:challenge.userName caption:challenge.categoryName 
 												text:challenge.challengeTitle 
 												timestamp:challenge.createdAt
 												imageURL:challenge.photoSmall
-												URL:challengeUrl]];
+												URL:nil]];
     }
     
     if (!_searchFeedModel.finished) {

@@ -90,6 +90,7 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.0"];
     
     NSMutableArray* challengelist = [NSMutableArray arrayWithCapacity:[feed count]];
+    //[[NSMutableArray alloc] initWithCapacity:capacity];
     
     for (NSDictionary* entry in feed) {
         Challenge* challenge = [[Challenge alloc] init];
@@ -117,6 +118,7 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?
     [_challengelist addObjectsFromArray: challengelist];
     
     [[GlobalStore sharedInstance] setCategoryId:@"gamemaki huat ah"];
+    [[GlobalStore sharedInstance] setChallengeList:challengelist];
     
     TT_RELEASE_SAFELY(dateFormatter);
     

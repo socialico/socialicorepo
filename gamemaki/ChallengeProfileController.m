@@ -28,6 +28,13 @@
     NSLog(@"Message - %@", testMessage);
     NSLog(@"Message - %@", testMessage);
 	
+    NSMutableArray* testMessage2 = [[GlobalStore sharedInstance] challengeList];
+    NSLog(@"Message - %@", testMessage2);
+    NSLog(@"Message - %@", testMessage2);
+    NSLog(@"Message - %@", testMessage2);
+    NSLog(@"Message - %@", testMessage2);
+    NSLog(@"Message - %@", testMessage2);
+    
 	NSString* webchallengeUrl = [NSString stringWithFormat:@"http://m.gamemaki.com/main/challenge_m?id=%@", challengeId];
 	TTOpenURL(webchallengeUrl);
 

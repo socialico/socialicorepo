@@ -11,6 +11,7 @@
 @implementation GlobalStore
 
 @synthesize categoryId = _categoryId;
+@synthesize challengeList = _challengelist;
 
 + (GlobalStore*)sharedInstance
 {

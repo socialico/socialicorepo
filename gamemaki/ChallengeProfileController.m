@@ -18,14 +18,7 @@
 	//Styling Properties
 	self.navigationBarTintColor = RGBCOLOR(41,41,41);
 	self.statusBarStyle = UIStatusBarStyleBlackOpaque;
-	
-    NSMutableArray* testMessage2 = [[GlobalStore sharedInstance] challengeList];
-    NSLog(@"Message - %@", testMessage2);
-    NSLog(@"Message - %@", testMessage2);
-    NSLog(@"Message - %@", testMessage2);
-    NSLog(@"Message - %@", testMessage2);
-    NSLog(@"Message - %@", testMessage2);
-    
+	    
 	NSString* webchallengeUrl = [NSString stringWithFormat:@"http://m.gamemaki.com/main/challenge_m?id=%@", challengeId];
 	TTOpenURL(webchallengeUrl);
 

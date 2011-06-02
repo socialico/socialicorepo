@@ -95,21 +95,51 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?
     for (NSDictionary* entry in feed) {
         Challenge* challenge = [[Challenge alloc] init];
         
+		//Challenge Profile
+		//=======================================================================
+		challenge.challengeId = [NSNumber numberWithLongLong:
+								 [[entry objectForKey:@"id"] longLongValue]];
+		challenge.challengeTitle = [entry objectForKey:@"title"];
+		challenge.claimNo = [NSNumber numberWithInt:
+							[[entry objectForKey:@"claimNo"] intValue]];
+		challenge.commentNo = [NSNumber numberWithInt:
+							   [[entry objectForKey:@"commentNo"] intValue]];
+		challenge.likeNo = [NSNumber numberWithInt:
+							[[entry objectForKey:@"likeNo"] intValue]];
+		challenge.dislikeNo = [NSNumber numberWithInt:
+							   [[entry objectForKey:@"dislikeNo"] intValue]];
+		
         NSDate* date = [dateFormatter dateFromString:[entry objectForKey:@"createdAt"]];
         challenge.createdAt = date;
-        challenge.challengeId = [NSNumber numberWithLongLong:
-                         [[entry objectForKey:@"id"] longLongValue]];
-        
-        challenge.challengeTitle = [entry objectForKey:@"title"];
-        challenge.photoSmall = [entry objectForKey:@"photoSmall"];
+		
+		challenge.repeat = [entry objectForKey:@"repeat"];
+		challenge.hide = [entry objectForKey:@"hide"];
+		
+		//Creator Profile
+		//=======================================================================
+		challenge.userId = [NSNumber numberWithLongLong:
+							[[entry objectForKey:@"userId"] longLongValue]];
+		challenge.userName = [entry objectForKey:@"userName"];
+		challenge.photoSmall = [entry objectForKey:@"photoSmall"];
 		
 		//TEMPORARY: replace relative path with absolute path
 		if([challenge.photoSmall isEqualToString:@"../../main/images/default_avatar.png"])
 			challenge.photoSmall = [challenge.photoSmall stringByReplacingOccurrencesOfString:@"../.." 
-														 withString:@"http://www.gamemaki.com"];
-			
-        challenge.userName = [entry objectForKey:@"userName"];
+																				   withString:@"http://www.gamemaki.com"];
+		
+		challenge.photoLarge = [entry objectForKey:@"photoLarge"];
+		
+		//TEMPORARY: replace relative path with absolute path
+		if([challenge.photoLarge isEqualToString:@"../../main/images/default_avatar.png"])
+			challenge.photoLarge = [challenge.photoLarge stringByReplacingOccurrencesOfString:@"../.." 
+																				   withString:@"http://www.gamemaki.com"];
+		
+		//Category Profile
+		//=======================================================================
+		challenge.categoryId = [NSNumber numberWithLongLong:
+								[[entry objectForKey:@"categoryId"] longLongValue]];
 		challenge.categoryName = [entry objectForKey:@"categoryName"];
+		challenge.categoryIcon = [entry objectForKey:@"categoryIcon"];
         
         [challengelist addObject:challenge];
         TT_RELEASE_SAFELY(challenge);

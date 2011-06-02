@@ -72,8 +72,6 @@
 		NSArray* challengesList= dataModel.challengelist;
 		Challenge* challenge = [challengesList objectAtIndex:indexPath.row];
 	
-		NSLog(@"Name Source: %@", challenge.userName);
-	
 		//Open challenge profile view controller
 		TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"tt://challengeProfile"] 
 							applyQuery:[NSDictionary dictionaryWithObject:challenge forKey:@"challengeObject"]]

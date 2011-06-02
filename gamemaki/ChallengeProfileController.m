@@ -33,14 +33,14 @@
 	name.font = [UIFont systemFontOfSize:14];
 	name.text = [TTStyledText textFromXHTML:_challengeProfile.userName lineBreaks:YES URLs:YES];
 	name.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
-	//label1.backgroundColor = [UIColor grayColor];
+	name.backgroundColor = [UIColor grayColor];
 	[name sizeToFit];
 	[self.view addSubview:name];
 	
-	TTImageView* category = [[[TTImageView alloc] initWithFrame:CGRectMake(5, 5, 0, 0)]autorelease];
+	TTImageView* category = [[[TTImageView alloc] initWithFrame:CGRectMake(55, 55, 0, 0)]autorelease];
 	category.top = name.bottom;
 	category.autoresizesToImage = YES;
-	category.contentScaleFactor = 2;
+//	category.contentScaleFactor = 2;
 	category.urlPath = _challengeProfile.categoryIcon;
 	[self.view addSubview:category];
 	
@@ -48,6 +48,7 @@
 	avatar.autoresizesToImage = YES;
 	avatar.contentScaleFactor = 2;
 	avatar.urlPath = _challengeProfile.photoSmall;
+	name.backgroundColor = [UIColor grayColor];
 	[self.view addSubview:avatar];	
 	
 	TTStyledTextLabel* bio = [[[TTStyledTextLabel alloc] initWithFrame:self.view.bounds] autorelease];

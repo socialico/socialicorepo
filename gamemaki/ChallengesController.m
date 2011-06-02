@@ -67,11 +67,8 @@
 	ChallengesDataSource* dataList = self.dataSource;
 	ChallengeFeedModel* dataModel = dataList.model;
 
-	NSLog(@"row- %u",indexPath.row);
-	NSLog(@"items- %u",[dataList.items count]);
-
-	//If not load more button
-	if(indexPath.row % 10 != 0) {
+	//If not load more button class
+	if([object class] != [TTTableMoreButton class]) {
 		NSArray* challengesList= dataModel.challengelist;
 		Challenge* challenge = [challengesList objectAtIndex:indexPath.row];
 	

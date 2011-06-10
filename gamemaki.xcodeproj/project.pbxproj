@@ -31,6 +31,7 @@
 		4331C680138FB62100A64820 /* cat_icon_top_rated.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C672138FB62100A64820 /* cat_icon_top_rated.png */; };
 		4331C681138FB62100A64820 /* cat_icon_travel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C673138FB62100A64820 /* cat_icon_travel.png */; };
 		4331C682138FB62100A64820 /* cat_icon_wine_dine.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C674138FB62100A64820 /* cat_icon_wine_dine.png */; };
+		43B9751413A200EB006F15D3 /* stats_claimed.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B9751313A200EB006F15D3 /* stats_claimed.png */; };
 		D527D67013948C82008B40F6 /* GlobalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D527D66F13948C81008B40F6 /* GlobalStore.m */; };
 		E4936B9C138E2D72009F732A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4936B9B138E2D72009F732A /* UIKit.framework */; };
 		E4936B9E138E2D72009F732A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4936B9D138E2D72009F732A /* Foundation.framework */; };
@@ -261,6 +262,7 @@
 		4331C672138FB62100A64820 /* cat_icon_top_rated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_icon_top_rated.png; sourceTree = "<group>"; };
 		4331C673138FB62100A64820 /* cat_icon_travel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_icon_travel.png; sourceTree = "<group>"; };
 		4331C674138FB62100A64820 /* cat_icon_wine_dine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_icon_wine_dine.png; sourceTree = "<group>"; };
+		43B9751313A200EB006F15D3 /* stats_claimed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats_claimed.png; sourceTree = "<group>"; };
 		D527D66E13948C81008B40F6 /* GlobalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalStore.h; sourceTree = "<group>"; };
 		D527D66F13948C81008B40F6 /* GlobalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalStore.m; sourceTree = "<group>"; };
 		E4936B97138E2D71009F732A /* gamemaki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamemaki.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -492,6 +494,7 @@
 		E4DC34F0138E3BA100E2F180 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				43B9751313A200EB006F15D3 /* stats_claimed.png */,
 				4331C667138FB62100A64820 /* cat_icon_arts_culture.png */,
 				4331C668138FB62100A64820 /* cat_icon_entertainment.png */,
 				4331C669138FB62100A64820 /* cat_icon_health_wellness.png */,
@@ -767,6 +770,7 @@
 				4331C680138FB62100A64820 /* cat_icon_top_rated.png in Resources */,
 				4331C681138FB62100A64820 /* cat_icon_travel.png in Resources */,
 				4331C682138FB62100A64820 /* cat_icon_wine_dine.png in Resources */,
+				43B9751413A200EB006F15D3 /* stats_claimed.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

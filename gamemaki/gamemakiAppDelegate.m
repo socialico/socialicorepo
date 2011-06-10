@@ -31,8 +31,7 @@
 	[map from:@"tt://tabBar/" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
 	[map from:@"tt://challengesList/(initWithCategoryId:)" toViewController:[ChallengesController class]];
-	[map from:@"tt://challengeProfile/" toViewController:[ChallengeProfileController class] 
-										transition:UIViewAnimationTransitionFlipFromLeft];
+	[map from:@"tt://challengeProfile/" toViewController:[ChallengeProfileController class] transition:UIViewAnimationTransitionFlipFromLeft];
     
     if (![navigator restoreViewControllers]) {
         //Launch tab bar on load

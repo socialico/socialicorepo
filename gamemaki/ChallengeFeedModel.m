@@ -139,9 +139,13 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?
 		challenge.categoryId = [NSNumber numberWithLongLong:
 								[[entry objectForKey:@"categoryId"] longLongValue]];
 		challenge.categoryName = [entry objectForKey:@"categoryName"];
+
 		challenge.categoryIcon = [entry objectForKey:@"categoryIcon"];
-        
+		//TEMPORARY: replace relative path with absolute path. Category icone is /images/cat_sports.png 
+		challenge.categoryIcon = [NSString stringWithFormat:@"http://www.gamemaki.com/main/%@",challenge.categoryIcon];
+		
         [challengelist addObject:challenge];
+
         TT_RELEASE_SAFELY(challenge);
     }
     _finished = challengelist.count < _resultsPerPage;

@@ -24,6 +24,9 @@
 - (void)loadView {
 	if (_challengeProfile.challengeTitle) {
 		[super loadView];
+		[super viewWillAppear:NO];
+		[super viewDidAppear:NO];
+
 		self.navigationBarTintColor = RGBCOLOR(41,41,41);
 		self.statusBarStyle = UIStatusBarStyleBlackOpaque;
 		
@@ -33,7 +36,7 @@
 		name.top = 0;
 		name.left = 70;
 		name.width =	self.view.width-70;
-		name.font = [UIFont  boldSystemFontOfSize:15];
+		name.font = [UIFont  boldSystemFontOfSize:16];
 		name.text = [TTStyledText textFromXHTML:_challengeProfile.userName lineBreaks:YES URLs:YES];
 		name.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
 		name.backgroundColor = RGBCOLOR(227,218,202);
@@ -104,7 +107,7 @@
 		createdTime.top = name.bottom;;
 		createdTime.left = categoryName.right;
 		createdTime.width = self.view.width-70;
-		createdTime.font = [UIFont systemFontOfSize:12];
+		createdTime.font = [UIFont boldSystemFontOfSize:12];
 		createdTime.text = [TTStyledText textFromXHTML:createdAgo lineBreaks:NO URLs:YES];
 		createdTime.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
 		createdTime.backgroundColor = RGBCOLOR(227,218,202);
@@ -132,13 +135,50 @@
 		[title sizeToFit];
 		[self.view addSubview:title];
 	
+
+//		UIButton* buttonCreated = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//		[buttonCreated setTitle:@" 4 Created " forState:UIControlStateNormal];
+//		[buttonCreated addTarget:@"tt://order/food" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
+//		[buttonCreated sizeToFit];
+//		buttonCreated.width = floor(self.view.width/2 - 20);
+//		buttonCreated.top = claimed.bottom + 5;
+//		buttonCreated.left = floor(self.view.width/2 - buttonCreated.width);
+//		[self.view addSubview:buttonCreated];
+//	
+//		UIButton* buttonClaimed = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//		[buttonClaimed setTitle:@"16 Claimed" forState:UIControlStateNormal];
+//		[buttonClaimed addTarget:@"tt://order/food" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
+//		[buttonClaimed sizeToFit];
+//		buttonClaimed.top = claimed.bottom + 5;
+//		buttonClaimed.width = floor(self.view.width/2 - 20);
+//		buttonClaimed.left = floor(self.view.width/2 + 10);
+//		[self.view addSubview:buttonClaimed];
+
+		
+		
+		
+		
+		
+		TTTableView *claimedList = [[[TTTableView alloc] initWithFrame:CGRectMake(0,0,self.view.width,self.view.height)] autorelease];
+		claimedList.top = self.view.height - 180;
+		claimedList.height = 180;
+//		claimedList.backgroundColor = RGBCOLOR(227,218,202);
+		claimedList.scrollEnabled = NO;
+		claimedList.dataSource = [TTSectionedDataSource dataSourceWithObjects:
+							   @"",
+								  [TTTableSubtitleItem itemWithText:@"15 comments" subtitle:@"Damon: Tough, real tough challenge especially if I have to do it at this moment." imageURL:nil  defaultImage:TTIMAGE(@"bundle://comments.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+							   [TTTableSubtitleItem itemWithText:@"20 claimes" subtitle:@"Last claimed by Brenda" imageURL:nil  defaultImage:TTIMAGE(@"bundle://claimed.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+							   [TTTableSubtitleItem itemWithText:@"4 photos" subtitle:@"Photo comment" imageURL:nil  defaultImage:TTIMAGE(@"bundle://pictures.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+							   nil];
+
+		[self.view addSubview:claimedList];
+		
 		TTStyledTextLabel* claimed = [[[TTStyledTextLabel alloc] initWithFrame:self.view.bounds] autorelease];
 		NSString* claimedNo = [NSString stringWithFormat:@"<b>%@</b> claimed", _challengeProfile.claimNo];
 		claimed.text = [TTStyledText textFromXHTML:claimedNo lineBreaks:NO URLs:NO];
 		claimed.font = [UIFont systemFontOfSize:16];
-		claimed.top = title.bottom + 1;
+		claimed.top = claimedList.top - 40;
 		claimed.contentInset = UIEdgeInsetsMake(10, self.view.width/2 - 40, 10, 0);
-		//		claimed.left = floor(self.view.width/2 - 60);
 		claimed.backgroundColor = RGBCOLOR(184,171,149);
 		[claimed sizeToFit];
 		[self.view addSubview:claimed];
@@ -146,39 +186,21 @@
 		TTImageView* claimedImage = [[[TTImageView alloc] initWithFrame:CGRectMake(0, 0, 25.f, 25.f)]autorelease];
 		claimedImage.autoresizesToImage = NO;
 		claimedImage.contentScaleFactor = 2.0;
-		claimedImage.top = title.bottom + 5;
+		claimedImage.bottom = claimedList.top - 5;
 		claimedImage.left = self.view.width/2 - 70;
 		claimedImage.contentMode = UIViewContentModeScaleAspectFit;
 		claimedImage.urlPath = @"bundle://stats_claimed.png";
 		claimedImage.backgroundColor = RGBCOLOR(184,171,149);
 		[self.view addSubview:claimedImage];	
 
-		UIButton* buttonCreated = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-		[buttonCreated setTitle:@" 4 Created " forState:UIControlStateNormal];
-		[buttonCreated addTarget:@"tt://order/food" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
-		[buttonCreated sizeToFit];
-		buttonCreated.width = floor(self.view.width/2 - 20);
-		buttonCreated.top = claimed.bottom + 5;
-		buttonCreated.left = floor(self.view.width/2 - buttonCreated.width);
-		[self.view addSubview:buttonCreated];
-	
-		UIButton* buttonClaimed = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-		[buttonClaimed setTitle:@"16 Claimed" forState:UIControlStateNormal];
-		[buttonClaimed addTarget:@"tt://order/food" action:@selector(openURLFromButton:) forControlEvents:UIControlEventTouchUpInside];
-		[buttonClaimed sizeToFit];
-		buttonClaimed.top = claimed.bottom + 5;
-		buttonClaimed.width = floor(self.view.width/2 - 20);
-		buttonClaimed.left = floor(self.view.width/2 + 10);
-		[self.view addSubview:buttonClaimed];
-	
-
+		
 		
 	}
 	else{
 		//challengeTitle is empty and we go back to the previous view
 		[self.navigationController popViewControllerAnimated:YES];
 	}
-
+	
 }
 
 - (void)dismiss {

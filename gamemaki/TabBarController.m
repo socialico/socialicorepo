@@ -20,10 +20,3 @@
 }
 
 @end
-
-//this is test comment from alex
-<<<<<<< HEAD
-//the scond line
-=======
-//this is Damon's test
->>>>>>> Test commit

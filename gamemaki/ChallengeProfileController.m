@@ -154,10 +154,8 @@
 //		buttonClaimed.left = floor(self.view.width/2 + 10);
 //		[self.view addSubview:buttonClaimed];
 
-		
-		
-		
-		
+		//should use _challengeProfile.id but there is a problem reading it
+        NSMutableString* commentsURL = [NSMutableString stringWithFormat:@"tt://commentsList/", _challengeProfile.challengeTitle];
 		
 		TTTableView *claimedList = [[[TTTableView alloc] initWithFrame:CGRectMake(0,0,self.view.width,self.view.height)] autorelease];
 		claimedList.top = self.view.height - 180;
@@ -166,7 +164,7 @@
 		claimedList.scrollEnabled = NO;
 		claimedList.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 							   @"",
-								  [TTTableSubtitleItem itemWithText:@"15 comments" subtitle:@"Damon: Tough, real tough challenge especially if I have to do it at this moment." imageURL:nil  defaultImage:TTIMAGE(@"bundle://comments.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+								  [TTTableSubtitleItem itemWithText:@"15 comments" subtitle:@"Damon: Tough, real tough challenge especially if I have to do it at this moment." imageURL:nil  defaultImage:TTIMAGE(@"bundle://comments.png") URL:commentsURL accessoryURL:nil],
 							   [TTTableSubtitleItem itemWithText:@"20 claimes" subtitle:@"Last claimed by Brenda" imageURL:nil  defaultImage:TTIMAGE(@"bundle://claimed.png") URL:@"tt://food/macncheese" accessoryURL:nil],
 							   [TTTableSubtitleItem itemWithText:@"4 photos" subtitle:@"Photo comment" imageURL:nil  defaultImage:TTIMAGE(@"bundle://pictures.png") URL:@"tt://food/macncheese" accessoryURL:nil],
 							   nil];

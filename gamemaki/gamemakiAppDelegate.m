@@ -12,6 +12,7 @@
 #import "TabMenuController.h"
 #import "ChallengesController.h"
 #import "ChallengeProfileController.h"
+#import "CommentsController.h"
 
 @implementation gamemakiAppDelegate
 
@@ -32,6 +33,7 @@
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
 	[map from:@"tt://challengesList/(initWithCategoryId:)" toViewController:[ChallengesController class]];
 	[map from:@"tt://challengeProfile/" toViewController:[ChallengeProfileController class] transition:UIViewAnimationTransitionFlipFromLeft];
+    [map from:@"tt://commentsList/(initWithChallengeId:)" toViewController:[CommentsController class]];
     
     if (![navigator restoreViewControllers]) {
         //Launch tab bar on load

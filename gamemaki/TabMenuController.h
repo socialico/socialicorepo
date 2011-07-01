@@ -7,6 +7,7 @@
 //
 
 #import <Three20/Three20.h>
+#import "FBConnect.h"
 
 typedef enum {
     MenuNone,

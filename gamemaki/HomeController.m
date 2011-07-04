@@ -102,6 +102,8 @@ static NSString* kAppId = @"182894781749423";
  */
 - (void)fbDidLogin {
     NSLog(@"logged in");
+    TTNavigator* navigator = [TTNavigator navigator];
+    [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://tabBar"]];
     //[self.label setText:@"logged in"];
 }
 

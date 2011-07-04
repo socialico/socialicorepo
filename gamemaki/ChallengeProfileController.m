@@ -193,7 +193,6 @@
 //		[self.view addSubview:buttonClaimed];
 
 //<<<<<<< HEAD
-//<<<<<<< HEAD
 //		//should use _challengeProfile.id but there is a problem reading it
 //        NSMutableString* commentsURL = [NSMutableString stringWithFormat:@"tt://commentsList/", _challengeProfile.challengeTitle];
 //		
@@ -243,8 +242,6 @@
 		NSString* claimesNo = [[NSString alloc] initWithFormat:@"Be the first to claim"];
 		if ([_challengeProfile.claimNo intValue] == 1 ) claimesNo = [NSString stringWithFormat:@"%@ claim", _challengeProfile.claimNo];
 		if ([_challengeProfile.claimNo intValue] != 0 && [_challengeProfile.claimNo intValue] != 1) claimesNo = [NSString stringWithFormat:@"%@ claimes", _challengeProfile.claimNo];
-
-						 
 		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 							@"",
 							[TTTableSubtitleItem itemWithText:commentsNo subtitle:@"Damon: Tough, real tough challenge especially if I have to do it at this moment." imageURL:nil  defaultImage:TTIMAGE(@"bundle://comments.png") URL:@"tt://food/macncheese" accessoryURL:nil],

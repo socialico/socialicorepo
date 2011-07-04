@@ -21,6 +21,17 @@
     return self;
 }
 
+- (void)layout {
+	TTFlowLayout* flowLayout = [[[TTFlowLayout alloc] init] autorelease];
+	flowLayout.padding = 20;
+	flowLayout.spacing = 20;
+	CGSize size = [flowLayout layoutSubviews:self.view.subviews forView:self.view];
+	
+	UIScrollView* scrollView = (UIScrollView*)self.view;
+	scrollView.contentSize = CGSizeMake(scrollView.width, size.height);
+}
+
+
 - (void)loadView {
 	if (_challengeProfile.challengeTitle) {
 		[super loadView];
@@ -30,8 +41,11 @@
 		self.navigationBarTintColor = RGBCOLOR(41,41,41);
 		self.statusBarStyle = UIStatusBarStyleBlackOpaque;
 		
-		self.view.backgroundColor = RGBCOLOR(227,218,202);
-		
+		self.tableView.backgroundColor = RGBCOLOR(227,218,202);
+//		self.tableView.separatorColor = RGBCOLOR(184,171,149);
+		self.tableView.separatorColor = RGBCOLOR(227,218,202);
+//		self.tableViewStyle = UITableViewStyleGrouped;
+				
 		TTStyledTextLabel* name = [[[TTStyledTextLabel alloc] initWithFrame:self.view.bounds] autorelease];
 		name.top = 0;
 		name.left = 70;
@@ -41,7 +55,6 @@
 		name.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
 		name.backgroundColor = RGBCOLOR(227,218,202);
 		[name sizeToFit];
-		[self.view addSubview:name];
 	
 		TTImageView* category = [[[TTImageView alloc] initWithFrame:CGRectMake(70, 120, 25.f, 25.f)]autorelease];
 		category.autoresizesToImage = NO;
@@ -51,7 +64,6 @@
 //		category.backgroundColor = [UIColor clearColor]; 
 		category.backgroundColor = RGBCOLOR(227,218,202);
 		category.urlPath = _challengeProfile.categoryIcon;
-		[self.view addSubview:category];
 	
 		//Category name has &. Replace it!
 		NSString* cleanCategoryName = _challengeProfile.categoryName;
@@ -66,7 +78,6 @@
 		categoryName.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
 		categoryName.backgroundColor = RGBCOLOR(227,218,202);
 		[categoryName sizeToFit];
-		[self.view addSubview:categoryName];
 		
 		//Convert createdAt into string with interval 
 		NSString *createdAgo = [[NSString alloc] autorelease];
@@ -112,8 +123,6 @@
 		createdTime.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
 		createdTime.backgroundColor = RGBCOLOR(227,218,202);
 		[createdTime sizeToFit];
-		[self.view addSubview:createdTime];
-		
 
 		TTImageView* avatar = [[[TTImageView alloc] initWithFrame:CGRectMake(5, 5, 50.f, 50.f)]autorelease];
 		avatar.autoresizesToImage = NO;
@@ -122,7 +131,6 @@
 		avatar.urlPath = _challengeProfile.photoSmall;
 		avatar.backgroundColor = RGBCOLOR(227,218,202); 
 		avatar.defaultImage = nil; 
-		[self.view addSubview:avatar];	
 	
 		TTStyledTextLabel* title = [[[TTStyledTextLabel alloc] initWithFrame:self.view.bounds] autorelease];
 		title.top = avatar.bottom;
@@ -133,8 +141,38 @@
 		title.contentInset = UIEdgeInsetsMake(5, 5, 5, 5);
 		title.backgroundColor = RGBCOLOR(227,218,202);
 		[title sizeToFit];
-		[self.view addSubview:title];
-	
+
+		TTStyledTextLabel* claimed = [[[TTStyledTextLabel alloc] initWithFrame:self.view.bounds] autorelease];
+		NSString* claimedNo = [NSString stringWithFormat:@"<b>%@</b> claimed", _challengeProfile.claimNo];
+		claimed.text = [TTStyledText textFromXHTML:claimedNo lineBreaks:NO URLs:NO];
+		claimed.font = [UIFont systemFontOfSize:16];
+		claimed.top = title.bottom;
+		claimed.contentInset = UIEdgeInsetsMake(10, self.view.width/2 - 40, 10, 0);
+		claimed.backgroundColor = RGBCOLOR(184,171,149);
+		[claimed sizeToFit];
+
+		TTImageView* claimedImage = [[[TTImageView alloc] initWithFrame:CGRectMake(0, 0, 25.f, 25.f)]autorelease];
+		claimedImage.autoresizesToImage = NO;
+		claimedImage.contentScaleFactor = 2.0;
+		claimedImage.bottom = title.bottom + 30;
+		claimedImage.left = self.view.width/2 - 70;
+		claimedImage.contentMode = UIViewContentModeScaleAspectFit;
+		claimedImage.urlPath = @"bundle://stats_claimed.png";
+		claimedImage.backgroundColor = RGBCOLOR(184,171,149);
+
+		TTTableHeaderView *tableHeaderView = [[TTTableHeaderView alloc] initWithFrame:CGRectMake(0, 0, self.tableView.bounds.size.width, claimed.bottom)]; 
+		[tableHeaderView addSubview:_searchController.searchBar];
+		[tableHeaderView setUserInteractionEnabled:YES];
+		[tableHeaderView addSubview:name];
+		[tableHeaderView addSubview:category];
+		[tableHeaderView addSubview:categoryName];
+		[tableHeaderView addSubview:createdTime];
+		[tableHeaderView addSubview:avatar];
+		[tableHeaderView addSubview:title];
+		[tableHeaderView addSubview:claimed];
+		[tableHeaderView addSubview:claimedImage];
+		tableHeaderView.backgroundColor = RGBCOLOR(227,218,202);
+
 
 //		UIButton* buttonCreated = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 //		[buttonCreated setTitle:@" 4 Created " forState:UIControlStateNormal];
@@ -154,44 +192,24 @@
 //		buttonClaimed.left = floor(self.view.width/2 + 10);
 //		[self.view addSubview:buttonClaimed];
 
+		[self.tableView setTableHeaderView:tableHeaderView]; 
+		[tableHeaderView release];
 		
-		
-		
-		
-		
-		TTTableView *claimedList = [[[TTTableView alloc] initWithFrame:CGRectMake(0,0,self.view.width,self.view.height)] autorelease];
-		claimedList.top = self.view.height - 180;
-		claimedList.height = 180;
-//		claimedList.backgroundColor = RGBCOLOR(227,218,202);
-		claimedList.scrollEnabled = NO;
-		claimedList.dataSource = [TTSectionedDataSource dataSourceWithObjects:
-							   @"",
-								  [TTTableSubtitleItem itemWithText:@"15 comments" subtitle:@"Damon: Tough, real tough challenge especially if I have to do it at this moment." imageURL:nil  defaultImage:TTIMAGE(@"bundle://comments.png") URL:@"tt://food/macncheese" accessoryURL:nil],
-							   [TTTableSubtitleItem itemWithText:@"20 claimes" subtitle:@"Last claimed by Brenda" imageURL:nil  defaultImage:TTIMAGE(@"bundle://claimed.png") URL:@"tt://food/macncheese" accessoryURL:nil],
-							   [TTTableSubtitleItem itemWithText:@"4 photos" subtitle:@"Photo comment" imageURL:nil  defaultImage:TTIMAGE(@"bundle://pictures.png") URL:@"tt://food/macncheese" accessoryURL:nil],
-							   nil];
+		//Category name has &. Replace it!
+		NSString* commentsNo = [[NSString alloc] initWithFormat:@"Be the first to comment"];
+		if ([_challengeProfile.commentNo intValue] == 1) commentsNo = [NSString stringWithFormat:@"%@ comment", _challengeProfile.commentNo];
+		if ([_challengeProfile.commentNo intValue] != 0 && [_challengeProfile.commentNo intValue] != 1) commentsNo = [NSString stringWithFormat:@"%@ comments", _challengeProfile.commentNo];
+		NSString* claimesNo = [[NSString alloc] initWithFormat:@"Be the first to claim"];
+		if ([_challengeProfile.claimNo intValue] == 1 ) claimesNo = [NSString stringWithFormat:@"%@ claim", _challengeProfile.claimNo];
+		if ([_challengeProfile.claimNo intValue] != 0 && [_challengeProfile.claimNo intValue] != 1) claimesNo = [NSString stringWithFormat:@"%@ claimes", _challengeProfile.claimNo];
 
-		[self.view addSubview:claimedList];
+						 
+		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
+							@"",
+							[TTTableSubtitleItem itemWithText:commentsNo subtitle:@"Damon: Tough, real tough challenge especially if I have to do it at this moment." imageURL:nil  defaultImage:TTIMAGE(@"bundle://comments.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+							[TTTableSubtitleItem itemWithText:claimesNo subtitle:@"Last claimed by Brenda" imageURL:nil  defaultImage:TTIMAGE(@"bundle://claimed.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+							nil];
 		
-		TTStyledTextLabel* claimed = [[[TTStyledTextLabel alloc] initWithFrame:self.view.bounds] autorelease];
-		NSString* claimedNo = [NSString stringWithFormat:@"<b>%@</b> claimed", _challengeProfile.claimNo];
-		claimed.text = [TTStyledText textFromXHTML:claimedNo lineBreaks:NO URLs:NO];
-		claimed.font = [UIFont systemFontOfSize:16];
-		claimed.top = claimedList.top - 40;
-		claimed.contentInset = UIEdgeInsetsMake(10, self.view.width/2 - 40, 10, 0);
-		claimed.backgroundColor = RGBCOLOR(184,171,149);
-		[claimed sizeToFit];
-		[self.view addSubview:claimed];
-		
-		TTImageView* claimedImage = [[[TTImageView alloc] initWithFrame:CGRectMake(0, 0, 25.f, 25.f)]autorelease];
-		claimedImage.autoresizesToImage = NO;
-		claimedImage.contentScaleFactor = 2.0;
-		claimedImage.bottom = claimedList.top - 5;
-		claimedImage.left = self.view.width/2 - 70;
-		claimedImage.contentMode = UIViewContentModeScaleAspectFit;
-		claimedImage.urlPath = @"bundle://stats_claimed.png";
-		claimedImage.backgroundColor = RGBCOLOR(184,171,149);
-		[self.view addSubview:claimedImage];	
 
 		
 		

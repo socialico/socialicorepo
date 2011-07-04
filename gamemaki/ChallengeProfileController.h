@@ -9,7 +9,7 @@
 #import <Three20/Three20.h>
 #import "Challenge.h"
 
-@interface ChallengeProfileController : TTViewController {
+@interface ChallengeProfileController : TTTableViewController {
     Challenge* _challengeProfile;
 }
 

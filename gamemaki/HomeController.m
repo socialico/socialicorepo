@@ -17,7 +17,14 @@ static NSString* kAppId = @"182894781749423";
 
 @implementation HomeController
 
+@synthesize facebook = _facebook;
+
 - (void)loadView {
+    NSLog(@"loading view");
+    
+    _facebook = [[Facebook alloc] initWithAppId:kAppId];
+    _permissions = [[NSArray arrayWithObjects:@"read_stream", @"publish_stream", @"offline_access",nil] retain];
+    
     [super loadView];
     //[super viewWillAppear:NO];
     //[super viewDidAppear:NO];
@@ -26,45 +33,46 @@ static NSString* kAppId = @"182894781749423";
     self.statusBarStyle = UIStatusBarStyleBlackOpaque;
     self.view.backgroundColor = RGBCOLOR(227,218,202);
     
-    UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [button setTitle:@"Login" forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(openURLFromButton) forControlEvents:UIControlEventTouchUpInside];
-    [button sizeToFit];
-    button.top = 20;
-    button.left = floor(self.view.width/2 - button.width/2);
-    [self.view addSubview:button];
+    UIButton* fbLoginBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [fbLoginBtn setTitle:@"Login" forState:UIControlStateNormal];
+    [fbLoginBtn addTarget:self action:@selector(fbLoginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [fbLoginBtn sizeToFit];
+    fbLoginBtn.top = 20;
+    fbLoginBtn.left = floor(self.view.width/2 - fbLoginBtn.width/2);
+    [self.view addSubview:fbLoginBtn];
+    
+    UIButton* fbLogoutBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [fbLogoutBtn setTitle:@"Logout" forState:UIControlStateNormal];
+    [fbLogoutBtn addTarget:self action:@selector(fbLogoutBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [fbLogoutBtn sizeToFit];
+    fbLogoutBtn.top = 120;
+    fbLogoutBtn.left = floor(self.view.width/2 - fbLogoutBtn.width/2);
+    [self.view addSubview:fbLogoutBtn];
 }
 
-- (void)openURLFromButton {
-    NSLog(@"Write something...");
-    NSLog(@"Write something...");
-    NSLog(@"Write something...");
-    NSLog(@"Write something...");
+-(IBAction)fbLoginBtnClick:(id)sender {
+    NSLog(@"showing login dialog box");
     [_facebook authorize:_permissions delegate:self];
     //[self login];
+}
+
+-(IBAction)fbLogoutBtnClick:(id)sender {
+    NSLog(@"logging out");
+    [_facebook logout:self];
 }
 
 /**
  * Set initial view
  */
 - (void)viewDidLoad {
-    _facebook = [[Facebook alloc] initWithAppId:kAppId];
     //[self.label setText:@"Please log in"];
-    _getUserInfoButton.hidden = YES;
-    _getPublicInfoButton.hidden = YES;
-    _publishButton.hidden = YES;
-    _uploadPhotoButton.hidden = YES;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // NSObject
 
 - (void)dealloc {
-    [_label release];
-    [_getUserInfoButton release];
-    [_getPublicInfoButton release];
-    [_publishButton release];
-    [_uploadPhotoButton release];
+    //[_label release];
     [_facebook release];
     [_permissions release];
     [super dealloc];
@@ -77,6 +85,7 @@ static NSString* kAppId = @"182894781749423";
  * Show the authorization dialog.
  */
 - (void)login {
+    NSLog(@"showing login dialog box");
     [_facebook authorize:_permissions delegate:self];
 }
 
@@ -84,19 +93,16 @@ static NSString* kAppId = @"182894781749423";
  * Invalidate the access token and clear the cookie.
  */
 - (void)logout {
+    NSLog(@"logging out");
     [_facebook logout:self];
 }
-
 
 /**
  * Called when the user has logged in successfully.
  */
 - (void)fbDidLogin {
+    NSLog(@"logged in");
     //[self.label setText:@"logged in"];
-    _getUserInfoButton.hidden = NO;
-    _getPublicInfoButton.hidden = NO;
-    _publishButton.hidden = NO;
-    _uploadPhotoButton.hidden = NO;
 }
 
 /**
@@ -110,11 +116,8 @@ static NSString* kAppId = @"182894781749423";
  * Called when the request logout has succeeded.
  */
 - (void)fbDidLogout {
+    NSLog(@"logged out");
     //[self.label setText:@"Please log in"];
-    _getUserInfoButton.hidden    = YES;
-    _getPublicInfoButton.hidden   = YES;
-    _publishButton.hidden        = YES;
-    _uploadPhotoButton.hidden = YES;
 }
 
 
@@ -168,6 +171,7 @@ static NSString* kAppId = @"182894781749423";
  * Called when a UIServer Dialog successfully return.
  */
 - (void)dialogDidComplete:(FBDialog *)dialog {
+    NSLog(@"redirected back from dialog box");
     //[self.label setText:@"publish successfully"];
 }
 

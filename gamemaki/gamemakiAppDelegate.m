@@ -22,6 +22,8 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication*)application 
 {
+    controller = [[HomeController alloc] init];
+    
     TTNavigator* navigator = [TTNavigator navigator];
     navigator.persistenceMode = TTNavigatorPersistenceModeAll;
     navigator.window = [[[UIWindow alloc] initWithFrame:TTScreenBounds()] autorelease];
@@ -30,7 +32,7 @@
     
     //Mapping tab bar
 	[map from:@"*" toViewController:[TTWebController class]];
-    [map from:@"tt://home" toViewController:[HomeController class]];
+    [map from:@"tt://home" toViewController:controller];
 	[map from:@"tt://tabBar/" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
 	[map from:@"tt://challengesList/(initWithCategoryId:)" toViewController:[ChallengesController class]];
@@ -50,6 +52,7 @@
 //}
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    NSLog(@"handing OpenURL");
     return [[controller facebook] handleOpenURL:url];
 }
 

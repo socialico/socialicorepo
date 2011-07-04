@@ -14,28 +14,17 @@
 <FBRequestDelegate,
 FBDialogDelegate,
 FBSessionDelegate>{
-    IBOutlet UILabel* _label;
-    IBOutlet UIButton* _getUserInfoButton;
-    IBOutlet UIButton* _getPublicInfoButton;
-    IBOutlet UIButton* _publishButton;
-    IBOutlet UIButton* _uploadPhotoButton;
+    //IBOutlet UILabel* _label;
     Facebook* _facebook;
     NSArray* _permissions;
 }
 
-@property(nonatomic, retain) UILabel* label;
+//@property(nonatomic, retain) UILabel* label;
 
-@property(readonly) Facebook *facebook;
+@property(readonly) Facebook* facebook;
 
--(IBAction)fbButtonClick:(id)sender;
+-(IBAction)fbLoginBtnClick:(id)sender;
 
--(IBAction)getUserInfo:(id)sender;
-
--(IBAction)getPublicInfo:(id)sender;
-
--(IBAction)publishStream:(id)sender;
-
--(IBAction)uploadPhoto:(id)sender;
-
+-(IBAction)fbLogoutBtnClick:(id)sender;
 
 @end

@@ -171,13 +171,6 @@
 			remoteGlobalIDString = BEF31F3A0F352DF5000DE5D2;
 			remoteInfo = Three20UI;
 		};
-		D589D24B13B9DA4A000CF3AE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D589D24713B9DA49000CF3AE /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
 		E45A4397138E342B00076708 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */;
@@ -312,7 +305,6 @@
 		D527D66F13948C81008B40F6 /* GlobalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalStore.m; sourceTree = "<group>"; };
 		D533A05A13B9EB2D0042834A /* CommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsController.h; sourceTree = "<group>"; };
 		D533A05B13B9EB2D0042834A /* CommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsController.m; sourceTree = "<group>"; };
-		D589D24713B9DA49000CF3AE /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "facebook-ios-sdk.xcodeproj"; path = "../facebook-ios-sdk/src/facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		E4936B97138E2D71009F732A /* gamemaki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamemaki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4936B9B138E2D72009F732A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4936B9D138E2D72009F732A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -490,22 +482,6 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
-		D533A01313B9E3E40042834A /* Facebook */ = {
-			isa = PBXGroup;
-			children = (
-				D589D24713B9DA49000CF3AE /* facebook-ios-sdk.xcodeproj */,
-			);
-			name = Facebook;
-			sourceTree = "<group>";
-		};
-		D589D24813B9DA49000CF3AE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				D589D24C13B9DA4A000CF3AE /* libfacebook_ios_sdk.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		E4936B8C138E2D71009F732A = {
 			isa = PBXGroup;
 			children = (
@@ -528,7 +504,6 @@
 		E4936B9A138E2D72009F732A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D533A01313B9E3E40042834A /* Facebook */,
 				43444815138E3865007AE9F4 /* Three20 */,
 				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
 				E4936B9B138E2D72009F732A /* UIKit.framework */,
@@ -689,10 +664,6 @@
 					ProjectRef = E499F54F138E52B600C01E0B /* extThree20JSON.xcodeproj */;
 				},
 				{
-					ProductGroup = D589D24813B9DA49000CF3AE /* Products */;
-					ProjectRef = D589D24713B9DA49000CF3AE /* facebook-ios-sdk.xcodeproj */;
-				},
-				{
 					ProductGroup = 320D7DCCE32703ACAB9A45E3 /* Products */;
 					ProjectRef = 320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */;
 				},
@@ -776,13 +747,6 @@
 			fileType = archive.ar;
 			path = libThree20UI.a;
 			remoteRef = 320F2C48872C2E2C4DF86206 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		D589D24C13B9DA4A000CF3AE /* libfacebook_ios_sdk.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libfacebook_ios_sdk.a;
-			remoteRef = D589D24B13B9DA4A000CF3AE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		E45A4398138E342B00076708 /* StyleUnitTests.octest */ = {

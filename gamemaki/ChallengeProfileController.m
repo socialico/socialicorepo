@@ -192,44 +192,47 @@
 //		buttonClaimed.left = floor(self.view.width/2 + 10);
 //		[self.view addSubview:buttonClaimed];
 
-<<<<<<< HEAD
-		//should use _challengeProfile.id but there is a problem reading it
-        NSMutableString* commentsURL = [NSMutableString stringWithFormat:@"tt://commentsList/", _challengeProfile.challengeTitle];
-		
-		TTTableView *claimedList = [[[TTTableView alloc] initWithFrame:CGRectMake(0,0,self.view.width,self.view.height)] autorelease];
-		claimedList.top = self.view.height - 180;
-		claimedList.height = 180;
-//		claimedList.backgroundColor = RGBCOLOR(227,218,202);
-		claimedList.scrollEnabled = NO;
-		claimedList.dataSource = [TTSectionedDataSource dataSourceWithObjects:
-							   @"",
-								  [TTTableSubtitleItem itemWithText:@"15 comments" subtitle:@"Damon: Tough, real tough challenge especially if I have to do it at this moment." imageURL:nil  defaultImage:TTIMAGE(@"bundle://comments.png") URL:commentsURL accessoryURL:nil],
-							   [TTTableSubtitleItem itemWithText:@"20 claimes" subtitle:@"Last claimed by Brenda" imageURL:nil  defaultImage:TTIMAGE(@"bundle://claimed.png") URL:@"tt://food/macncheese" accessoryURL:nil],
-							   [TTTableSubtitleItem itemWithText:@"4 photos" subtitle:@"Photo comment" imageURL:nil  defaultImage:TTIMAGE(@"bundle://pictures.png") URL:@"tt://food/macncheese" accessoryURL:nil],
-							   nil];
-
-		[self.view addSubview:claimedList];
-		
-		TTStyledTextLabel* claimed = [[[TTStyledTextLabel alloc] initWithFrame:self.view.bounds] autorelease];
-		NSString* claimedNo = [NSString stringWithFormat:@"<b>%@</b> claimed", _challengeProfile.claimNo];
-		claimed.text = [TTStyledText textFromXHTML:claimedNo lineBreaks:NO URLs:NO];
-		claimed.font = [UIFont systemFontOfSize:16];
-		claimed.top = claimedList.top - 40;
-		claimed.contentInset = UIEdgeInsetsMake(10, self.view.width/2 - 40, 10, 0);
-		claimed.backgroundColor = RGBCOLOR(184,171,149);
-		[claimed sizeToFit];
-		[self.view addSubview:claimed];
-		
-		TTImageView* claimedImage = [[[TTImageView alloc] initWithFrame:CGRectMake(0, 0, 25.f, 25.f)]autorelease];
-		claimedImage.autoresizesToImage = NO;
-		claimedImage.contentScaleFactor = 2.0;
-		claimedImage.bottom = claimedList.top - 5;
-		claimedImage.left = self.view.width/2 - 70;
-		claimedImage.contentMode = UIViewContentModeScaleAspectFit;
-		claimedImage.urlPath = @"bundle://stats_claimed.png";
-		claimedImage.backgroundColor = RGBCOLOR(184,171,149);
-		[self.view addSubview:claimedImage];	
-=======
+//<<<<<<< HEAD
+//<<<<<<< HEAD
+//		//should use _challengeProfile.id but there is a problem reading it
+//        NSMutableString* commentsURL = [NSMutableString stringWithFormat:@"tt://commentsList/", _challengeProfile.challengeTitle];
+//		
+//		TTTableView *claimedList = [[[TTTableView alloc] initWithFrame:CGRectMake(0,0,self.view.width,self.view.height)] autorelease];
+//		claimedList.top = self.view.height - 180;
+//		claimedList.height = 180;
+////		claimedList.backgroundColor = RGBCOLOR(227,218,202);
+//		claimedList.scrollEnabled = NO;
+//		claimedList.dataSource = [TTSectionedDataSource dataSourceWithObjects:
+//							   @"",
+//								  [TTTableSubtitleItem itemWithText:@"15 comments" subtitle:@"Damon: Tough, real tough challenge especially if I have to do it at this moment." imageURL:nil  defaultImage:TTIMAGE(@"bundle://comments.png") URL:commentsURL accessoryURL:nil],
+//							   [TTTableSubtitleItem itemWithText:@"20 claimes" subtitle:@"Last claimed by Brenda" imageURL:nil  defaultImage:TTIMAGE(@"bundle://claimed.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+//							   [TTTableSubtitleItem itemWithText:@"4 photos" subtitle:@"Photo comment" imageURL:nil  defaultImage:TTIMAGE(@"bundle://pictures.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+//							   nil];
+//
+//		[self.view addSubview:claimedList];
+//		
+//		TTStyledTextLabel* claimed = [[[TTStyledTextLabel alloc] initWithFrame:self.view.bounds] autorelease];
+//		NSString* claimedNo = [NSString stringWithFormat:@"<b>%@</b> claimed", _challengeProfile.claimNo];
+//		claimed.text = [TTStyledText textFromXHTML:claimedNo lineBreaks:NO URLs:NO];
+//		claimed.font = [UIFont systemFontOfSize:16];
+//		claimed.top = claimedList.top - 40;
+//		claimed.contentInset = UIEdgeInsetsMake(10, self.view.width/2 - 40, 10, 0);
+//		claimed.backgroundColor = RGBCOLOR(184,171,149);
+//		[claimed sizeToFit];
+//		[self.view addSubview:claimed];
+//		
+//		TTImageView* claimedImage = [[[TTImageView alloc] initWithFrame:CGRectMake(0, 0, 25.f, 25.f)]autorelease];
+//		claimedImage.autoresizesToImage = NO;
+//		claimedImage.contentScaleFactor = 2.0;
+//		claimedImage.bottom = claimedList.top - 5;
+//		claimedImage.left = self.view.width/2 - 70;
+//		claimedImage.contentMode = UIViewContentModeScaleAspectFit;
+//		claimedImage.urlPath = @"bundle://stats_claimed.png";
+//		claimedImage.backgroundColor = RGBCOLOR(184,171,149);
+//		[self.view addSubview:claimedImage];	
+//=======
+//=======
+//>>>>>>> beta
 		[self.tableView setTableHeaderView:tableHeaderView]; 
 		[tableHeaderView release];
 		
@@ -247,9 +250,6 @@
 							[TTTableSubtitleItem itemWithText:commentsNo subtitle:@"Damon: Tough, real tough challenge especially if I have to do it at this moment." imageURL:nil  defaultImage:TTIMAGE(@"bundle://comments.png") URL:@"tt://food/macncheese" accessoryURL:nil],
 							[TTTableSubtitleItem itemWithText:claimesNo subtitle:@"Last claimed by Brenda" imageURL:nil  defaultImage:TTIMAGE(@"bundle://claimed.png") URL:@"tt://food/macncheese" accessoryURL:nil],
 							nil];
-		
->>>>>>> Challenge profile page
-
 		
 		
 	}

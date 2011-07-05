@@ -79,8 +79,9 @@ static NSString* kAppId = @"182894781749423";
  */
 - (void)fbDidLogin {
     NSLog(@"logged in");
-    TTOpenURL(@"tt://tabBar");
-    //[self.label setText:@"logged in"];
+    
+    //request for user data (including userId) from facebook using facebook access token
+    [_facebook requestWithGraphPath:@"me" andDelegate:self];
 }
 
 /**
@@ -108,9 +109,10 @@ static NSString* kAppId = @"182894781749423";
  * (void)request:(FBRequest *)request didLoad:(id)result,
  * which is passed the parsed response object.
  */
-- (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response {
-    NSLog(@"received response");
-}
+//- (void)request:(FBRequest *)request didReceiveResponse:(NSURLResponse *)response {
+//    NSLog(@"received response");
+//    NSLog(@"%@",response);
+//}
 
 /**
  * Called when a request returns and its response has been parsed into
@@ -122,15 +124,21 @@ static NSString* kAppId = @"182894781749423";
  *      didReceiveResponse:(NSURLResponse *)response
  */
 - (void)request:(FBRequest *)request didLoad:(id)result {
+    NSLog(@"received result");
     if ([result isKindOfClass:[NSArray class]]) {
         result = [result objectAtIndex:0];
     }
-    if ([result objectForKey:@"owner"]) {
-        //[self.label setText:@"Photo upload Success"];
-    } else {
-        //[self.label setText:[result objectForKey:@"name"]];
-    }
-    NSLog(@"%@",result);
+    
+    NSString* username = [result objectForKey:@"name"];
+    NSString* userId = [result objectForKey:@"id"];
+    NSString* userEmail = [result objectForKey:@"email"];
+    NSLog(@"username = %@",username);
+    NSLog(@"useri = %@",userId);
+    NSLog(@"useremail = %@",userEmail);
+    
+    //request for user data from facebook using facebook user id
+    
+    TTOpenURL(@"tt://tabBar");
 };
 
 /**

@@ -17,7 +17,6 @@
 
 @implementation gamemakiAppDelegate
 
-
 //@synthesize window=_window;
 
 - (void)applicationDidFinishLaunching:(UIApplication*)application 
@@ -40,21 +39,25 @@
     [map from:@"tt://commentsList/(initWithChallengeId:)" toViewController:[CommentsController class]];
     
     if (![navigator restoreViewControllers]) {
-        //Launch tab bar on load
-        //[navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://tabBar"]];
+        //nothing to restore. load home (not logged in)
         [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://home"]];
+    } else {
+        UIViewController* parentController = navigator.topViewController.parentViewController;
+        if (parentController != nil) {
+            [parentController.navigationController setNavigationBarHidden:YES];
+        }
     }
 }
 
-//- (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
-//    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
-//    return YES;
-//}
-
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-    NSLog(@"handing OpenURL");
-    return [[controller facebook] handleOpenURL:url];
+- (BOOL)application:(UIApplication*)application handleOpenURL:(NSURL*)URL {
+    [[TTNavigator navigator] openURLAction:[TTURLAction actionWithURLPath:URL.absoluteString]];
+    return YES;
 }
+
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+//    NSLog(@"handing OpenURL");
+//    return [[controller facebook] handleOpenURL:url];
+//}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

@@ -8,6 +8,7 @@
 
 #import "HomeController.h"
 #import "FBConnect.h"
+#import "GlobalStore.h"
 
 // Your Facebook APP Id must be set before running this example
 // See http://www.facebook.com/developers/createapp.php
@@ -20,18 +21,14 @@ static NSString* kAppId = @"182894781749423";
 @synthesize facebook = _facebook;
 
 - (void)loadView {
-    NSLog(@"loading view");
-    
     _facebook = [[Facebook alloc] initWithAppId:kAppId];
     _permissions = [[NSArray arrayWithObjects:@"read_stream", @"publish_stream", @"offline_access",nil] retain];
     
     [super loadView];
     //[super viewWillAppear:NO];
     //[super viewDidAppear:NO];
-
-    self.navigationBarTintColor = RGBCOLOR(41,41,41);
-    self.statusBarStyle = UIStatusBarStyleBlackOpaque;
-    self.view.backgroundColor = RGBCOLOR(227,218,202);
+    
+    self.navigationController.navigationBar.hidden = YES;
     
     UIButton* fbLoginBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [fbLoginBtn setTitle:@"Login" forState:UIControlStateNormal];
@@ -40,25 +37,6 @@ static NSString* kAppId = @"182894781749423";
     fbLoginBtn.top = 20;
     fbLoginBtn.left = floor(self.view.width/2 - fbLoginBtn.width/2);
     [self.view addSubview:fbLoginBtn];
-    
-    UIButton* fbLogoutBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [fbLogoutBtn setTitle:@"Logout" forState:UIControlStateNormal];
-    [fbLogoutBtn addTarget:self action:@selector(fbLogoutBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [fbLogoutBtn sizeToFit];
-    fbLogoutBtn.top = 120;
-    fbLogoutBtn.left = floor(self.view.width/2 - fbLogoutBtn.width/2);
-    [self.view addSubview:fbLogoutBtn];
-}
-
--(IBAction)fbLoginBtnClick:(id)sender {
-    NSLog(@"showing login dialog box");
-    [_facebook authorize:_permissions delegate:self];
-    //[self login];
-}
-
--(IBAction)fbLogoutBtnClick:(id)sender {
-    NSLog(@"logging out");
-    [_facebook logout:self];
 }
 
 /**
@@ -84,16 +62,15 @@ static NSString* kAppId = @"182894781749423";
 /**
  * Show the authorization dialog.
  */
-- (void)login {
-    NSLog(@"showing login dialog box");
+-(IBAction)fbLoginBtnClick:(id)sender {
     [_facebook authorize:_permissions delegate:self];
+    //[self login];
 }
 
 /**
  * Invalidate the access token and clear the cookie.
  */
-- (void)logout {
-    NSLog(@"logging out");
+-(IBAction)fbLogoutBtnClick:(id)sender {
     [_facebook logout:self];
 }
 
@@ -102,8 +79,7 @@ static NSString* kAppId = @"182894781749423";
  */
 - (void)fbDidLogin {
     NSLog(@"logged in");
-    TTNavigator* navigator = [TTNavigator navigator];
-    [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://tabBar"]];
+    TTOpenURL(@"tt://tabBar");
     //[self.label setText:@"logged in"];
 }
 
@@ -173,8 +149,9 @@ static NSString* kAppId = @"182894781749423";
  * Called when a UIServer Dialog successfully return.
  */
 - (void)dialogDidComplete:(FBDialog *)dialog {
-    NSLog(@"redirected back from dialog box");
+    NSLog(@"redirected back from UIServer dialog box");
     //[self.label setText:@"publish successfully"];
 }
+
 
 @end

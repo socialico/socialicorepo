@@ -19,27 +19,35 @@
     
     self.navigationController.navigationBar.hidden = YES;
     
-    UIButton* fbLoginBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [fbLoginBtn setTitle:@"Login" forState:UIControlStateNormal];
-    [fbLoginBtn addTarget:self action:@selector(fbLoginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [fbLoginBtn sizeToFit];
-    fbLoginBtn.top = 20;
-    fbLoginBtn.left = floor(self.view.width/2 - fbLoginBtn.width/2);
-    [self.view addSubview:fbLoginBtn];
+    _fbLoginBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [_fbLoginBtn setTitle:@"Login" forState:UIControlStateNormal];
+    [_fbLoginBtn addTarget:self action:@selector(fbLoginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [_fbLoginBtn sizeToFit];
+    _fbLoginBtn.top = 20;
+    _fbLoginBtn.left = floor(self.view.width/2 - _fbLoginBtn.width/2);
+    [self.view addSubview:_fbLoginBtn];
+    
+    _loadingLabel = [[[TTStyledTextLabel alloc] initWithFrame:self.view.bounds] autorelease];
+    _loadingLabel.font = [UIFont  boldSystemFontOfSize:24];
+    _loadingLabel.text = [TTStyledText textFromXHTML:@"loading..." lineBreaks:YES URLs:YES];
+    _loadingLabel.top = 60;
+    _loadingLabel.left = 100;
+    [self.view addSubview:_loadingLabel];
 }
 
 /**
  * Set initial view
  */
 - (void)viewDidLoad {
-    //[self.label setText:@"Please log in"];
+    [_loadingLabel setHidden:YES];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // NSObject
 
 - (void)dealloc {
-    //[_label release];
+    [_fbLoginBtn release];
+    [_loadingLabel release];
     [super dealloc];
 }
 
@@ -52,7 +60,6 @@
 -(IBAction)fbLoginBtnClick:(id)sender {
     GlobalStore* instance = [GlobalStore sharedInstance];
     [instance.facebook authorize:instance.permissions delegate:self];
-    //[self login];
 }
 
 /**
@@ -73,7 +80,9 @@
     GlobalStore* instance = [GlobalStore sharedInstance];
     [instance.facebook requestWithGraphPath:@"me" andDelegate:self];
     
-    //display logging in screen
+    //hide login button and show loading text
+    [_fbLoginBtn setHidden:YES];
+    [_loadingLabel setHidden:NO];
 }
 
 /**
@@ -88,7 +97,10 @@
  */
 - (void)fbDidLogout {
     NSLog(@"logged out");
-    //[self.label setText:@"Please log in"];
+    
+    //show login button and hide loading text
+    [_fbLoginBtn setHidden:NO];
+    [_loadingLabel setHidden:YES];
 }
 
 
@@ -140,18 +152,5 @@
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
     //[self.label setText:[error localizedDescription]];
 };
-
-
-////////////////////////////////////////////////////////////////////////////////
-// FBDialogDelegate
-
-/**
- * Called when a UIServer Dialog successfully return.
- */
-- (void)dialogDidComplete:(FBDialog *)dialog {
-    NSLog(@"redirected back from UIServer dialog box");
-    //[self.label setText:@"publish successfully"];
-}
-
 
 @end

@@ -14,10 +14,9 @@
 <FBRequestDelegate,
 FBDialogDelegate,
 FBSessionDelegate>{
-    //IBOutlet UILabel* _label;
+    UIButton* _fbLoginBtn;
+    TTStyledTextLabel* _loadingLabel;
 }
-
-//@property(nonatomic, retain) UILabel* label;
 
 -(IBAction)fbLoginBtnClick:(id)sender;
 

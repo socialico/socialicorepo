@@ -7,8 +7,8 @@
 //
 
 #import "HomeController.h"
-#import "FBConnect.h"
 #import "GlobalStore.h"
+#import <extThree20JSON/extThree20JSON.h>
 
 @implementation HomeController
 
@@ -141,9 +141,25 @@
     NSLog(@"useremail = %@",userEmail);
     
     //request for user data from own server using facebook user id
+    TTURLJSONResponse* gettokenresponse = [[TTURLJSONResponse alloc] init];
+    TTURLRequest* gettokenrequest = [TTURLRequest request];
     
+    gettokenrequest.response = gettokenresponse;
+    gettokenrequest.urlPath = @"http://gamemaki.com/main/api/handshake";
+    //gettokenrequest.urlPath = @"http://gamemaki.com/main/api/challenges.json?cat_id=1limit=10&page=1";
+    //gettokenrequest.cachePolicy = cachePolicy;
+    //gettokenrequest.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
+    
+    [gettokenrequest sendSynchronously];
+    
+    TTURLJSONResponse* thetruth = gettokenrequest.response;
+    NSLog(@"Response ----- %@", thetruth);
+    NSLog(@"Response ----- %@", thetruth.rootObject);
+    
+    //open home menu
     TTOpenURL(@"tt://tabBar");
 };
+
 
 /**
  * Called when an error prevents the Facebook API request from completing

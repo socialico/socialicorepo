@@ -16,6 +16,8 @@
 		320CC833B8AF0ACFD35E6225 /* libThree20Style.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320CC833B8AF0ACFD35E6224 /* libThree20Style.a */; };
 		320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320D7DCCE32703ACAB9A45E4 /* libThree20.a */; };
 		320F2C48872C2E2C4DF86205 /* libThree20UI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 320F2C48872C2E2C4DF86204 /* libThree20UI.a */; };
+		4324A5A413C2C6F80053657E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4324A5A313C2C6F80053657E /* CoreData.framework */; };
+		4324A5A713C2CA8C0053657E /* gamemaki_data.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4324A5A513C2CA8C0053657E /* gamemaki_data.xcdatamodeld */; };
 		4331C666138FB4C000A64820 /* nav_bar_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C665138FB4C000A64820 /* nav_bar_logo.png */; };
 		4331C675138FB62100A64820 /* cat_icon_arts_culture.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C667138FB62100A64820 /* cat_icon_arts_culture.png */; };
 		4331C676138FB62100A64820 /* cat_icon_entertainment.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C668138FB62100A64820 /* cat_icon_entertainment.png */; };
@@ -260,6 +262,8 @@
 		320CC833B8AF0ACFD35E6220 /* Three20Style.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20Style.xcodeproj; path = ../three20/src/Three20Style/Three20Style.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320D7DCCE32703ACAB9A45E0 /* Three20.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20.xcodeproj; path = ../three20/src/Three20/Three20.xcodeproj; sourceTree = SOURCE_ROOT; };
 		320F2C48872C2E2C4DF86200 /* Three20UI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Three20UI.xcodeproj; path = ../three20/src/Three20UI/Three20UI.xcodeproj; sourceTree = SOURCE_ROOT; };
+		4324A5A313C2C6F80053657E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		4324A5A613C2CA8C0053657E /* gamemaki_data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = gamemaki_data.xcdatamodel; sourceTree = "<group>"; };
 		4331C665138FB4C000A64820 /* nav_bar_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bar_logo.png; sourceTree = "<group>"; };
 		4331C667138FB62100A64820 /* cat_icon_arts_culture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_icon_arts_culture.png; sourceTree = "<group>"; };
 		4331C668138FB62100A64820 /* cat_icon_entertainment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_icon_entertainment.png; sourceTree = "<group>"; };
@@ -348,6 +352,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4324A5A413C2C6F80053657E /* CoreData.framework in Frameworks */,
 				E4ED2E03138E530200BD3BC2 /* libextThree20JSON+YAJL.a in Frameworks */,
 				3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */,
 				320D7DCCE32703ACAB9A45E5 /* libThree20.a in Frameworks */,
@@ -505,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				43444815138E3865007AE9F4 /* Three20 */,
+				4324A5A313C2C6F80053657E /* CoreData.framework */,
 				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
 				E4936B9B138E2D72009F732A /* UIKit.framework */,
 				E4936B9D138E2D72009F732A /* Foundation.framework */,
@@ -570,6 +576,7 @@
 			children = (
 				E4DC34F0138E3BA100E2F180 /* images */,
 				E4936BAD138E2D72009F732A /* MainWindow.xib */,
+				4324A5A513C2CA8C0053657E /* gamemaki_data.xcdatamodeld */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -887,6 +894,7 @@
 				D50802A313BC30140059D056 /* SBJsonParser.m in Sources */,
 				D50802A413BC30140059D056 /* SBJsonWriter.m in Sources */,
 				D50802B713BC36F20059D056 /* HomeController.m in Sources */,
+				4324A5A713C2CA8C0053657E /* gamemaki_data.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1081,6 +1089,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4324A5A513C2CA8C0053657E /* gamemaki_data.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4324A5A613C2CA8C0053657E /* gamemaki_data.xcdatamodel */,
+			);
+			currentVersion = 4324A5A613C2CA8C0053657E /* gamemaki_data.xcdatamodel */;
+			path = gamemaki_data.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E4936B8E138E2D71009F732A /* Project object */;
 }

@@ -145,8 +145,8 @@
     TTURLRequest* gettokenrequest = [TTURLRequest request];
     
     gettokenrequest.response = gettokenresponse;
-    gettokenrequest.urlPath = @"http://gamemaki.com/main/api/handshake";
-    //gettokenrequest.urlPath = @"http://gamemaki.com/main/api/challenges.json?cat_id=1limit=10&page=1";
+    //gettokenrequest.urlPath = @"http://gamemaki.com/main/api/handshake";
+    gettokenrequest.urlPath = @"http://gamemaki.com/main/api/challenges.json?cat_id=1limit=10&page=1";
     //gettokenrequest.cachePolicy = cachePolicy;
     //gettokenrequest.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
     

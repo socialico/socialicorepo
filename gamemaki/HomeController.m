@@ -9,6 +9,7 @@
 #import "HomeController.h"
 #import "GlobalStore.h"
 #import <extThree20JSON/extThree20JSON.h>
+#import "JSON.h"
 
 @implementation HomeController
 
@@ -144,9 +145,23 @@
     TTURLJSONResponse* gettokenresponse = [[TTURLJSONResponse alloc] init];
     TTURLRequest* gettokenrequest = [TTURLRequest request];
     
+	//compose JSON to form token (id, name, gender, birthday, email)
+	NSDictionary* newAuthToken = [[NSDictionary alloc] initWithObjectsAndKeys:
+								  [result objectForKey:@"id"],@"id",
+								  [result objectForKey:@"name"],@"name",
+								  [result objectForKey:@"email"],@"email",
+								  [result objectForKey:@"birthday"],@"birthday",
+								  [result objectForKey:@"gender"],@"gender",nil];
+	
+	
+	//Convder JSON result from NSDictionary to NSString
+	NSString *json = [newAuthToken JSONRepresentation];
+	NSString* url = [@"http://www.gamemaki.com/main/handshake?token=" stringByAppendingString:json];
+
     gettokenrequest.response = gettokenresponse;
-    //gettokenrequest.urlPath = @"http://gamemaki.com/main/api/handshake";
-    gettokenrequest.urlPath = @"http://gamemaki.com/main/api/challenges.json?cat_id=1limit=10&page=1";
+	gettokenrequest.urlPath = url;
+	NSLog(@"URL = %@", gettokenrequest.urlPath);
+    //gettokenrequest.urlPath = @"http://gamemaki.com/main/api/challenges.json?cat_id=1limit=10&page=1";
     //gettokenrequest.cachePolicy = cachePolicy;
     //gettokenrequest.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
     
@@ -154,10 +169,11 @@
     
     TTURLJSONResponse* thetruth = gettokenrequest.response;
     NSLog(@"Response ----- %@", thetruth);
-    NSLog(@"Response ----- %@", thetruth.rootObject);
+	NSLog(@"request succeeded: %@", thetruth.rootObject);
+	
     
     //open home menu
-    TTOpenURL(@"tt://tabBar");
+    //TTOpenURL(@"tt://tabBar");
 };
 
 

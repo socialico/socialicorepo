@@ -230,8 +230,7 @@
 //		claimedImage.backgroundColor = RGBCOLOR(184,171,149);
 //		[self.view addSubview:claimedImage];	
 //=======
-//=======
-//>>>>>>> beta
+
 		[self.tableView setTableHeaderView:tableHeaderView]; 
 		[tableHeaderView release];
 		
@@ -242,10 +241,15 @@
 		NSString* claimesNo = [[NSString alloc] initWithFormat:@"Be the first to claim"];
 		if ([_challengeProfile.claimNo intValue] == 1 ) claimesNo = [NSString stringWithFormat:@"%@ claim", _challengeProfile.claimNo];
 		if ([_challengeProfile.claimNo intValue] != 0 && [_challengeProfile.claimNo intValue] != 1) claimesNo = [NSString stringWithFormat:@"%@ claimes", _challengeProfile.claimNo];
+		
+		NSMutableString* commentsURL = [NSMutableString stringWithFormat:@"tt://commentsList/%@", _challengeProfile.challengeId];
+		NSMutableString* claimesURL = [NSMutableString stringWithFormat:@"tt://claimesList/%@", _challengeProfile.challengeId];
+		
 		self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 							@"",
-							[TTTableSubtitleItem itemWithText:commentsNo subtitle:@"Damon: Tough, real tough challenge especially if I have to do it at this moment." imageURL:nil  defaultImage:TTIMAGE(@"bundle://comments.png") URL:@"tt://food/macncheese" accessoryURL:nil],
-							[TTTableSubtitleItem itemWithText:claimesNo subtitle:@"Last claimed by Brenda" imageURL:nil  defaultImage:TTIMAGE(@"bundle://claimed.png") URL:@"tt://food/macncheese" accessoryURL:nil],
+							[TTTableSubtitleItem itemWithText:commentsNo subtitle:@"Damon: Tough, real tough challenge especially if I have to do it at this moment." imageURL:nil  defaultImage:TTIMAGE(@"bundle://comments.png") URL:commentsURL accessoryURL:nil],
+						   
+							[TTTableSubtitleItem itemWithText:claimesNo subtitle:@"Last claimed by Brenda" imageURL:nil  defaultImage:TTIMAGE(@"bundle://claimed.png") URL:claimesURL accessoryURL:nil],
 							nil];
 		
 		

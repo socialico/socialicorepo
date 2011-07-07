@@ -7,13 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "FBConnect.h"
 
 @interface GlobalStore : NSObject
 {
     // Place any "global" variables here
-    NSString* _categoryId;
-    NSMutableArray*  _challengelist;
+    //NSString* _categoryId;
+    //NSMutableArray*  _challengelist;
+    Facebook* _facebook;
+    NSArray* _permissions;
 }
 
 // message from which our instance is obtained
@@ -21,7 +23,9 @@
 
 - (void) addToChallengeList:(NSMutableArray*) array;
 
-@property(nonatomic, assign) NSString* categoryId;
-@property(nonatomic, copy) NSMutableArray* challengeList;
+//@property(nonatomic, assign) NSString* categoryId;
+//@property(nonatomic, copy) NSMutableArray* challengeList;
+@property(nonatomic, assign) Facebook* facebook;
+@property(nonatomic, assign) NSArray* permissions;
 
 @end

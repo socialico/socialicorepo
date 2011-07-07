@@ -15,13 +15,9 @@
 FBDialogDelegate,
 FBSessionDelegate>{
     //IBOutlet UILabel* _label;
-    Facebook* _facebook;
-    NSArray* _permissions;
 }
 
 //@property(nonatomic, retain) UILabel* label;
-
-@property(readonly) Facebook* facebook;
 
 -(IBAction)fbLoginBtnClick:(id)sender;
 

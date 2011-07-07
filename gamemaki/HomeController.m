@@ -10,20 +10,9 @@
 #import "FBConnect.h"
 #import "GlobalStore.h"
 
-// Your Facebook APP Id must be set before running this example
-// See http://www.facebook.com/developers/createapp.php
-// Also, your application must bind to the fb[app_id]:// URL
-// scheme (substitue [app_id] for your real Facebook app id).
-static NSString* kAppId = @"182894781749423";
-
 @implementation HomeController
 
-@synthesize facebook = _facebook;
-
 - (void)loadView {
-    _facebook = [[Facebook alloc] initWithAppId:kAppId];
-    _permissions = [[NSArray arrayWithObjects:@"read_stream", @"publish_stream", @"offline_access",nil] retain];
-    
     [super loadView];
     //[super viewWillAppear:NO];
     //[super viewDidAppear:NO];
@@ -51,8 +40,6 @@ static NSString* kAppId = @"182894781749423";
 
 - (void)dealloc {
     //[_label release];
-    [_facebook release];
-    [_permissions release];
     [super dealloc];
 }
 
@@ -63,7 +50,8 @@ static NSString* kAppId = @"182894781749423";
  * Show the authorization dialog.
  */
 -(IBAction)fbLoginBtnClick:(id)sender {
-    [_facebook authorize:_permissions delegate:self];
+    GlobalStore* instance = [GlobalStore sharedInstance];
+    [instance.facebook authorize:instance.permissions delegate:self];
     //[self login];
 }
 
@@ -71,7 +59,8 @@ static NSString* kAppId = @"182894781749423";
  * Invalidate the access token and clear the cookie.
  */
 -(IBAction)fbLogoutBtnClick:(id)sender {
-    [_facebook logout:self];
+    GlobalStore* instance = [GlobalStore sharedInstance];
+    [instance.facebook logout:self];
 }
 
 /**
@@ -81,7 +70,10 @@ static NSString* kAppId = @"182894781749423";
     NSLog(@"logged in");
     
     //request for user data (including userId) from facebook using facebook access token
-    [_facebook requestWithGraphPath:@"me" andDelegate:self];
+    GlobalStore* instance = [GlobalStore sharedInstance];
+    [instance.facebook requestWithGraphPath:@"me" andDelegate:self];
+    
+    //display logging in screen
 }
 
 /**
@@ -136,7 +128,7 @@ static NSString* kAppId = @"182894781749423";
     NSLog(@"useri = %@",userId);
     NSLog(@"useremail = %@",userEmail);
     
-    //request for user data from facebook using facebook user id
+    //request for user data from own server using facebook user id
     
     TTOpenURL(@"tt://tabBar");
 };

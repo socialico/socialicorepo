@@ -23,6 +23,7 @@
     _fbLoginBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [_fbLoginBtn setTitle:@"Login" forState:UIControlStateNormal];
     [_fbLoginBtn addTarget:self action:@selector(fbLoginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    //[_fbLoginBtn addTarget:self action:@selector(cameraOpenClick:) forControlEvents:UIControlEventTouchUpInside];
     [_fbLoginBtn sizeToFit];
     _fbLoginBtn.top = 20;
     _fbLoginBtn.left = floor(self.view.width/2 - _fbLoginBtn.width/2);
@@ -70,6 +71,15 @@
     GlobalStore* instance = [GlobalStore sharedInstance];
     [instance.facebook logout:self];
 }
+
+-(IBAction)cameraOpenClick:(id)sender {
+    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    //imagePicker.delegate = self;
+    [self presentModalViewController:imagePicker animated:YES];
+    [imagePicker release];
+}
+
 
 /**
  * Called when the user has logged in successfully.

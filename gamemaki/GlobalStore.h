@@ -21,8 +21,6 @@
 // message from which our instance is obtained
 + (GlobalStore *)sharedInstance;
 
-- (void) addToChallengeList:(NSMutableArray*) array;
-
 //@property(nonatomic, assign) NSString* categoryId;
 //@property(nonatomic, copy) NSMutableArray* challengeList;
 @property(nonatomic, assign) Facebook* facebook;

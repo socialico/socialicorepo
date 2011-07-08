@@ -155,22 +155,22 @@
 	
 	
 	//Convder JSON result from NSDictionary to NSString
-	NSString *json = [newAuthToken JSONRepresentation];
-	NSString* url = [@"http://www.gamemaki.com/main/handshake?token=" stringByAppendingString:json];
+	NSString* json = [newAuthToken JSONRepresentation];
+    NSString* escapedJson = [json stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+	NSString* url = [@"http://www.gamemaki.com/main/handshake?token=" stringByAppendingString:escapedJson];
 
     gettokenrequest.response = gettokenresponse;
 	gettokenrequest.urlPath = url;
 	NSLog(@"URL = %@", gettokenrequest.urlPath);
-    //gettokenrequest.urlPath = @"http://gamemaki.com/main/api/challenges.json?cat_id=1limit=10&page=1";
     //gettokenrequest.cachePolicy = cachePolicy;
     //gettokenrequest.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
     
     [gettokenrequest sendSynchronously];
     
+    //retrieve secret from response and save it
     TTURLJSONResponse* thetruth = gettokenrequest.response;
     NSLog(@"Response ----- %@", thetruth);
-	NSLog(@"request succeeded: %@", thetruth.rootObject);
-	
+	NSLog(@"Response ----- %@", thetruth.rootObject);
     
     //open home menu
     //TTOpenURL(@"tt://tabBar");

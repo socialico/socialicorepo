@@ -134,47 +134,38 @@
         result = [result objectAtIndex:0];
     }
     
-    NSString* username = [result objectForKey:@"name"];
+    //retrieve user data from facebook response
     NSString* userId = [result objectForKey:@"id"];
+    NSString* userName = [result objectForKey:@"name"];
     NSString* userEmail = [result objectForKey:@"email"];
-    NSLog(@"username = %@",username);
-    NSLog(@"useri = %@",userId);
-    NSLog(@"useremail = %@",userEmail);
+    NSString* userGender = [result objectForKey:@"gender"];
+    NSString* userBirthday = [result objectForKey:@"birthday"];
+    NSLog(@"userId = %@",userId);
+    NSLog(@"userName = %@",userName);
+    NSLog(@"userEmail = %@",userEmail);
+    NSLog(@"userGender = %@",userGender);
+    NSLog(@"userBirthday = %@",userBirthday);
     
-    //request for user data from own server using facebook user id
-    TTURLJSONResponse* gettokenresponse = [[TTURLJSONResponse alloc] init];
-    TTURLRequest* gettokenrequest = [TTURLRequest request];
-    
-	//compose JSON to form token (id, name, gender, birthday, email)
-	NSDictionary* newAuthToken = [[NSDictionary alloc] initWithObjectsAndKeys:
-								  [result objectForKey:@"id"],@"id",
-								  [result objectForKey:@"name"],@"name",
-								  [result objectForKey:@"email"],@"email",
-								  [result objectForKey:@"birthday"],@"birthday",
-								  [result objectForKey:@"gender"],@"gender",nil];
+	//construct new request param
+	NSDictionary* newAuthToken = [[NSDictionary alloc] initWithObjectsAndKeys:userId,@"id",userName,@"name",
+                                  userEmail,@"email",userBirthday,@"birthday",userGender,@"gender",nil];
 	
-	
-	//Convder JSON result from NSDictionary to NSString
+	//convert request param into JSON string
 	NSString* json = [newAuthToken JSONRepresentation];
     NSString* escapedJson = [json stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 	NSString* url = [@"http://www.gamemaki.com/main/handshake?token=" stringByAppendingString:escapedJson];
 
-    gettokenrequest.response = gettokenresponse;
-	gettokenrequest.urlPath = url;
-	NSLog(@"URL = %@", gettokenrequest.urlPath);
-    //gettokenrequest.cachePolicy = cachePolicy;
-    //gettokenrequest.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
-    
-    [gettokenrequest sendSynchronously];
+    //request for user data from own server using facebook user id
+    TTURLRequest* getSecretRequest = [TTURLRequest request];
+    getSecretRequest.response = [[TTURLJSONResponse alloc] init];
+	getSecretRequest.urlPath = url;
+    [getSecretRequest sendSynchronously];
     
     //retrieve secret from response and save it
-    TTURLJSONResponse* thetruth = gettokenrequest.response;
-    NSLog(@"Response ----- %@", thetruth);
-	NSLog(@"Response ----- %@", thetruth.rootObject);
-    
-    NSDictionary* jsonResponse = thetruth.rootObject;
+    TTURLJSONResponse* getSecretResponse = getSecretRequest.response;
+    NSDictionary* jsonResponse = getSecretResponse.rootObject;
+	NSLog(@"jsonResponse = %@", jsonResponse);
     NSString* secret = [jsonResponse objectForKey:@"secret"];
-    
     NSLog(@"secret = %@", secret);
     
     //open home menu

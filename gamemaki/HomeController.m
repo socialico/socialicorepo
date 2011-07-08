@@ -172,6 +172,11 @@
     NSLog(@"Response ----- %@", thetruth);
 	NSLog(@"Response ----- %@", thetruth.rootObject);
     
+    NSDictionary* jsonResponse = thetruth.rootObject;
+    NSString* secret = [jsonResponse objectForKey:@"secret"];
+    
+    NSLog(@"secret = %@", secret);
+    
     //open home menu
     //TTOpenURL(@"tt://tabBar");
 };

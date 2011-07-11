@@ -238,9 +238,16 @@
     NSString* secret = [jsonResponse objectForKey:@"secret"];
     NSLog(@"secret = %@", secret);
 	
+	//Get a key from the storage
 	[self fetchRecords];
-
-//	[self addSecret:secret];
+	if ([secretArray count] != 0) {
+		NSString* myStoredKey = [[secretArray objectAtIndex:0] secretKey];
+		if ([myStoredKey isEqualToString:secret]) {
+			NSLog(@"We have the secret key it our DB");
+		} else {
+			[self addSecret:secret];
+		}		
+	} else [self addSecret:secret];
 	
 	NSLog(@"fetch = %@",secretArray);
 	

@@ -133,8 +133,8 @@
 
 -(IBAction)cameraOpenClick:(id)sender {
     UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    //imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+//    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     imagePicker.delegate = self;
     [self presentModalViewController:imagePicker animated:YES];
     [imagePicker release];

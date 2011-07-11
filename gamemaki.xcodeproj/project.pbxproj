@@ -33,6 +33,7 @@
 		4331C680138FB62100A64820 /* cat_icon_top_rated.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C672138FB62100A64820 /* cat_icon_top_rated.png */; };
 		4331C681138FB62100A64820 /* cat_icon_travel.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C673138FB62100A64820 /* cat_icon_travel.png */; };
 		4331C682138FB62100A64820 /* cat_icon_wine_dine.png in Resources */ = {isa = PBXBuildFile; fileRef = 4331C674138FB62100A64820 /* cat_icon_wine_dine.png */; };
+		43508F7C13CAB5CB0050F757 /* Secret.m in Sources */ = {isa = PBXBuildFile; fileRef = 43508F7B13CAB5CB0050F757 /* Secret.m */; };
 		43B9751413A200EB006F15D3 /* stats_claimed.png in Resources */ = {isa = PBXBuildFile; fileRef = 43B9751313A200EB006F15D3 /* stats_claimed.png */; };
 		D508029A13BC30140059D056 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = D508028313BC30140059D056 /* Facebook.m */; };
 		D508029B13BC30140059D056 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = D508028513BC30140059D056 /* FBDialog.bundle */; };
@@ -280,6 +281,8 @@
 		4331C672138FB62100A64820 /* cat_icon_top_rated.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_icon_top_rated.png; sourceTree = "<group>"; };
 		4331C673138FB62100A64820 /* cat_icon_travel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_icon_travel.png; sourceTree = "<group>"; };
 		4331C674138FB62100A64820 /* cat_icon_wine_dine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_icon_wine_dine.png; sourceTree = "<group>"; };
+		43508F7A13CAB5CB0050F757 /* Secret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Secret.h; sourceTree = "<group>"; };
+		43508F7B13CAB5CB0050F757 /* Secret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Secret.m; sourceTree = "<group>"; };
 		43B9751313A200EB006F15D3 /* stats_claimed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats_claimed.png; sourceTree = "<group>"; };
 		D508028213BC30140059D056 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		D508028313BC30140059D056 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
@@ -549,6 +552,8 @@
 				D533A05B13B9EB2D0042834A /* CommentsController.m */,
 				D50802B513BC36F10059D056 /* HomeController.h */,
 				D50802B613BC36F20059D056 /* HomeController.m */,
+				43508F7A13CAB5CB0050F757 /* Secret.h */,
+				43508F7B13CAB5CB0050F757 /* Secret.m */,
 			);
 			path = gamemaki;
 			sourceTree = "<group>";
@@ -899,6 +904,7 @@
 				D50802A413BC30140059D056 /* SBJsonWriter.m in Sources */,
 				D50802B713BC36F20059D056 /* HomeController.m in Sources */,
 				4324A5A713C2CA8C0053657E /* gamemaki_data.xcdatamodeld in Sources */,
+				43508F7C13CAB5CB0050F757 /* Secret.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

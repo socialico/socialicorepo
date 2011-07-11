@@ -14,7 +14,9 @@
 @interface HomeController : TTViewController
 <FBRequestDelegate,
 FBDialogDelegate,
-FBSessionDelegate>{
+FBSessionDelegate,
+UINavigationControllerDelegate,
+UIImagePickerControllerDelegate>{
     UIButton* _fbLoginBtn;
     TTStyledTextLabel* _loadingLabel;
 }

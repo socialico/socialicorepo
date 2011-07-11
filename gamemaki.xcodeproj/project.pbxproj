@@ -48,6 +48,7 @@
 		D50802B713BC36F20059D056 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50802B613BC36F20059D056 /* HomeController.m */; };
 		D527D67013948C82008B40F6 /* GlobalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D527D66F13948C81008B40F6 /* GlobalStore.m */; };
 		D533A05C13B9EB2D0042834A /* CommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D533A05B13B9EB2D0042834A /* CommentsController.m */; };
+		D5CCE7A313CAB32B004BBD11 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5CCE7A213CAB32B004BBD11 /* MobileCoreServices.framework */; };
 		E4936B9C138E2D72009F732A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4936B9B138E2D72009F732A /* UIKit.framework */; };
 		E4936B9E138E2D72009F732A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4936B9D138E2D72009F732A /* Foundation.framework */; };
 		E4936BA0138E2D72009F732A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4936B9F138E2D72009F732A /* CoreGraphics.framework */; };
@@ -309,6 +310,7 @@
 		D527D66F13948C81008B40F6 /* GlobalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalStore.m; sourceTree = "<group>"; };
 		D533A05A13B9EB2D0042834A /* CommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsController.h; sourceTree = "<group>"; };
 		D533A05B13B9EB2D0042834A /* CommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsController.m; sourceTree = "<group>"; };
+		D5CCE7A213CAB32B004BBD11 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		E4936B97138E2D71009F732A /* gamemaki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gamemaki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4936B9B138E2D72009F732A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4936B9D138E2D72009F732A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -352,6 +354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5CCE7A313CAB32B004BBD11 /* MobileCoreServices.framework in Frameworks */,
 				4324A5A413C2C6F80053657E /* CoreData.framework in Frameworks */,
 				E4ED2E03138E530200BD3BC2 /* libextThree20JSON+YAJL.a in Frameworks */,
 				3201088596B4756681693705 /* libThree20UICommon.a in Frameworks */,
@@ -515,6 +518,7 @@
 				E4936B9B138E2D72009F732A /* UIKit.framework */,
 				E4936B9D138E2D72009F732A /* Foundation.framework */,
 				E4936B9F138E2D72009F732A /* CoreGraphics.framework */,
+				D5CCE7A213CAB32B004BBD11 /* MobileCoreServices.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

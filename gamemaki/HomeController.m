@@ -14,8 +14,56 @@
 
 @implementation HomeController
 
+@synthesize managedObjectContext, secretArray;   
+
+- (void)addSecret:(NSString *)key {
+    Secret *secret = (Secret *)[NSEntityDescription insertNewObjectForEntityForName:@"Secret" inManagedObjectContext:managedObjectContext];
+	[secret setSecretKey:key];
+
+	NSError *error;
+    if(![managedObjectContext save:&error]){
+	    //This is a serious error saying the record
+	    //could not be saved. Advise the user to
+	    //try again or restart the application. 
+    }
+    [secretArray insertObject:secret atIndex:0];
+}
+
+- (void)fetchRecords {
+	
+	// Define our table/entity to use
+	NSEntityDescription *secret = [NSEntityDescription entityForName:@"Secret" inManagedObjectContext:managedObjectContext];
+	
+	// Setup the fetch request
+	NSFetchRequest *request = [[NSFetchRequest alloc] init];
+	[request setReturnsObjectsAsFaults:NO];
+	[request setEntity:secret];
+	
+	// Define how we will sort the records
+	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"secretKey" ascending:NO];
+	NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+	
+	[request setSortDescriptors:sortDescriptors];
+	[sortDescriptor release];
+	
+	// Fetch the records and handle an error
+	NSError *error;
+	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+	
+	if (!mutableFetchResults) {
+		// Handle the error.
+		// This is a serious error and should advise the user to restart the application
+	}
+	
+	// Save our fetched data to an array
+	[self setSecretArray: mutableFetchResults];
+	
+	[mutableFetchResults release];
+	[request release];
+}
+
 - (void)loadView {
-    [super loadView];
+	[super loadView];
     //[super viewWillAppear:NO];
     //[super viewDidAppear:NO];
     
@@ -58,6 +106,9 @@
 - (void)dealloc {
     [_fbLoginBtn release];
     [_loadingLabel release];
+	[managedObjectContext release];
+	[secretArray release];
+
     [super dealloc];
 }
 
@@ -186,9 +237,15 @@
 	NSLog(@"jsonResponse = %@", jsonResponse);
     NSString* secret = [jsonResponse objectForKey:@"secret"];
     NSLog(@"secret = %@", secret);
-    
+	
+	[self fetchRecords];
+
+//	[self addSecret:secret];
+	
+	NSLog(@"fetch = %@",secretArray);
+	
     //open home menu
-    //TTOpenURL(@"tt://tabBar");
+//    TTOpenURL(@"tt://tabBar");
 };
 
 

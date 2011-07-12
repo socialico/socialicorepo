@@ -67,30 +67,32 @@
     //[super viewWillAppear:NO];
     //[super viewDidAppear:NO];
     
+	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Default_2nd.png"]]];
+
     self.navigationController.navigationBar.hidden = YES;
     
     _fbLoginBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [_fbLoginBtn setTitle:@"Login" forState:UIControlStateNormal];
+    [_fbLoginBtn setTitle:@"Login with your Facebook" forState:UIControlStateNormal];
     [_fbLoginBtn addTarget:self action:@selector(fbLoginBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [_fbLoginBtn sizeToFit];
-    _fbLoginBtn.top = 20;
+    _fbLoginBtn.top = 400;
     _fbLoginBtn.left = floor(self.view.width/2 - _fbLoginBtn.width/2);
     [self.view addSubview:_fbLoginBtn];
     
     _loadingLabel = [[[TTStyledTextLabel alloc] initWithFrame:self.view.bounds] autorelease];
     _loadingLabel.font = [UIFont  boldSystemFontOfSize:24];
     _loadingLabel.text = [TTStyledText textFromXHTML:@"loading..." lineBreaks:YES URLs:YES];
-    _loadingLabel.top = 60;
-    _loadingLabel.left = 100;
+    _loadingLabel.top = 400;
+    _loadingLabel.left = floor(self.view.width/2 - _loadingLabel.width/2);
     [self.view addSubview:_loadingLabel];
     
-    UIButton* cameraOpenBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [cameraOpenBtn setTitle:@"Take Photo" forState:UIControlStateNormal];
-    [cameraOpenBtn addTarget:self action:@selector(cameraOpenClick:) forControlEvents:UIControlEventTouchUpInside];
-    [cameraOpenBtn sizeToFit];
-    cameraOpenBtn.top = 100;
-    cameraOpenBtn.left = floor(self.view.width/2 - cameraOpenBtn.width/2);
-    [self.view addSubview:cameraOpenBtn];
+//    UIButton* cameraOpenBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [cameraOpenBtn setTitle:@"Take Photo" forState:UIControlStateNormal];
+//    [cameraOpenBtn addTarget:self action:@selector(cameraOpenClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [cameraOpenBtn sizeToFit];
+//    cameraOpenBtn.top = 100;
+//    cameraOpenBtn.left = floor(self.view.width/2 - cameraOpenBtn.width/2);
+//    [self.view addSubview:cameraOpenBtn];
 }
 
 /**

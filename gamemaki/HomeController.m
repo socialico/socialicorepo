@@ -79,11 +79,13 @@
     _fbLoginBtn.left = floor(self.view.width/2 - _fbLoginBtn.width/2);
     [self.view addSubview:_fbLoginBtn];
     
-    _loadingLabel = [[[TTStyledTextLabel alloc] initWithFrame:self.view.bounds] autorelease];
+    _loadingLabel = [[[TTStyledTextLabel alloc] initWithFrame:CGRectMake(0, 0, 110, 30)] autorelease];
     _loadingLabel.font = [UIFont  boldSystemFontOfSize:24];
-    _loadingLabel.text = [TTStyledText textFromXHTML:@"loading..." lineBreaks:YES URLs:YES];
+    _loadingLabel.text = [TTStyledText textFromXHTML:@"loading..." lineBreaks:NO URLs:NO];
     _loadingLabel.top = 400;
     _loadingLabel.left = floor(self.view.width/2 - _loadingLabel.width/2);
+	_loadingLabel.textColor = [UIColor whiteColor];
+	_loadingLabel.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_loadingLabel];
     
 //    UIButton* cameraOpenBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];

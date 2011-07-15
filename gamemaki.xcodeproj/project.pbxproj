@@ -47,6 +47,7 @@
 		D50802A313BC30140059D056 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D508029713BC30140059D056 /* SBJsonParser.m */; };
 		D50802A413BC30140059D056 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D508029913BC30140059D056 /* SBJsonWriter.m */; };
 		D50802B713BC36F20059D056 /* HomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50802B613BC36F20059D056 /* HomeController.m */; };
+		D5089E2513D0031B008F9D94 /* gamemaki_data.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = 4324A5A613C2CA8C0053657E /* gamemaki_data.xcdatamodel */; };
 		D527D67013948C82008B40F6 /* GlobalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D527D66F13948C81008B40F6 /* GlobalStore.m */; };
 		D533A05C13B9EB2D0042834A /* CommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D533A05B13B9EB2D0042834A /* CommentsController.m */; };
 		D5CCE7A313CAB32B004BBD11 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5CCE7A213CAB32B004BBD11 /* MobileCoreServices.framework */; };
@@ -842,6 +843,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5089E2513D0031B008F9D94 /* gamemaki_data.xcdatamodel in Resources */,
 				320B6C86F11D9990244A9731 /* Three20.bundle in Resources */,
 				E4936BA6138E2D72009F732A /* InfoPlist.strings in Resources */,
 				E4936BAF138E2D72009F732A /* MainWindow.xib in Resources */,

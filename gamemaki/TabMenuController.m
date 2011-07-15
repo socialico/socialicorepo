@@ -7,6 +7,8 @@
 //
 
 #import "TabMenuController.h"
+#import "ChallengesDataSource.h"
+#import "GlobalStore.h"
 
 @implementation TabMenuController
 @synthesize page = _page;
@@ -69,7 +71,13 @@
 		self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:self.title image:image tag:2] autorelease];
     }
     
-    if (_page == MenuChallenges) {
+    if (_page == MenuHome) {
+        //call the service, get the response JSON, convert into model, pass to datasource
+        NSString* sessionKey = [GlobalStore sharedInstance].sessionKey;
+        NSLog(@"sessionKey = %@", sessionKey);
+        self.dataSource = [[[ChallengesDataSource alloc] initWithSessionKey:sessionKey] autorelease];
+    }
+    else if (_page == MenuChallenges) {
         self.dataSource = [TTSectionedDataSource dataSourceWithObjects:
 			@"",
 			[TTTableSubtitleItem itemWithText:@"Latest" subtitle:@"" imageURL:nil defaultImage:TTIMAGE(@"bundle://cat_icon_latest.png") URL:@"tt://challengesList/0" accessoryURL:nil],

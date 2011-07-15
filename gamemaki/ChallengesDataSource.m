@@ -29,6 +29,14 @@
     return self;
 }
 
+- (id)initWithSessionKey:(NSString*)sessionKey {
+    if (self == [super init]) {
+        NSLog(@"sessionKey = %@", sessionKey);
+        _searchFeedModel = [[ChallengeFeedModel alloc] initWithSessionKey:sessionKey];
+    }
+    
+    return self;    
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)dealloc {

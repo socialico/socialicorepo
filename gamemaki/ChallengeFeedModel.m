@@ -21,6 +21,7 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?
 @implementation ChallengeFeedModel
 
 @synthesize searchQuery     = _searchQuery;
+@synthesize sessionKey      = _sessionKey;
 @synthesize challengelist   = _challengelist;
 @synthesize resultsPerPage  = _resultsPerPage;
 @synthesize finished        = _finished;
@@ -37,6 +38,17 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?
     return self;
 }
 
+- (id) initWithSessionKey:(NSString*)sessionKey {
+    if (self == [super init]) {
+        NSLog(@"sessionKey = %@", sessionKey);
+        self.sessionKey = sessionKey;
+        _resultsPerPage = 10;
+        _page = 1;
+        _challengelist = [[NSMutableArray array] retain];
+    }
+    
+    return self;
+}
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) dealloc {
@@ -48,7 +60,7 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)load:(TTURLRequestCachePolicy)cachePolicy more:(BOOL)more {
-    if (!self.isLoading && TTIsStringWithAnyText(_searchQuery)) {
+    if (!self.isLoading) {
         if (more) {
             _page++;
         }
@@ -58,20 +70,37 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?
             [_challengelist removeAllObjects];
         }
         
-        NSString* url = [NSString stringWithFormat:ChallengeFeed, _searchQuery, _resultsPerPage, _page];
-        
-        TTURLRequest* request = [TTURLRequest
-                                 requestWithURL: url
-                                 delegate: self];
-        
-        request.cachePolicy = cachePolicy;
-        request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
-        
-        TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
-        request.response = response;
-        TT_RELEASE_SAFELY(response);
-        
-        [request send];
+        if (TTIsStringWithAnyText(_searchQuery)) {
+            NSString* url = [NSString stringWithFormat:ChallengeFeed, _searchQuery, _resultsPerPage, _page];
+            
+            TTURLRequest* request = [TTURLRequest
+                                     requestWithURL: url
+                                     delegate: self];
+            
+            request.cachePolicy = cachePolicy;
+            request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
+            
+            TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
+            request.response = response;
+            TT_RELEASE_SAFELY(response);
+            
+            [request send];
+        } else if (TTIsStringWithAnyText(_sessionKey)) {
+            NSString* url = [@"http://www.gamemaki.com/main/api/activities.json?session_key=" stringByAppendingString:_sessionKey];
+            
+            TTURLRequest* request = [TTURLRequest
+                                     requestWithURL: url
+                                     delegate: self];
+            
+            request.cachePolicy = cachePolicy;
+            request.cacheExpirationAge = TT_CACHE_EXPIRATION_AGE_NEVER;
+            
+            TTURLJSONResponse* response = [[TTURLJSONResponse alloc] init];
+            request.response = response;
+            TT_RELEASE_SAFELY(response);
+            
+            [request send];
+        }
     }
 }
 

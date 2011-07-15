@@ -16,5 +16,6 @@
 }
 
 - (id)initWithSearchQuery:(NSString*)searchQuery;
+- (id)initWithSessionKey:(NSString*)sessionKey;
 
 @end

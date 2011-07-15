@@ -270,13 +270,13 @@
 	NSLog(@"jsonResponse2 = %@", jsonResponse2);
     NSString* sessionKey = [jsonResponse2 objectForKey:@"sessionKey"];
     NSLog(@"session key = %@", sessionKey);
-    
+
     //save session key in memory
     GlobalStore* instance = [GlobalStore sharedInstance];
     instance.sessionKey = sessionKey;
 	
     //open home menu
-    //TTOpenURL(@"tt://tabBar");
+    TTOpenURL(@"tt://tabBar");
 };
 
 

@@ -16,10 +16,10 @@ static NSString* kAppId = @"182894781749423";
 
 @implementation GlobalStore
 
-//@synthesize categoryId = _categoryId;
 //@synthesize challengeList = _challengelist;
 @synthesize facebook = _facebook;
 @synthesize permissions = _permissions;
+@synthesize sessionKey = _sessionKey;
 
 + (GlobalStore*)sharedInstance
 {

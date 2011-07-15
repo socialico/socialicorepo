@@ -12,18 +12,18 @@
 @interface GlobalStore : NSObject
 {
     // Place any "global" variables here
-    //NSString* _categoryId;
     //NSMutableArray*  _challengelist;
     Facebook* _facebook;
     NSArray* _permissions;
+    NSString* _sessionKey;
 }
 
 // message from which our instance is obtained
 + (GlobalStore *)sharedInstance;
 
-//@property(nonatomic, assign) NSString* categoryId;
 //@property(nonatomic, copy) NSMutableArray* challengeList;
 @property(nonatomic, assign) Facebook* facebook;
 @property(nonatomic, assign) NSArray* permissions;
+@property(nonatomic, assign) NSString* sessionKey;
 
 @end

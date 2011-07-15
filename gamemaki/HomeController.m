@@ -231,28 +231,48 @@
 	getSecretRequest.urlPath = url;
     [getSecretRequest sendSynchronously];
     
-    //retrieve secret from response and save it
+    //retrieve secret from response
     TTURLJSONResponse* getSecretResponse = getSecretRequest.response;
     NSDictionary* jsonResponse = getSecretResponse.rootObject;
 	NSLog(@"jsonResponse = %@", jsonResponse);
     NSString* secret = [jsonResponse objectForKey:@"secret"];
     NSLog(@"secret = %@", secret);
 	
-	//Get a key from the storage
-	[self fetchRecords];
+    //save secret in data store
+    [self fetchRecords];
 	if ([secretArray count] != 0) {
 		NSString* myStoredKey = [[secretArray objectAtIndex:0] secretKey];
 		if ([myStoredKey isEqualToString:secret]) {
 			NSLog(@"We have the secret key it our DB");
 		} else {
+            //should reset instead of adding new secret
 			[self addSecret:secret];
-		}		
+		}
 	} else [self addSecret:secret];
 	
 	NSLog(@"fetch = %@",secretArray);
+    
+    //request for session key from own server
+    TTURLRequest* getSessionKeyRequest = [TTURLRequest request];
+    getSessionKeyRequest.response = [[TTURLJSONResponse alloc] init];
+	getSessionKeyRequest.urlPath = [@"http://www.gamemaki.com/main/createSession?secretKey=" stringByAppendingFormat:@"%@%@%@", secret, @"&facebookId=", userId];
+    [getSessionKeyRequest sendSynchronously];
+    
+    NSLog(@"url - %@", getSessionKeyRequest.urlPath);
+    
+    //retrieve session key from response
+    TTURLJSONResponse* getSessionKeyResponse = getSessionKeyRequest.response;
+    NSDictionary* jsonResponse2 = getSessionKeyResponse.rootObject;
+	NSLog(@"jsonResponse2 = %@", jsonResponse2);
+    NSString* sessionKey = [jsonResponse2 objectForKey:@"sessionKey"];
+    NSLog(@"session key = %@", sessionKey);
+    
+    //save session key in memory
+    GlobalStore* instance = [GlobalStore sharedInstance];
+    instance.sessionKey = sessionKey;
 	
     //open home menu
-//    TTOpenURL(@"tt://tabBar");
+    //TTOpenURL(@"tt://tabBar");
 };
 
 

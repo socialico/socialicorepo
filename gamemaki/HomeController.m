@@ -7,60 +7,15 @@
 //
 
 #import "HomeController.h"
-#import "GlobalStore.h"
+#import <MobileCoreServices/UTCoreTypes.h>
 #import <extThree20JSON/extThree20JSON.h>
 #import "JSON.h"
-#import <MobileCoreServices/UTCoreTypes.h>
+#import "gamemakiAppDelegate.h"
+#import "GlobalStore.h"
+#import "User.h"
 
 @implementation HomeController
 
-@synthesize managedObjectContext, secretArray;   
-
-- (void)addSecret:(NSString *)key {
-    Secret *secret = (Secret *)[NSEntityDescription insertNewObjectForEntityForName:@"Secret" inManagedObjectContext:managedObjectContext];
-	[secret setSecretKey:key];
-
-	NSError *error;
-    if(![managedObjectContext save:&error]){
-	    //This is a serious error saying the record
-	    //could not be saved. Advise the user to
-	    //try again or restart the application. 
-    }
-    [secretArray insertObject:secret atIndex:0];
-}
-
-- (void)fetchRecords {
-	
-	// Define our table/entity to use
-	NSEntityDescription *secret = [NSEntityDescription entityForName:@"Secret" inManagedObjectContext:managedObjectContext];
-	
-	// Setup the fetch request
-	NSFetchRequest *request = [[NSFetchRequest alloc] init];
-	[request setReturnsObjectsAsFaults:NO];
-	[request setEntity:secret];
-	
-	// Define how we will sort the records
-	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"secretKey" ascending:NO];
-	NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
-	
-	[request setSortDescriptors:sortDescriptors];
-	[sortDescriptor release];
-	
-	// Fetch the records and handle an error
-	NSError *error;
-	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
-	
-	if (!mutableFetchResults) {
-		// Handle the error.
-		// This is a serious error and should advise the user to restart the application
-	}
-	
-	// Save our fetched data to an array
-	[self setSecretArray: mutableFetchResults];
-	
-	[mutableFetchResults release];
-	[request release];
-}
 
 - (void)loadView {
 	[super loadView];
@@ -110,9 +65,6 @@
 - (void)dealloc {
     [_fbLoginBtn release];
     [_loadingLabel release];
-	[managedObjectContext release];
-	[secretArray release];
-
     [super dealloc];
 }
 
@@ -127,6 +79,7 @@
     [instance.facebook authorize:instance.permissions delegate:self];
 }
 
+
 /**
  * Invalidate the access token and clear the cookie.
  */
@@ -134,6 +87,7 @@
     GlobalStore* instance = [GlobalStore sharedInstance];
     [instance.facebook logout:self];
 }
+
 
 -(IBAction)cameraOpenClick:(id)sender {
     UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
@@ -160,12 +114,14 @@
     [_loadingLabel setHidden:NO];
 }
 
+
 /**
  * Called when the user canceled the authorization dialog.
  */
 -(void)fbDidNotLogin:(BOOL)cancelled {
     NSLog(@"did not login");
 }
+
 
 /**
  * Called when the request logout has succeeded.
@@ -235,34 +191,21 @@
 	getSecretRequest.urlPath = url;
     [getSecretRequest sendSynchronously];
     
-    //retrieve secret from response
+    //retrieve secret key from response
     TTURLJSONResponse* getSecretResponse = getSecretRequest.response;
     NSDictionary* jsonResponse = getSecretResponse.rootObject;
 	NSLog(@"jsonResponse = %@", jsonResponse);
-    NSString* secret = [jsonResponse objectForKey:@"secret"];
-    NSLog(@"secret = %@", secret);
+    NSString* secretKey = [jsonResponse objectForKey:@"secret"];
+    NSLog(@"secret key = %@", secretKey);
 	
-    //save secret in data store
-    [self fetchRecords];
-	if ([secretArray count] != 0) {
-		NSString* myStoredKey = [[secretArray objectAtIndex:0] secretKey];
-		if ([myStoredKey isEqualToString:secret]) {
-			NSLog(@"We have the secret key it our DB");
-		} else {
-            //should reset instead of adding new secret
-			[self addSecret:secret];
-		}
-	} else [self addSecret:secret];
-	
-	NSLog(@"fetch = %@",secretArray);
+    //should reset instead of adding new secret
+    [self addSecretKeyAndId:secretKey:userId];
     
     //request for session key from own server
     TTURLRequest* getSessionKeyRequest = [TTURLRequest request];
     getSessionKeyRequest.response = [[TTURLJSONResponse alloc] init];
-	getSessionKeyRequest.urlPath = [@"http://www.gamemaki.com/main/createSession?secretKey=" stringByAppendingFormat:@"%@%@%@", secret, @"&facebookId=", userId];
+	getSessionKeyRequest.urlPath = [@"http://www.gamemaki.com/main/createSession?secretKey=" stringByAppendingFormat:@"%@%@%@", secretKey, @"&facebookId=", userId];
     [getSessionKeyRequest sendSynchronously];
-    
-    NSLog(@"url - %@", getSessionKeyRequest.urlPath);
     
     //retrieve session key from response
     TTURLJSONResponse* getSessionKeyResponse = getSessionKeyRequest.response;
@@ -287,6 +230,23 @@
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
     //[self.label setText:[error localizedDescription]];
 };
+
+
+- (void)addSecretKeyAndId:(NSString *)key :(NSString*)userId {
+    gamemakiAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+	NSManagedObjectContext* managedObjectContext = [appDelegate managedObjectContext];
+    
+    User* user = (User*)[NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:managedObjectContext];
+	[user setSecretKey:key];
+    [user setFacebookId:userId];
+    
+	NSError *error;
+    if(![managedObjectContext save:&error]){
+	    //This is a serious error saying the record
+	    //could not be saved. Advise the user to
+	    //try again or restart the application. 
+    }
+}
 
 
 // For responding to the user accepting a newly-captured picture or movie
@@ -331,6 +291,7 @@
     [[picker parentViewController] dismissModalViewControllerAnimated: YES];
     //[picker release];
 }
+
 
 // For responding to the user tapping Cancel.
 - (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {    

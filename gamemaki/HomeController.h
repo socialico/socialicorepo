@@ -9,7 +9,6 @@
 #import <Three20/Three20.h>
 #import <UIKit/UIKit.h>
 #import "FBConnect.h"
-#import "Secret.h"
 
 @interface HomeController : TTViewController
 <FBRequestDelegate,
@@ -19,20 +18,10 @@ UINavigationControllerDelegate,
 UIImagePickerControllerDelegate>{
     UIButton* _fbLoginBtn;
     TTStyledTextLabel* _loadingLabel;
-	
-	NSManagedObjectContext *managedObjectContext;
-	NSMutableArray *secretArray;
-	
 }
 
 -(IBAction)fbLoginBtnClick:(id)sender;
-
 -(IBAction)fbLogoutBtnClick:(id)sender;
-
-@property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;  
-@property (nonatomic, retain) NSMutableArray *secretArray;
-
-- (void) fetchRecords;  
-- (void) addSecret:(NSString*)key;   
+-(void)addSecretKeyAndId:(NSString *)key :(NSString*)userId;
 
 @end

@@ -5,25 +5,23 @@
 //  Created by Damon Widjaja on 5/26/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
-
-
+#import <extThree20JSON/extThree20JSON.h>
 #import "gamemakiAppDelegate.h"
 #import "TabBarController.h"
 #import "TabMenuController.h"
 #import "ChallengesController.h"
 #import "ChallengeProfileController.h"
 #import "CommentsController.h"
-#import "HomeController.h"
+#import "GlobalStore.h"
+#import "User.h"
 
 @implementation gamemakiAppDelegate
 
-//@synthesize window=_window;
+@synthesize managedObjectContext;
 
-- (void)applicationDidFinishLaunching:(UIApplication*)application 
+- (void)applicationDidFinishLaunching:(UIApplication*)application
 {
     controller = [[HomeController alloc] init];
-	controller.managedObjectContext = [self managedObjectContext];
-
     
     TTNavigator* navigator = [TTNavigator navigator];
     navigator.persistenceMode = TTNavigatorPersistenceModeAll;
@@ -47,6 +45,33 @@
         UIViewController* parentController = navigator.topViewController.parentViewController;
         if (parentController != nil) {
             [parentController.navigationController setNavigationBarHidden:YES];
+        }
+        
+        //1. get secret key from managed object
+        NSMutableArray* records = [self fetchRecords:@"User":@"secretKey"];
+        if ([records count] != 0) {
+            User* user = [records objectAtIndex:0];
+            NSString* secretKey = [user secretKey];
+            NSString* facebookId = [user facebookId];
+            NSLog(@"secretKey - %@", secretKey);
+            NSLog(@"facebookId - %@", facebookId);
+
+            //2. request for session key from own server
+            TTURLRequest* getSessionKeyRequest = [TTURLRequest request];
+            getSessionKeyRequest.response = [[TTURLJSONResponse alloc] init];
+            getSessionKeyRequest.urlPath = [@"http://www.gamemaki.com/main/createSession?secretKey=" stringByAppendingFormat:@"%@%@%@", secretKey, @"&facebookId=", facebookId];
+            [getSessionKeyRequest sendSynchronously];
+            
+            //retrieve session key from response
+            TTURLJSONResponse* getSessionKeyResponse = getSessionKeyRequest.response;
+            NSDictionary* jsonResponse2 = getSessionKeyResponse.rootObject;
+            NSLog(@"jsonResponse2 = %@", jsonResponse2);
+            NSString* sessionKey = [jsonResponse2 objectForKey:@"sessionKey"];
+            NSLog(@"session key = %@", sessionKey);
+            
+            //3. store session key in global store
+            GlobalStore* instance = [GlobalStore sharedInstance];
+            instance.sessionKey = sessionKey;
         }
     }
 }
@@ -113,6 +138,22 @@
      */
 }
 
+
+/**
+ Returns the managed object model for the application.
+ If the model doesn't already exist, it is created by merging all of the models found in the application bundle.
+ */
+- (NSManagedObjectModel *)managedObjectModel {
+	
+    if (managedObjectModel != nil) {
+        return managedObjectModel;
+    }
+    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
+	NSLog(@"managedObjectModel initialized!");
+    return managedObjectModel;
+}
+
+
 /**
  Returns the managed object context for the application.
  If the context doesn't already exist, it is created and bound to the persistent store coordinator for the application.
@@ -130,21 +171,6 @@
     }
 	NSLog(@"managedObjectContext initialized!");
     return managedObjectContext;
-}
-
-
-/**
- Returns the managed object model for the application.
- If the model doesn't already exist, it is created by merging all of the models found in the application bundle.
- */
-- (NSManagedObjectModel *)managedObjectModel {
-	
-    if (managedObjectModel != nil) {
-        return managedObjectModel;
-    }
-    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
-	NSLog(@"managedObjectModel initialized!");
-    return managedObjectModel;
 }
 
 
@@ -180,6 +206,7 @@
     return persistentStoreCoordinator;
 }
 
+
 /**
  Returns the path to the application's Documents directory.
  */
@@ -188,13 +215,42 @@
 }
 
 
+- (NSMutableArray*)fetchRecords:(NSString*)entityName :(NSString*)attributeName {
+	// Define our table/entity to use
+	NSEntityDescription* entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:[self managedObjectContext]];
+	
+	// Setup the fetch request
+	NSFetchRequest* request = [[NSFetchRequest alloc] init];
+	[request setReturnsObjectsAsFaults:NO];
+	[request setEntity:entity];
+	
+	// Define how we will sort the records
+	NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:attributeName ascending:NO];
+	NSArray* sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+	
+	[request setSortDescriptors:sortDescriptors];
+	[sortDescriptor release];
+	
+	// Fetch the records and handle an error
+	NSError *error;
+	NSMutableArray *mutableFetchResults = [[managedObjectContext executeFetchRequest:request error:&error] mutableCopy];
+	
+    [request release];
+    
+	if (!mutableFetchResults) {
+		// Handle the error.
+		// This is a serious error and should advise the user to restart the application
+	}
+    
+    return mutableFetchResults;
+}
+
+
 - (void)dealloc
 {
-    //[_window release];
 	[managedObjectContext release];
     [managedObjectModel release];
     [persistentStoreCoordinator release];
-
     [super dealloc];
 }
 

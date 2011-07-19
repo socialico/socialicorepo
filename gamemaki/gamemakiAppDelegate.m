@@ -21,7 +21,7 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication*)application
 {
-    controller = [[HomeController alloc] init];
+    controller = [[LoginController alloc] init];
     
     TTNavigator* navigator = [TTNavigator navigator];
     navigator.persistenceMode = TTNavigatorPersistenceModeAll;
@@ -31,7 +31,7 @@
     
     //Mapping tab bar
 	[map from:@"*" toViewController:[TTWebController class]];
-    [map from:@"tt://home" toViewController:controller];
+    [map from:@"tt://login" toViewController:controller];
 	[map from:@"tt://tabBar/" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
 	[map from:@"tt://my/challengesList/" toViewController:[ChallengesController class]];
@@ -40,8 +40,8 @@
     [map from:@"tt://commentsList/(initWithChallengeId:)" toViewController:[CommentsController class]];
     
     if (![navigator restoreViewControllers]) {
-        //nothing to restore. load home (not logged in)
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://home"]];
+        //nothing to restore
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login"]];
     } else {
         UIViewController* parentController = navigator.topViewController.parentViewController;
         if (parentController != nil) {
@@ -63,14 +63,14 @@
             getSessionKeyRequest.urlPath = [@"http://www.gamemaki.com/main/createSession?secretKey=" stringByAppendingFormat:@"%@%@%@", secretKey, @"&facebookId=", facebookId];
             [getSessionKeyRequest sendSynchronously];
             
-            //retrieve session key from response
+            //3. retrieve session key from response
             TTURLJSONResponse* getSessionKeyResponse = getSessionKeyRequest.response;
             NSDictionary* jsonResponse2 = getSessionKeyResponse.rootObject;
             NSLog(@"jsonResponse2 = %@", jsonResponse2);
             NSString* sessionKey = [jsonResponse2 objectForKey:@"sessionKey"];
             NSLog(@"session key = %@", sessionKey);
             
-            //3. store session key in global store
+            //4. store session key in global store
             GlobalStore* instance = [GlobalStore sharedInstance];
             instance.sessionKey = sessionKey;
         }

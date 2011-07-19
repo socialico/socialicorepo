@@ -6,10 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 #import <Three20/Three20.h>
-#import "HomeController.h"
+#import "LoginController.h"
 
 @interface gamemakiAppDelegate : NSObject <UIApplicationDelegate> {
-    HomeController* controller;
+    LoginController* controller;
 	NSManagedObjectModel* managedObjectModel;
 	NSManagedObjectContext* managedObjectContext;	    
 	NSPersistentStoreCoordinator* persistentStoreCoordinator;

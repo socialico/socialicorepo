@@ -20,6 +20,25 @@
 @synthesize categoryId = _categoryId;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+- (id)initWithName:(NSString*)name {
+    if (self == [super init]) {
+        //Styling Properties
+        UIImage *barLogo = [UIImage imageNamed:@"nav_bar_logo"];
+        UIImageView *barLogoView = [[UIImageView alloc] initWithImage:barLogo];
+        self.navigationItem.titleView = barLogoView;
+        self.navigationBarTintColor = RGBCOLOR(41,41,41);
+        self.statusBarStyle = UIStatusBarStyleBlackOpaque;
+        
+        self.title = @"My Challenges";
+        self.variableHeightRows = YES;
+        
+        UIImage* image = [UIImage imageNamed:@"home.png"];
+        self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:self.title image:image tag:0] autorelease];
+    }
+    return self;
+}
+
 - (id)initWithCategoryId:(NSString*)category {
 	if (self == [super init]) {
 		

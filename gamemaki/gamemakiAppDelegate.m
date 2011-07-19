@@ -34,46 +34,49 @@
     [map from:@"tt://login" toViewController:controller];
 	[map from:@"tt://tabBar/" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
-	[map from:@"tt://my/challenges/" toViewController:[ChallengesController class]];
+	[map from:@"tt://users/(initWithName:)/challenges" toViewController:[ChallengesController class]];
 	[map from:@"tt://categories/(initWithCategoryId:)/challenges" toViewController:[ChallengesController class]];
 	[map from:@"tt://challenges/" toViewController:[ChallengeProfileController class] transition:UIViewAnimationTransitionFlipFromLeft];
     [map from:@"tt://challenges/(initWithChallengeId:)/comments" toViewController:[CommentsController class]];
     
-    if (![navigator restoreViewControllers]) {
-        //nothing to restore
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login"]];
-    } else {
-        UIViewController* parentController = navigator.topViewController.parentViewController;
-        if (parentController != nil) {
-            [parentController.navigationController setNavigationBarHidden:YES];
-        }
+    //1. get secret key from managed object
+    NSMutableArray* records = [self fetchRecords:@"User":@"secretKey"];
+    if ([records count] != 0) {
+        User* user = [records objectAtIndex:0];
+        NSString* secretKey = [user secretKey];
+        NSString* facebookId = [user facebookId];
+        NSLog(@"secretKey - %@", secretKey);
+        NSLog(@"facebookId - %@", facebookId);
         
-        //1. get secret key from managed object
-        NSMutableArray* records = [self fetchRecords:@"User":@"secretKey"];
-        if ([records count] != 0) {
-            User* user = [records objectAtIndex:0];
-            NSString* secretKey = [user secretKey];
-            NSString* facebookId = [user facebookId];
-            NSLog(@"secretKey - %@", secretKey);
-            NSLog(@"facebookId - %@", facebookId);
-
-            //2. request for session key from own server
-            TTURLRequest* getSessionKeyRequest = [TTURLRequest request];
-            getSessionKeyRequest.response = [[TTURLJSONResponse alloc] init];
-            getSessionKeyRequest.urlPath = [@"http://www.gamemaki.com/main/createSession?secretKey=" stringByAppendingFormat:@"%@%@%@", secretKey, @"&facebookId=", facebookId];
-            [getSessionKeyRequest sendSynchronously];
-            
-            //3. retrieve session key from response
-            TTURLJSONResponse* getSessionKeyResponse = getSessionKeyRequest.response;
-            NSDictionary* jsonResponse2 = getSessionKeyResponse.rootObject;
-            NSLog(@"jsonResponse2 = %@", jsonResponse2);
-            NSString* sessionKey = [jsonResponse2 objectForKey:@"sessionKey"];
-            NSLog(@"session key = %@", sessionKey);
-            
-            //4. store session key in global store
-            GlobalStore* instance = [GlobalStore sharedInstance];
-            instance.sessionKey = sessionKey;
+        //2. request for session key from own server
+        TTURLRequest* getSessionKeyRequest = [TTURLRequest request];
+        getSessionKeyRequest.response = [[TTURLJSONResponse alloc] init];
+        getSessionKeyRequest.urlPath = [@"http://www.gamemaki.com/main/createSession?secretKey=" stringByAppendingFormat:@"%@%@%@", secretKey, @"&facebookId=", facebookId];
+        [getSessionKeyRequest sendSynchronously];
+        
+        //3. retrieve session key from response
+        TTURLJSONResponse* getSessionKeyResponse = getSessionKeyRequest.response;
+        NSDictionary* jsonResponse2 = getSessionKeyResponse.rootObject;
+        NSLog(@"jsonResponse2 = %@", jsonResponse2);
+        NSString* sessionKey = [jsonResponse2 objectForKey:@"sessionKey"];
+        NSLog(@"session key = %@", sessionKey);
+        
+        //4. store session key in global store
+        GlobalStore* instance = [GlobalStore sharedInstance];
+        instance.sessionKey = sessionKey;
+        
+        //5. restore view if possible
+        if (![navigator restoreViewControllers]) {
+            //nothing to restore
+            [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://tabBar"]];
+        } else {
+            UIViewController* parentController = navigator.topViewController.parentViewController;
+            if (parentController != nil) {
+                [parentController.navigationController setNavigationBarHidden:YES];
+            }
         }
+    } else {
+        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login"]];
     }
 }
 

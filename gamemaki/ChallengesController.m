@@ -10,6 +10,7 @@
 #import "ChallengesDataSource.h"
 #import "Challenge.h"
 #import "ChallengeFeedModel.h"
+#import "GlobalStore.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -75,8 +76,12 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-	self.dataSource = [[[ChallengesDataSource alloc]
-	initWithSearchQuery:self.categoryId] autorelease];
+    if (self.categoryId == nil) {
+        NSString* sessionKey = [GlobalStore sharedInstance].sessionKey;
+        self.dataSource = [[[ChallengesDataSource alloc] initWithSessionKey:sessionKey] autorelease];
+    } else {
+        self.dataSource = [[[ChallengesDataSource alloc] initWithSearchQuery:self.categoryId] autorelease];
+    }
 }
 
 

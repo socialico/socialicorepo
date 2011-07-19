@@ -34,6 +34,7 @@
     [map from:@"tt://home" toViewController:controller];
 	[map from:@"tt://tabBar/" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
+	[map from:@"tt://my/challengesList/" toViewController:[ChallengesController class]];
 	[map from:@"tt://challengesList/(initWithCategoryId:)" toViewController:[ChallengesController class]];
 	[map from:@"tt://challengeProfile/" toViewController:[ChallengeProfileController class] transition:UIViewAnimationTransitionFlipFromLeft];
     [map from:@"tt://commentsList/(initWithChallengeId:)" toViewController:[CommentsController class]];

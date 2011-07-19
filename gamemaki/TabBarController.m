@@ -13,7 +13,7 @@
 
 - (void)viewDidLoad {
     [self setTabURLs:[NSArray arrayWithObjects:
-        @"tt://my/challengesList/",
+        @"tt://my/challenges/",
         @"tt://menu/2",
         @"tt://menu/3",
     nil]];

@@ -34,10 +34,10 @@
     [map from:@"tt://login" toViewController:controller];
 	[map from:@"tt://tabBar/" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
-	[map from:@"tt://my/challengesList/" toViewController:[ChallengesController class]];
-	[map from:@"tt://challengesList/(initWithCategoryId:)" toViewController:[ChallengesController class]];
-	[map from:@"tt://challengeProfile/" toViewController:[ChallengeProfileController class] transition:UIViewAnimationTransitionFlipFromLeft];
-    [map from:@"tt://commentsList/(initWithChallengeId:)" toViewController:[CommentsController class]];
+	[map from:@"tt://my/challenges/" toViewController:[ChallengesController class]];
+	[map from:@"tt://categories/(initWithCategoryId:)/challenges" toViewController:[ChallengesController class]];
+	[map from:@"tt://challenges/" toViewController:[ChallengeProfileController class] transition:UIViewAnimationTransitionFlipFromLeft];
+    [map from:@"tt://challenges/(initWithChallengeId:)/comments" toViewController:[CommentsController class]];
     
     if (![navigator restoreViewControllers]) {
         //nothing to restore

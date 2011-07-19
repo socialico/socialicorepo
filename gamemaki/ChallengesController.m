@@ -66,7 +66,7 @@
 		Challenge* challenge = [challengesList objectAtIndex:indexPath.row];
 	
 		//Open challenge profile view controller
-		TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"tt://challengeProfile"] 
+		TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"tt://challenges"] 
 							applyQuery:[NSDictionary dictionaryWithObject:challenge forKey:@"challengeObject"]]
 							applyAnimated:YES];
 	

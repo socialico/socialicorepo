@@ -51,6 +51,7 @@
 		D50802A413BC30140059D056 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D508029913BC30140059D056 /* SBJsonWriter.m */; };
 		D50802B713BC36F20059D056 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50802B613BC36F20059D056 /* LoginController.m */; };
 		D5089E2513D0031B008F9D94 /* gamemaki_data.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = 4324A5A613C2CA8C0053657E /* gamemaki_data.xcdatamodel */; };
+		D5091E2D13D5873100F5EBA9 /* CameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5091E2C13D5873000F5EBA9 /* CameraController.m */; };
 		D50FAC4C13D42D8F00C07F33 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D50FAC4B13D42D8F00C07F33 /* User.m */; };
 		D527D67013948C82008B40F6 /* GlobalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D527D66F13948C81008B40F6 /* GlobalStore.m */; };
 		D533A05C13B9EB2D0042834A /* CommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D533A05B13B9EB2D0042834A /* CommentsController.m */; };
@@ -312,8 +313,10 @@
 		D508029713BC30140059D056 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		D508029813BC30140059D056 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		D508029913BC30140059D056 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		D50802B513BC36F10059D056 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = LoginController.h; sourceTree = "<group>"; };
+		D50802B513BC36F10059D056 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
 		D50802B613BC36F20059D056 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		D5091E2B13D5872F00F5EBA9 /* CameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraController.h; sourceTree = "<group>"; };
+		D5091E2C13D5873000F5EBA9 /* CameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraController.m; sourceTree = "<group>"; };
 		D50FAC4A13D42D8E00C07F33 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		D50FAC4B13D42D8F00C07F33 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		D527D66E13948C81008B40F6 /* GlobalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalStore.h; sourceTree = "<group>"; };
@@ -557,8 +560,8 @@
 				D533A05B13B9EB2D0042834A /* CommentsController.m */,
 				D50802B513BC36F10059D056 /* LoginController.h */,
 				D50802B613BC36F20059D056 /* LoginController.m */,
-				D50FAC4A13D42D8E00C07F33 /* User.h */,
-				D50FAC4B13D42D8F00C07F33 /* User.m */,
+				D5091E2B13D5872F00F5EBA9 /* CameraController.h */,
+				D5091E2C13D5873000F5EBA9 /* CameraController.m */,
 			);
 			path = gamemaki;
 			sourceTree = "<group>";
@@ -632,6 +635,8 @@
 		E4ED2EC6138E546B00BD3BC2 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				D50FAC4A13D42D8E00C07F33 /* User.h */,
+				D50FAC4B13D42D8F00C07F33 /* User.m */,
 				E4ED2EC7138E547B00BD3BC2 /* Challenge.h */,
 				E4ED2EC8138E547B00BD3BC2 /* Challenge.m */,
 			);
@@ -915,6 +920,7 @@
 				D50802B713BC36F20059D056 /* LoginController.m in Sources */,
 				4324A5A713C2CA8C0053657E /* gamemaki_data.xcdatamodeld in Sources */,
 				D50FAC4C13D42D8F00C07F33 /* User.m in Sources */,
+				D5091E2D13D5873100F5EBA9 /* CameraController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

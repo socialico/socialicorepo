@@ -9,6 +9,7 @@
 #import "gamemakiAppDelegate.h"
 #import "TabBarController.h"
 #import "TabMenuController.h"
+#import "CameraController.h"
 #import "ChallengesController.h"
 #import "ChallengeProfileController.h"
 #import "CommentsController.h"
@@ -34,6 +35,7 @@
     [map from:@"tt://login" toViewController:controller];
 	[map from:@"tt://tabBar/" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
+    [map from:@"tt://camera" toViewController:[CameraController class]];
 	[map from:@"tt://users/(initWithName:)/challenges" toViewController:[ChallengesController class]];
 	[map from:@"tt://categories/(initWithCategoryId:)/challenges" toViewController:[ChallengesController class]];
 	[map from:@"tt://challenges/" toViewController:[ChallengeProfileController class] transition:UIViewAnimationTransitionFlipFromLeft];
@@ -64,19 +66,20 @@
         //4. store session key in global store
         GlobalStore* instance = [GlobalStore sharedInstance];
         instance.sessionKey = sessionKey;
-        
-        //5. restore view if possible
-        if (![navigator restoreViewControllers]) {
-            //nothing to restore
+    }
+    
+    //5. restore view if possible
+    if (![navigator restoreViewControllers]) {
+        if ([GlobalStore sharedInstance].sessionKey != nil) {
             [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://tabBar"]];
         } else {
-            UIViewController* parentController = navigator.topViewController.parentViewController;
-            if (parentController != nil) {
-                [parentController.navigationController setNavigationBarHidden:YES];
-            }
+            [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login"]];
         }
     } else {
-        [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login"]];
+        UIViewController* parentController = navigator.topViewController.parentViewController;
+        if (parentController != nil) {
+            [parentController.navigationController setNavigationBarHidden:YES];
+        }
     }
 }
 

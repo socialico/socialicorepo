@@ -12,6 +12,7 @@
 
 @implementation CameraController
 
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -21,31 +22,57 @@
     return self;
 }
 
+
 - (void)dealloc
 {
+    [cameraImagePicker release];
+    [photoLibraryImagePicker release];
     [super dealloc];
 }
 
-- (void)loadView
-{
+
+- (void)loadView {
 	[super loadView];
-    UIButton* cameraOpenBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [cameraOpenBtn setTitle:@"Take Photo" forState:UIControlStateNormal];
-    [cameraOpenBtn addTarget:self action:@selector(cameraOpenClick:) forControlEvents:UIControlEventTouchUpInside];
-    [cameraOpenBtn sizeToFit];
-    cameraOpenBtn.top = 100;
-    cameraOpenBtn.left = floor(self.view.width/2 - cameraOpenBtn.width/2);
-    [self.view addSubview:cameraOpenBtn];
+    //[super viewWillAppear:NO];
+    //[super viewDidAppear:NO];
+    
+    UIButton* openCameraBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [openCameraBtn setTitle:@"Take New Photo" forState:UIControlStateNormal];
+    [openCameraBtn addTarget:self action:@selector(openCamera:) forControlEvents:UIControlEventTouchUpInside];
+    [openCameraBtn sizeToFit];
+    openCameraBtn.top = 100;
+    openCameraBtn.left = floor(self.view.width/2 - openCameraBtn.width/2);
+    [self.view addSubview:openCameraBtn];
+    
+    UIButton* openPhotoLibraryBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [openPhotoLibraryBtn setTitle:@"Select from Library" forState:UIControlStateNormal];
+    [openPhotoLibraryBtn addTarget:self action:@selector(openPhotoLibrary:) forControlEvents:UIControlEventTouchUpInside];
+    [openPhotoLibraryBtn sizeToFit];
+    openPhotoLibraryBtn.top = 140;
+    openPhotoLibraryBtn.left = floor(self.view.width/2 - openPhotoLibraryBtn.width/2);
+    [self.view addSubview:openPhotoLibraryBtn];
 }
 
--(IBAction)cameraOpenClick:(id)sender {
-    UIImagePickerController * imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    //imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    imagePicker.delegate = self;
-    [self presentModalViewController:imagePicker animated:YES];
-    [imagePicker release];
+
+- (IBAction) openCamera:(id)sender {
+    if (cameraImagePicker == nil) {
+        cameraImagePicker = [[UIImagePickerController alloc] init];
+        cameraImagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        cameraImagePicker.delegate = self;
+    }
+    [self presentModalViewController:cameraImagePicker animated:YES];
 }
+
+
+- (IBAction) openPhotoLibrary:(id)sender {
+    if (photoLibraryImagePicker == nil) {
+        photoLibraryImagePicker = [[UIImagePickerController alloc] init];
+        photoLibraryImagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        photoLibraryImagePicker.delegate = self;
+    }
+    [self presentModalViewController:photoLibraryImagePicker animated:YES];
+}
+
 
 // For responding to the user accepting a newly-captured picture or movie
 - (void) imagePickerController: (UIImagePickerController *) picker
@@ -89,6 +116,7 @@
     [[picker parentViewController] dismissModalViewControllerAnimated: YES];
     //[picker release];
 }
+
 
 // For responding to the user tapping Cancel.
 - (void) imagePickerControllerDidCancel: (UIImagePickerController *) picker {    

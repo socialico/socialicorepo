@@ -12,7 +12,8 @@
 @interface CameraController : UIViewController
 <UINavigationControllerDelegate,
 UIImagePickerControllerDelegate> {
-
+    UIImagePickerController* cameraImagePicker;
+    UIImagePickerController* photoLibraryImagePicker;
 }
 
 @end

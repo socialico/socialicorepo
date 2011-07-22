@@ -33,7 +33,7 @@
     //Mapping tab bar
 	[map from:@"*" toViewController:[TTWebController class]];
     [map from:@"tt://login" toViewController:controller];
-	[map from:@"tt://tabBar/" toSharedViewController:[TabBarController class]];
+	[map from:@"tt://tabBar" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
     [map from:@"tt://camera" toViewController:[CameraController class]];
 	[map from:@"tt://users/(initWithName:)/challenges" toViewController:[ChallengesController class]];
@@ -78,7 +78,7 @@
     } else {
         UIViewController* parentController = navigator.topViewController.parentViewController;
         if (parentController != nil) {
-            [parentController.navigationController setNavigationBarHidden:YES];
+            //[parentController.navigationController setNavigationBarHidden:YES];
         }
     }
 }

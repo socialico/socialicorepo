@@ -10,6 +10,7 @@
 #import "TabBarController.h"
 #import "TabMenuController.h"
 #import "CameraController.h"
+#import "MapController.h"
 #import "ChallengesController.h"
 #import "ChallengeProfileController.h"
 #import "CommentsController.h"
@@ -36,6 +37,7 @@
 	[map from:@"tt://tabBar" toSharedViewController:[TabBarController class]];
     [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
     [map from:@"tt://camera/(initWithName:)" toViewController:[CameraController class]];
+    [map from:@"tt://map/(initWithName:)" toViewController:[MapController class]];
 	[map from:@"tt://users/(initWithName:)/challenges" toViewController:[ChallengesController class]];
 	[map from:@"tt://categories/(initWithCategoryId:)/challenges" toViewController:[ChallengesController class]];
 	[map from:@"tt://challenges/" toViewController:[ChallengeProfileController class] transition:UIViewAnimationTransitionFlipFromLeft];

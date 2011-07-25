@@ -9,7 +9,6 @@
 #import "CameraController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 
-
 @implementation CameraController
 
 - (id)initWithName:(NSString*) name {

@@ -53,6 +53,9 @@
 		D5089E2513D0031B008F9D94 /* gamemaki_data.xcdatamodel in Resources */ = {isa = PBXBuildFile; fileRef = 4324A5A613C2CA8C0053657E /* gamemaki_data.xcdatamodel */; };
 		D5091E2D13D5873100F5EBA9 /* CameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5091E2C13D5873000F5EBA9 /* CameraController.m */; };
 		D50FAC4C13D42D8F00C07F33 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = D50FAC4B13D42D8F00C07F33 /* User.m */; };
+		D52728D513DD2D2700AEC2B2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52728D413DD2D2700AEC2B2 /* CoreLocation.framework */; };
+		D52728D713DD6B6100AEC2B2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D52728D613DD6B6100AEC2B2 /* MapKit.framework */; };
+		D52728DA13DD7A3B00AEC2B2 /* MapController.m in Sources */ = {isa = PBXBuildFile; fileRef = D52728D913DD7A3A00AEC2B2 /* MapController.m */; };
 		D527D67013948C82008B40F6 /* GlobalStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D527D66F13948C81008B40F6 /* GlobalStore.m */; };
 		D533A05C13B9EB2D0042834A /* CommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D533A05B13B9EB2D0042834A /* CommentsController.m */; };
 		D5CCE7A313CAB32B004BBD11 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5CCE7A213CAB32B004BBD11 /* MobileCoreServices.framework */; };
@@ -319,6 +322,10 @@
 		D5091E2C13D5873000F5EBA9 /* CameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraController.m; sourceTree = "<group>"; };
 		D50FAC4A13D42D8E00C07F33 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		D50FAC4B13D42D8F00C07F33 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		D52728D413DD2D2700AEC2B2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D52728D613DD6B6100AEC2B2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D52728D813DD7A3900AEC2B2 /* MapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapController.h; sourceTree = "<group>"; };
+		D52728D913DD7A3A00AEC2B2 /* MapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapController.m; sourceTree = "<group>"; };
 		D527D66E13948C81008B40F6 /* GlobalStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalStore.h; sourceTree = "<group>"; };
 		D527D66F13948C81008B40F6 /* GlobalStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GlobalStore.m; sourceTree = "<group>"; };
 		D533A05A13B9EB2D0042834A /* CommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsController.h; sourceTree = "<group>"; };
@@ -365,6 +372,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D52728D713DD6B6100AEC2B2 /* MapKit.framework in Frameworks */,
+				D52728D513DD2D2700AEC2B2 /* CoreLocation.framework in Frameworks */,
 				D5CCE7A313CAB32B004BBD11 /* MobileCoreServices.framework in Frameworks */,
 				4324A5A413C2C6F80053657E /* CoreData.framework in Frameworks */,
 				E4ED2E03138E530200BD3BC2 /* libextThree20JSON+YAJL.a in Frameworks */,
@@ -523,6 +532,8 @@
 		E4936B9A138E2D72009F732A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D52728D613DD6B6100AEC2B2 /* MapKit.framework */,
+				D52728D413DD2D2700AEC2B2 /* CoreLocation.framework */,
 				43444815138E3865007AE9F4 /* Three20 */,
 				4324A5A313C2C6F80053657E /* CoreData.framework */,
 				320AF8492C47A4D819F7C450 /* QuartzCore.framework */,
@@ -562,6 +573,8 @@
 				D50802B613BC36F20059D056 /* LoginController.m */,
 				D5091E2B13D5872F00F5EBA9 /* CameraController.h */,
 				D5091E2C13D5873000F5EBA9 /* CameraController.m */,
+				D52728D813DD7A3900AEC2B2 /* MapController.h */,
+				D52728D913DD7A3A00AEC2B2 /* MapController.m */,
 			);
 			path = gamemaki;
 			sourceTree = "<group>";
@@ -921,6 +934,7 @@
 				4324A5A713C2CA8C0053657E /* gamemaki_data.xcdatamodeld in Sources */,
 				D50FAC4C13D42D8F00C07F33 /* User.m in Sources */,
 				D5091E2D13D5873100F5EBA9 /* CameraController.m in Sources */,
+				D52728DA13DD7A3B00AEC2B2 /* MapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

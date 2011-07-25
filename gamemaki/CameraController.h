@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface CameraController : UIViewController
 <UINavigationControllerDelegate,
 UIImagePickerControllerDelegate> {

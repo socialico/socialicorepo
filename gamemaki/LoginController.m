@@ -23,7 +23,7 @@
     
 	[self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"Default_2nd.png"]]];
 
-    //self.navigationController.navigationBar.hidden = YES;
+    self.navigationController.navigationBar.hidden = YES;
     
     _fbLoginBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [_fbLoginBtn setTitle:@"Login with your Facebook" forState:UIControlStateNormal];

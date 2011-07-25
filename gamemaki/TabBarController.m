@@ -15,7 +15,7 @@
     [self setTabURLs:[NSArray arrayWithObjects:
         @"tt://users/me/challenges",
         @"tt://menu/2",
-        @"tt://camera",
+        @"tt://camera/me",
     nil]];
 }
 

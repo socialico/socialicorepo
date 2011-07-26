@@ -18,10 +18,12 @@
 @implementation ChallengesController
 
 @synthesize categoryId = _categoryId;
+@synthesize latlng = _latlng;
+@synthesize locationManager;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (id)initWithName:(NSString*)name {
+- (id)initWithMe:(NSString*)me {
     if (self == [super init]) {
         //Styling Properties
         UIImage *barLogo = [UIImage imageNamed:@"nav_bar_logo"];
@@ -35,6 +37,29 @@
         
         UIImage* image = [UIImage imageNamed:@"home.png"];
         self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:self.title image:image tag:0] autorelease];
+    }
+    return self;
+}
+
+- (id)initWithLocation:(NSString*)me {
+    if (self == [super init]) {
+        //Styling Properties
+        UIImage *barLogo = [UIImage imageNamed:@"nav_bar_logo"];
+        UIImageView *barLogoView = [[UIImageView alloc] initWithImage:barLogo];
+        self.navigationItem.titleView = barLogoView;
+        self.navigationBarTintColor = RGBCOLOR(41,41,41);
+        self.statusBarStyle = UIStatusBarStyleBlackOpaque;
+        
+        self.title = @"Nearby Challenges";
+        self.variableHeightRows = YES;
+        
+        UIImage* image = [UIImage imageNamed:@"home.png"];
+        self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:self.title image:image tag:0] autorelease];
+        
+        self.locationManager = [[CLLocationManager alloc] init];
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        locationManager.delegate = self;
+        [locationManager startUpdatingLocation];
     }
     return self;
 }
@@ -95,11 +120,13 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-    if (self.categoryId == nil) {
+    if (self.categoryId != nil) {
+        self.dataSource = [[[ChallengesDataSource alloc] initWithSearchQuery:self.categoryId] autorelease];
+    } else if (self.latlng != nil) {
+        self.dataSource = [[[ChallengesDataSource alloc] initWithSearchLocation:self.latlng] autorelease];
+    } else {
         NSString* sessionKey = [GlobalStore sharedInstance].sessionKey;
         self.dataSource = [[[ChallengesDataSource alloc] initWithSessionKey:sessionKey] autorelease];
-    } else {
-        self.dataSource = [[[ChallengesDataSource alloc] initWithSearchQuery:self.categoryId] autorelease];
     }
 }
 
@@ -109,5 +136,29 @@
 	return [[[TTTableViewDragRefreshDelegate alloc] initWithController:self] autorelease];
 }
 
+
+- (void)dealloc
+{
+    [locationManager release];
+    [super dealloc];
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager
+   didUpdateToLocation:(CLLocation *)newLocation
+          fromLocation:(CLLocation *)oldLocation
+{
+    NSString *currentLatitude = [[NSString alloc] initWithFormat:@"%g", 
+                                 newLocation.coordinate.latitude];
+    
+    NSString *currentLongitude = [[NSString alloc] initWithFormat:@"%g",
+                                  newLocation.coordinate.longitude];
+    
+    NSLog(@"current latitude - %@", currentLatitude);
+    NSLog(@"current longitude - %@", currentLongitude);
+    
+    [currentLatitude release];
+    [currentLongitude release];
+}
 
 @end

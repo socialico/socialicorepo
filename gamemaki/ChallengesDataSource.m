@@ -29,6 +29,14 @@
     return self;
 }
 
+- (id)initWithSearchLocation:(NSString*)latlng {
+    if (self == [super init]) {
+        _searchFeedModel = [[ChallengeFeedModel alloc] initWithSearchLocation:latlng];
+    }
+    
+    return self;
+}
+
 - (id)initWithSessionKey:(NSString*)sessionKey {
     if (self == [super init]) {
         NSLog(@"sessionKey = %@", sessionKey);

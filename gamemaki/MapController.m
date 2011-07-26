@@ -10,9 +10,9 @@
 
 @implementation MapController
 
-@synthesize locationManager, mapView;
+@synthesize mapView;
 
-- (id)initWithName:(NSString*) name {
+- (id)initWithMe:(NSString*) me {
     if (self == [super init]) {
         //Styling Properties
         UIImage *barLogo = [UIImage imageNamed:@"nav_bar_logo"];
@@ -26,11 +26,6 @@
         
         UIImage* image = [UIImage imageNamed:@"me.png"];
         self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:self.title image:image tag:0] autorelease];
-        
-        self.locationManager = [[CLLocationManager alloc] init];
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        locationManager.delegate = self;
-        //[locationManager startUpdatingLocation];
     }
     return self;
 }
@@ -38,7 +33,6 @@
 
 - (void)dealloc
 {
-    [locationManager release];
     [mapView release];
     [super dealloc];
 }
@@ -53,22 +47,5 @@
     [self.view addSubview:mapView];
 }
 
-
--(void)locationManager:(CLLocationManager *)manager
-   didUpdateToLocation:(CLLocation *)newLocation
-          fromLocation:(CLLocation *)oldLocation
-{
-    NSString *currentLatitude = [[NSString alloc] initWithFormat:@"%g", 
-                                 newLocation.coordinate.latitude];
-    
-    NSString *currentLongitude = [[NSString alloc] initWithFormat:@"%g",
-                                  newLocation.coordinate.longitude];
-    
-    NSLog(@"current latitude - %@", currentLatitude);
-    NSLog(@"current longitude - %@", currentLongitude);
-    
-    [currentLatitude release];
-    [currentLongitude release];
-}
 
 @end

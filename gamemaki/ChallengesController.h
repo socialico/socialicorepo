@@ -7,11 +7,17 @@
 //
 
 #import <Three20/Three20.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ChallengesController : TTTableViewController {
+@interface ChallengesController : TTTableViewController
+<CLLocationManagerDelegate> {
 	NSString* _categoryId;
+    NSString* _latlng;
+    CLLocationManager *locationManager;
 }
 
 @property (nonatomic, copy)   NSString* categoryId;
+@property (nonatomic, copy)   NSString* latlng;
+@property (nonatomic, retain) CLLocationManager *locationManager;
 
 @end

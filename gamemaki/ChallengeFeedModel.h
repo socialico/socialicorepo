@@ -9,6 +9,7 @@
 
 @interface ChallengeFeedModel : TTURLRequestModel {
     NSString* _searchQuery;
+    NSString* _latlng;
     NSString* _sessionKey;
     
     NSMutableArray*  _challengelist;
@@ -21,6 +22,7 @@
 }
 
 @property (nonatomic, copy)     NSString*       searchQuery;
+@property (nonatomic, copy)     NSString*       latlng;
 @property (nonatomic, copy)     NSString*       sessionKey;
 @property (nonatomic, readonly) NSMutableArray* challengelist;
 @property (nonatomic, assign)   NSUInteger      resultsPerPage;

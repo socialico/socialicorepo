@@ -11,7 +11,7 @@
 
 @implementation CameraController
 
-- (id)initWithName:(NSString*) name {
+- (id)initWithMe:(NSString*) me {
     if (self == [super init]) {
         //Styling Properties
         UIImage *barLogo = [UIImage imageNamed:@"nav_bar_logo"];

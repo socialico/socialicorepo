@@ -12,13 +12,10 @@
 
 
 @interface MapController : UIViewController
-<CLLocationManagerDelegate,
-MKMapViewDelegate> {
-    CLLocationManager *locationManager;
+<MKMapViewDelegate> {
     MKMapView* mapView;
 }
 
-@property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, retain) MKMapView *mapView;
 
 @end

@@ -17,6 +17,7 @@
                       @"tt://menu/2",
                       @"tt://camera/me",
                       @"tt://map/me",
+                      @"tt://location/me/challenges",
                       nil]];
 }
 

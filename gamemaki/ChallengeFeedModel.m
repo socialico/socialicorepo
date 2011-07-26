@@ -113,7 +113,8 @@ static NSString* ChallengeFeed = @"http://gamemaki.com/main/api/challenges.json?
             
             [request send];
         } else if (TTIsStringWithAnyText(_sessionKey)) {
-            NSString* url = [@"http://www.gamemaki.com/main/api/activities.json?session_key=" stringByAppendingString:_sessionKey];
+            NSString* challengeFeedURL = @"http://www.gamemaki.com/main/api/activities.json?session_key=%@&page=%u";
+            NSString* url = [NSString stringWithFormat:challengeFeedURL, _sessionKey, _page];
             
             TTURLRequest* request = [TTURLRequest
                                      requestWithURL: url

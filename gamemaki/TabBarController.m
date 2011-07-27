@@ -11,7 +11,11 @@
 
 @implementation TabBarController
 
-- (void)viewDidLoad {
+- (void)loadView {
+	[super loadView];
+    //[super viewWillAppear:NO];
+    //[super viewDidAppear:NO];
+    
     [self setTabURLs:[NSArray arrayWithObjects:
                       @"tt://users/me/challenges",
                       @"tt://categories",
@@ -19,6 +23,10 @@
                       @"tt://map",
                       @"tt://location/me/challenges",
                       nil]];
+    
+    //self.selectedIndex = 1;
+    
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 @end

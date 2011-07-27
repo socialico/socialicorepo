@@ -26,7 +26,7 @@
     controller = [[LoginController alloc] init];
     
     TTNavigator* navigator = [TTNavigator navigator];
-    navigator.persistenceMode = TTNavigatorPersistenceModeAll;
+    navigator.persistenceMode = TTNavigatorPersistenceModeTop;
     navigator.window = [[[UIWindow alloc] initWithFrame:TTScreenBounds()] autorelease];
     
     TTURLMap* map = navigator.URLMap;
@@ -77,11 +77,6 @@
             [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://tabBar"]];
         } else {
             [navigator openURLAction:[TTURLAction actionWithURLPath:@"tt://login"]];
-        }
-    } else {
-        UIViewController* parentController = navigator.topViewController.parentViewController;
-        if (parentController != nil) {
-            [parentController.navigationController setNavigationBarHidden:YES];
         }
     }
 }

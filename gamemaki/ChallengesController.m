@@ -108,31 +108,35 @@
 
 
 - (void) didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
-	//Retrieve challenge object
-	ChallengesDataSource* dataList = self.dataSource;
-	ChallengeFeedModel* dataModel = dataList.model;
-
-	//If not load more button class
-	if([object class] != [TTTableMoreButton class]) {
-		NSArray* challengesList= dataModel.challengelist;
-		Challenge* challenge = [challengesList objectAtIndex:indexPath.row];
-	
-		//Open challenge profile view controller
-		TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"tt://challenges"] 
-							applyQuery:[NSDictionary dictionaryWithObject:challenge forKey:@"challengeObject"]]
-							applyAnimated:YES];
-	
-		[[TTNavigator navigator] openURLAction:action];
-	}
+    
+    //currently challenges by location is not loaded. this will prevent app from crashing
+    if (challengesType != ChallengesByLocation) {
+        //Retrieve challenge object
+        ChallengesDataSource* dataList = self.dataSource;
+        ChallengeFeedModel* dataModel = dataList.model;
+        
+        //If not load more button class
+        if([object class] != [TTTableMoreButton class]) {
+            NSArray* challengesList= dataModel.challengelist;
+            Challenge* challenge = [challengesList objectAtIndex:indexPath.row];
+            
+            //Open challenge profile view controller
+            TTURLAction *action =  [[[TTURLAction actionWithURLPath:@"tt://challenges"] 
+                                     applyQuery:[NSDictionary dictionaryWithObject:challenge forKey:@"challengeObject"]]
+                                    applyAnimated:YES];
+            
+            [[TTNavigator navigator] openURLAction:action];
+        }
+    }
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)createModel {
-    if (self.categoryId != nil) {
+    if (challengesType == ChallengesByCategory && self.categoryId != nil) {
         self.dataSource = [[[ChallengesDataSource alloc] initWithSearchQuery:self.categoryId] autorelease];
-    } else if (self.latlng != nil) {
+    } else if (challengesType == ChallengesByLocation && self.latlng != nil) {
         //self.dataSource = [[[ChallengesDataSource alloc] initWithSearchLocation:self.latlng] autorelease];
-    } else {
+    } else if (challengesType == ChallengesByUser) {
         NSString* sessionKey = [GlobalStore sharedInstance].sessionKey;
         self.dataSource = [[[ChallengesDataSource alloc] initWithSessionKey:sessionKey] autorelease];
     }

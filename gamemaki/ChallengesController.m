@@ -25,6 +25,7 @@
 
 - (id)initWithUser:(NSString*)user {
     if (self == [super init]) {
+        challengesType = ChallengesByUser;
         
         //setup navigation bar
         self.navigationBarTintColor = RGBCOLOR(41,41,41);
@@ -42,6 +43,7 @@
 
 - (id)initWithLocation:(NSString*)location {
     if (self == [super init]) {
+        challengesType = ChallengesByLocation;
         
         //setup navigation bar
         self.navigationBarTintColor = RGBCOLOR(41,41,41);
@@ -53,7 +55,7 @@
         self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:self.title image:image tag:0] autorelease];
         
         //initialize location manager
-        self.locationManager = [[CLLocationManager alloc] init];
+        locationManager = [[CLLocationManager alloc] init];
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.delegate = self;
         
@@ -64,6 +66,7 @@
 
 - (id)initWithCategoryId:(NSString*)category {
 	if (self == [super init]) {
+        challengesType = ChallengesByCategory;
 		
 		//assign category ID
 		self.categoryId = category;
@@ -98,8 +101,9 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    //check which tab is it first
-    [locationManager startUpdatingLocation];
+    if (challengesType == ChallengesByLocation) {
+        [locationManager startUpdatingLocation];
+    }
 }
 
 
@@ -143,7 +147,9 @@
 
 - (void)dealloc
 {
-    [locationManager release];
+    if (challengesType == ChallengesByLocation) {
+        [locationManager release];   
+    }
     [super dealloc];
 }
 

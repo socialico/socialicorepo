@@ -13,6 +13,7 @@
 - (id)initWithNavigatorURL:(NSURL*)URL query:(NSDictionary*)query {
     
     if (self == [super initWithNavigatorURL:URL query:query]) {
+        
         //setup navigation bar
         UIImage *barLogo = [UIImage imageNamed:@"nav_bar_logo"];
         UIImageView *barLogoView = [[UIImageView alloc] initWithImage:barLogo];

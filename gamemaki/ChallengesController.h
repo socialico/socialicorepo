@@ -9,15 +9,22 @@
 #import <Three20/Three20.h>
 #import <CoreLocation/CoreLocation.h>
 
+typedef enum {
+    ChallengesByUser,
+    ChallengesByLocation,
+    ChallengesByCategory
+} ChallengesType;
+
 @interface ChallengesController : TTTableViewController
 <CLLocationManagerDelegate> {
+    ChallengesType challengesType;
 	NSString* _categoryId;
     NSString* _latlng;
-    CLLocationManager *locationManager;
+    CLLocationManager* locationManager;
 }
 
-@property (nonatomic, copy)   NSString* categoryId;
-@property (nonatomic, copy)   NSString* latlng;
-@property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic, copy) NSString* categoryId;
+@property (nonatomic, copy) NSString* latlng;
+@property (nonatomic, retain) CLLocationManager* locationManager;
 
 @end

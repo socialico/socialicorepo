@@ -8,9 +8,9 @@
 #import <extThree20JSON/extThree20JSON.h>
 #import "gamemakiAppDelegate.h"
 #import "TabBarController.h"
-#import "TabMenuController.h"
 #import "CameraController.h"
 #import "MapController.h"
+#import "CategoriesController.h"
 #import "ChallengesController.h"
 #import "ChallengeProfileController.h"
 #import "CommentsController.h"
@@ -35,11 +35,11 @@
 	[map from:@"*" toViewController:[TTWebController class]];
     [map from:@"tt://login" toViewController:controller];
 	[map from:@"tt://tabBar" toSharedViewController:[TabBarController class]];
-    [map from:@"tt://menu/(initWithMenu:)" toSharedViewController:[TabMenuController class]];
-    [map from:@"tt://camera/(initWithMe:)" toViewController:[CameraController class]];
-    [map from:@"tt://map/(initWithMe:)" toViewController:[MapController class]];
+    [map from:@"tt://camera" toViewController:[CameraController class]];
+    [map from:@"tt://map" toViewController:[MapController class]];
+    [map from:@"tt://users/(initWithUser:)/challenges" toViewController:[ChallengesController class]];
     [map from:@"tt://location/(initWithLocation:)/challenges" toViewController:[ChallengesController class]];
-	[map from:@"tt://users/(initWithMe:)/challenges" toViewController:[ChallengesController class]];
+    [map from:@"tt://categories" toViewController:[CategoriesController class]];
 	[map from:@"tt://categories/(initWithCategoryId:)/challenges" toViewController:[ChallengesController class]];
 	[map from:@"tt://challenges/" toViewController:[ChallengeProfileController class] transition:UIViewAnimationTransitionFlipFromLeft];
     [map from:@"tt://challenges/(initWithChallengeId:)/comments" toViewController:[CommentsController class]];

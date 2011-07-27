@@ -23,43 +23,41 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-- (id)initWithMe:(NSString*)me {
+- (id)initWithUser:(NSString*)user {
     if (self == [super init]) {
-        //Styling Properties
-        UIImage *barLogo = [UIImage imageNamed:@"nav_bar_logo"];
-        UIImageView *barLogoView = [[UIImageView alloc] initWithImage:barLogo];
-        self.navigationItem.titleView = barLogoView;
+        
+        //setup navigation bar
         self.navigationBarTintColor = RGBCOLOR(41,41,41);
         self.statusBarStyle = UIStatusBarStyleBlackOpaque;
-        
         self.title = @"My Challenges";
-        self.variableHeightRows = YES;
         
-        UIImage* image = [UIImage imageNamed:@"home.png"];
+        //setup tab bar item
+        UIImage* image = [UIImage imageNamed:@"challenges.png"];
         self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:self.title image:image tag:0] autorelease];
+                
+        self.variableHeightRows = YES;
     }
     return self;
 }
 
-- (id)initWithLocation:(NSString*)me {
+- (id)initWithLocation:(NSString*)location {
     if (self == [super init]) {
-        //Styling Properties
-        UIImage *barLogo = [UIImage imageNamed:@"nav_bar_logo"];
-        UIImageView *barLogoView = [[UIImageView alloc] initWithImage:barLogo];
-        self.navigationItem.titleView = barLogoView;
+        
+        //setup navigation bar
         self.navigationBarTintColor = RGBCOLOR(41,41,41);
         self.statusBarStyle = UIStatusBarStyleBlackOpaque;
-        
         self.title = @"Nearby Challenges";
-        self.variableHeightRows = YES;
         
-        UIImage* image = [UIImage imageNamed:@"home.png"];
+        //setup tab bar item
+        UIImage* image = [UIImage imageNamed:@"challenges.png"];
         self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:self.title image:image tag:0] autorelease];
         
+        //initialize location manager
         self.locationManager = [[CLLocationManager alloc] init];
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.delegate = self;
-        [locationManager startUpdatingLocation];
+        
+        self.variableHeightRows = YES;
     }
     return self;
 }
@@ -67,14 +65,12 @@
 - (id)initWithCategoryId:(NSString*)category {
 	if (self == [super init]) {
 		
-		//Styling Properties
-		self.navigationBarTintColor = RGBCOLOR(41,41,41);
-		self.statusBarStyle = UIStatusBarStyleBlackOpaque;
-		
-		//Assigning category ID
+		//assign category ID
 		self.categoryId = category;
 		
-		//Printing table title name
+		//setup navigation bar
+		self.navigationBarTintColor = RGBCOLOR(41,41,41);
+		self.statusBarStyle = UIStatusBarStyleBlackOpaque;
 		if([category isEqualToString:@"0"])
 			self.title = @"Latest";
 		else if([category isEqualToString:@"1"])
@@ -98,6 +94,14 @@
 	}
 	return self;
 }
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    //check which tab is it first
+    [locationManager startUpdatingLocation];
+}
+
 
 - (void) didSelectObject:(id)object atIndexPath:(NSIndexPath *)indexPath {
 	//Retrieve challenge object
@@ -123,7 +127,7 @@
     if (self.categoryId != nil) {
         self.dataSource = [[[ChallengesDataSource alloc] initWithSearchQuery:self.categoryId] autorelease];
     } else if (self.latlng != nil) {
-        self.dataSource = [[[ChallengesDataSource alloc] initWithSearchLocation:self.latlng] autorelease];
+        //self.dataSource = [[[ChallengesDataSource alloc] initWithSearchLocation:self.latlng] autorelease];
     } else {
         NSString* sessionKey = [GlobalStore sharedInstance].sessionKey;
         self.dataSource = [[[ChallengesDataSource alloc] initWithSessionKey:sessionKey] autorelease];
@@ -156,6 +160,8 @@
     
     NSLog(@"current latitude - %@", currentLatitude);
     NSLog(@"current longitude - %@", currentLongitude);
+    
+    self.dataSource = [[[ChallengesDataSource alloc] initWithSearchLocation:self.latlng] autorelease];
     
     [currentLatitude release];
     [currentLongitude release];

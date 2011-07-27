@@ -69,7 +69,7 @@
 		E4C5AFCB138F93D300E6BD8B /* ChallengeProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AFCA138F93D300E6BD8B /* ChallengeProfileController.m */; };
 		E4DC34F6138E3C3000E2F180 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34F5138E3C3000E2F180 /* Icon.png */; };
 		E4DC34F9138E3E3F00E2F180 /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DC34F8138E3E3F00E2F180 /* TabBarController.m */; };
-		E4DC34FC138E42E100E2F180 /* TabMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DC34FB138E42E100E2F180 /* TabMenuController.m */; };
+		E4DC34FC138E42E100E2F180 /* CategoriesController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4DC34FB138E42E100E2F180 /* CategoriesController.m */; };
 		E4DC3503138E450200E2F180 /* challenges.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34FD138E450200E2F180 /* challenges.png */; };
 		E4DC3504138E450200E2F180 /* challenges@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34FE138E450200E2F180 /* challenges@2x.png */; };
 		E4DC3505138E450200E2F180 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = E4DC34FF138E450200E2F180 /* home.png */; };
@@ -349,8 +349,8 @@
 		E4DC34F5138E3C3000E2F180 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		E4DC34F7138E3E3F00E2F180 /* TabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
 		E4DC34F8138E3E3F00E2F180 /* TabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
-		E4DC34FA138E42E100E2F180 /* TabMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabMenuController.h; sourceTree = "<group>"; };
-		E4DC34FB138E42E100E2F180 /* TabMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabMenuController.m; sourceTree = "<group>"; };
+		E4DC34FA138E42E100E2F180 /* CategoriesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesController.h; sourceTree = "<group>"; };
+		E4DC34FB138E42E100E2F180 /* CategoriesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesController.m; sourceTree = "<group>"; };
 		E4DC34FD138E450200E2F180 /* challenges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = challenges.png; sourceTree = "<group>"; };
 		E4DC34FE138E450200E2F180 /* challenges@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "challenges@2x.png"; sourceTree = "<group>"; };
 		E4DC34FF138E450200E2F180 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
@@ -563,8 +563,8 @@
 				E4936BAB138E2D72009F732A /* gamemakiAppDelegate.m */,
 				E4DC34F7138E3E3F00E2F180 /* TabBarController.h */,
 				E4DC34F8138E3E3F00E2F180 /* TabBarController.m */,
-				E4DC34FA138E42E100E2F180 /* TabMenuController.h */,
-				E4DC34FB138E42E100E2F180 /* TabMenuController.m */,
+				E4DC34FA138E42E100E2F180 /* CategoriesController.h */,
+				E4DC34FB138E42E100E2F180 /* CategoriesController.m */,
 				E4C5AFC9138F93D300E6BD8B /* ChallengeProfileController.h */,
 				E4C5AFCA138F93D300E6BD8B /* ChallengeProfileController.m */,
 				D527D66E13948C81008B40F6 /* GlobalStore.h */,
@@ -914,7 +914,7 @@
 				E4936BA9138E2D72009F732A /* main.m in Sources */,
 				E4936BAC138E2D72009F732A /* gamemakiAppDelegate.m in Sources */,
 				E4DC34F9138E3E3F00E2F180 /* TabBarController.m in Sources */,
-				E4DC34FC138E42E100E2F180 /* TabMenuController.m in Sources */,
+				E4DC34FC138E42E100E2F180 /* CategoriesController.m in Sources */,
 				E4ED2EC9138E547B00BD3BC2 /* Challenge.m in Sources */,
 				E4ED2ECC138E54A100BD3BC2 /* ChallengeFeedModel.m in Sources */,
 				E4ED2ECF138E54C100BD3BC2 /* ChallengesController.m in Sources */,
